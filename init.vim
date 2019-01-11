@@ -15,6 +15,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('itchyny/lightline.vim')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('sophacles/vim-processing')
+  call dein#add('jason0x43/vim-js-indent')
+  call dein#add('clausreinke/typescript-tools')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -49,4 +51,7 @@ nnoremap ; :
 nnoremap : ;
 
 colorscheme molokai
+
+
+let g:js_indent_typescript = 1
 

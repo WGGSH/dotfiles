@@ -105,8 +105,9 @@ module.exports = {
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
     // shell: 'C:\\Windows\\System32\\bash.exe',
-    shell: 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
+    // shell: 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
     // shell: 'C:\\WINDOWS\\System32\\wlinux.exe',
+    shell: 'zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -172,6 +173,22 @@ module.exports = {
       focus: 0.95,
       blur: 0.8
     },
+
+    // hyperline
+    hyperline: {
+      plugins: [
+        // 'hostname',
+        "ip",
+        'memory',
+        // 'docker',
+        "cpu",
+        // 'network',
+        'battery',
+        // 'time',
+        // 'docker',
+        // "spotify",
+      ]
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -184,11 +201,12 @@ module.exports = {
   	'hyper-overlay',
     'hyper-darkmatter',
     'hyperborder',
-    'hyper-statusline',
+    // 'hyper-statusline',
     'hyperfullscreen',
     'hyper-dark-scrollbar',
-    'hyper-native-window-decoration',
+    // 'hyper-native-window-decoration',
     'hyper-opacity',
+    'hyperline',
   ],
 
   // in development, you can create a directory under

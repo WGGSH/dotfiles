@@ -37,6 +37,10 @@ if dein#load_state('~/.cache/dein')
   call dein#save_state()
 endif
 
+if dein#check_install()
+  call dein#install()
+endif
+
 filetype plugin indent on
 syntax enable
 
@@ -65,4 +69,21 @@ colorscheme molokai
 
 
 let g:js_indent_typescript = 1
+
+
+""" deoplete
+let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
+
+
+ """ markdown {{{
+   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+   autocmd BufRead,BufNewFile *.md  set filetype=markdown
+   " Need: kannokanno/previm
+   nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+   inoremap <silent> <C-p> :PrevimOpen<CR> 
+   " 自動で折りたたまないようにする
+   let g:vim_markdown_folding_disabled=1
+   let g:previm_enable_realtime = 1
+ " }}}
+
 

@@ -9,3 +9,15 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'sophacles/vim-processing'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'

@@ -65,6 +65,9 @@ set smartcase
 nnoremap ; :
 nnoremap : ;
 
+" Ctrl+Shift+Vでペースト
+noremap! <C-S-v> <C-R>+
+
 colorscheme molokai
 
 

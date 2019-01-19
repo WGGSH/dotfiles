@@ -69,6 +69,7 @@ nnoremap : ;
 noremap! <C-S-v> <C-R>+
 
 " クリップボードを有効化
+" Ubuntuの場合 '$ sudo apt-get install xsel'が必要
 set clipboard+=unnamedplus
 
 colorscheme molokai

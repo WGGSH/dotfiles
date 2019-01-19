@@ -68,6 +68,9 @@ nnoremap : ;
 " Ctrl+Shift+Vでペースト
 noremap! <C-S-v> <C-R>+
 
+" クリップボードを有効化
+set clipboard+=unnamedplus
+
 colorscheme molokai
 
 

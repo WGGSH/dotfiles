@@ -5,6 +5,9 @@ repo = 'scrooloose/nerdtree'
 repo = 'tomasr/molokai'
 
 [[plugins]]
+repo = 'flazz/vim-colorschemes'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
@@ -21,3 +24,9 @@ repo = 'kannokanno/previm'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'mhartington/nvim-typescript'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'

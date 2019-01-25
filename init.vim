@@ -77,6 +77,8 @@ colorscheme molokai
 
 let g:js_indent_typescript = 1
 
+let g:deoplete#enable_at_startup = 1
+
 
 """ deoplete
 let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
@@ -94,3 +96,7 @@ let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37
  " }}}
 
 
+" lightline
+let g:lightline = {
+  \ 'colorscheme': 'molokai'
+  \ }

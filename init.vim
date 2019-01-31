@@ -81,8 +81,9 @@ let g:deoplete#enable_at_startup = 1
 
 
 """ deoplete
-let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
-
+if has('win32')
+  let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
+endif
 
  """ markdown {{{
    autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
@@ -100,3 +101,10 @@ let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37
 let g:lightline = {
   \ 'colorscheme': 'molokai'
   \ }
+
+" C++のファイル編集時に補完機能を有効にする
+augroup deoplete_clang
+  autocmd!
+  autocmd BufRead,BufNewFile *.cpp call dein#update() call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang') call deoplete#custom#var('clangx', 'default_c_options', '') call deoplete#custom#var('clangx', 'default_cpp_options', '')
+augroup END
+

@@ -30,3 +30,6 @@ repo = 'mhartington/nvim-typescript'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'sophacles/vim-processing'

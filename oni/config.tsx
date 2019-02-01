@@ -32,6 +32,7 @@ export const configuration = {
     //'oni.loadInitVim': false,
     'editor.fontSize': '18px',
     'editor.fontFamily': 'Roboto Mono for Powerline',
+    'editor.fullScreenOnStart' : true,
 
     // UI customizations
     'ui.animations.enabled': true,
@@ -46,15 +47,15 @@ export const configuration = {
 
     // tabs
     'tabs.mode' : 'tabs',
-    'tabs.height' : '1.3em',
+    'tabs.height' : '2.0em',
 
     // editor
-    'editor.linePadding' : -3,
+    'editor.linePadding' : -2,
     'editor.maximizeScreenOnStart' : true,
     'editor.scrollBar.visible' : true,
     
     // sidebar
     'sidebar.enabled' : true,
-    'sidebar.width' : '10em',
+    'sidebar.width' : '20em',
     
 }

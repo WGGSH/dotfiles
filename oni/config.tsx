@@ -56,6 +56,5 @@ export const configuration = {
     
     // sidebar
     'sidebar.enabled' : true,
-    'sidebar.width' : '20em',
-    
+    'sidebar.width' : '20em',   
 }

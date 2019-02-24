@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import * as Oni from 'oni-api'
 
@@ -15,7 +14,6 @@ export const activate = (oni: Oni.Plugin.Api) => {
     // Or remove the default bindings here by uncommenting the below line:
     //
     // oni.input.unbind('<c-p>')
-
 }
 
 export const deactivate = (oni: Oni.Plugin.Api) => {
@@ -25,7 +23,7 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 export const configuration = {
     //add custom config here, such as
 
-    'ui.colorscheme': 'nord',
+    'ui.colorscheme': 'molokai',
 
     //'oni.useDefaultConfig': true,
     //'oni.bookmarks': ['~/Documents'],
@@ -56,6 +54,5 @@ export const configuration = {
     
     // sidebar
     'sidebar.enabled' : true,
-    'sidebar.width' : '20em',
-    
+    'sidebar.width' : '20em',   
 }

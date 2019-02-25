@@ -14,6 +14,15 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/deoplete-clangx'
 
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+hook_add = '''
+	if has("win32")
+		let g:deoplete#sources#jedi#python_path = 'python'
+	endif
+'''
+
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'

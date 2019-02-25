@@ -23,36 +23,45 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 export const configuration = {
     //add custom config here, such as
 
-    'ui.colorscheme': 'molokai',
+    'ui.colorscheme': 'antares',
 
     //'oni.useDefaultConfig': true,
     //'oni.bookmarks': ['~/Documents'],
     //'oni.loadInitVim': false,
-    'editor.fontSize': '18px',
-    'editor.fontFamily': 'Roboto Mono for Powerline',
-    'editor.fullScreenOnStart' : true,
+    'editor.fontSize' : '18px',
+    'editor.fontFamily' : 'Roboto Mono for Powerline',
+
+    // editor
+    'editor.fontWeight' : 'normal',
+    'editor.fullScreenOnStart' : false,
+    'editor.linePadding' : -2,
+    'editor.maximizeScreenOnStart' : true,
+    'editor.renderer' : 'WebGL',
+    
+    // oni
+    'oni.hideMenu' : true,
+    
+    
 
     // UI customizations
     'ui.animations.enabled': true,
     'ui.fontSmoothing': 'auto',
-    'ui.fontSize': '12px',
+    // 'ui.fontSize': '18px',
     // 'ui.colorscheme': 'molokai',
     'ui.fontFamily' : 'Roboto Mono',
     
     // statusbar
     'statusbar.enabled' : true,
-    'statusbar.fontSize' : '14px',
+    'statusbar.fontSize' : '1.0em',
 
     // tabs
     'tabs.mode' : 'tabs',
     'tabs.height' : '2.0em',
 
-    // editor
-    'editor.linePadding' : -2,
-    'editor.maximizeScreenOnStart' : true,
-    'editor.scrollBar.visible' : true,
     
     // sidebar
     'sidebar.enabled' : true,
     'sidebar.width' : '20em',   
+    'sidebar.default.open' : false,
+
 }

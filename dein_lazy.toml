@@ -14,6 +14,15 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/deoplete-clangx'
 
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+hook_add = '''
+	if has("win32")
+		let g:deoplete#sources#jedi#python_path = 'python'
+	endif
+'''
+
 # neosnippet
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -28,3 +37,12 @@ hook_source = '''
 on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = "OmniSharp/omnisharp-vim"
+on_ft = ["cs"]
+build = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe server/OmniSharp.sln"
+[[plugins]]
+repo = "Robzz/deoplete-omnisharp"
+on_source = ["deoplete.nvim"]
+

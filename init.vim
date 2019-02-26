@@ -83,6 +83,7 @@ let g:deoplete#enable_at_startup = 1
 """ deoplete
 if has('win32')
   let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
+  let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 endif
 
  """ markdown {{{

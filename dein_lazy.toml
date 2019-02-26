@@ -37,3 +37,12 @@ hook_source = '''
 on_i  = 1
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = "OmniSharp/omnisharp-vim"
+on_ft = ["cs"]
+build = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe server/OmniSharp.sln"
+[[plugins]]
+repo = "Robzz/deoplete-omnisharp"
+on_source = ["deoplete.nvim"]
+

@@ -1,67 +1,74 @@
-import * as React from 'react'
-import * as Oni from 'oni-api'
+import * as React from "react";
+import * as Oni from "oni-api";
 
 export const activate = (oni: Oni.Plugin.Api) => {
-    console.log('config activated')
+  console.log("config activated");
 
-    // Input
-    //
-    // Add input bindings here:
-    //
-    oni.input.bind('<c-enter>', () => console.log('Control+Enter was pressed'))
+  // Input
+  //
+  // Add input bindings here:
+  //
+  oni.input.bind("<c-enter>", () => console.log("Control+Enter was pressed"));
 
-    //
-    // Or remove the default bindings here by uncommenting the below line:
-    //
-    // oni.input.unbind('<c-p>')
-}
+  //
+  // Or remove the default bindings here by uncommenting the below line:
+  //
+  // oni.input.unbind('<c-p>')
+};
 
 export const deactivate = (oni: Oni.Plugin.Api) => {
-    console.log('config deactivated')
-}
+  console.log("config deactivated");
+};
 
 export const configuration = {
-    //add custom config here, such as
+  //add custom config here, such as
 
-    'ui.colorscheme': 'antares',
+  "ui.colorscheme": "PerfectDark",
 
-    //'oni.useDefaultConfig': true,
-    //'oni.bookmarks': ['~/Documents'],
-    //'oni.loadInitVim': false,
-    'editor.fontSize' : '18px',
-    'editor.fontFamily' : 'Roboto Mono for Powerline',
+  "oni.useDefaultConfig": false,
+  //'oni.bookmarks': ['~/Documents'],
+  //'oni.loadInitVim': false,
+  "editor.fontSize": "18px",
+  "editor.fontFamily": "Roboto Mono for Powerline",
 
-    // editor
-    'editor.fontWeight' : 'normal',
-    'editor.fullScreenOnStart' : false,
-    'editor.linePadding' : -2,
-    'editor.maximizeScreenOnStart' : true,
-    'editor.renderer' : 'WebGL',
-    
-    // oni
-    'oni.hideMenu' : true,
-    
-    
+  // editor
+  "editor.fontWeight": "normal",
+  "editor.fullScreenOnStart": false,
+  "editor.linePadding": -2,
+  "editor.maximizeScreenOnStart": true,
+  "editor.renderer": "WebGL",
+	"editor.scrollBar.visible": false,
 
-    // UI customizations
-    'ui.animations.enabled': true,
-    'ui.fontSmoothing': 'auto',
-    // 'ui.fontSize': '18px',
-    // 'ui.colorscheme': 'molokai',
-    'ui.fontFamily' : 'Roboto Mono',
-    
-    // statusbar
-    'statusbar.enabled' : true,
-    'statusbar.fontSize' : '1.0em',
+  // oni
+  //"oni.hideMenu": true,
 
-    // tabs
-    'tabs.mode' : 'tabs',
-    'tabs.height' : '2.0em',
+  // UI customizations
+  "ui.animations.enabled": true,
+  "ui.fontSmoothing": "auto",
+  "ui.fontFamily": "Roboto Mono for Powerline",
 
-    
-    // sidebar
-    'sidebar.enabled' : true,
-    'sidebar.width' : '20em',   
-    'sidebar.default.open' : false,
+  // statusbar
+  "statusbar.enabled": false,
+  "statusbar.fontSize": "1.0em",
 
-}
+  // tabs
+  "tabs.mode": "tabs",
+  "tabs.height": "2.0em",
+	"tabs.highlight": true,
+
+
+  // sidebar
+  "sidebar.enabled": false,
+  "sidebar.width": "20em",
+  "sidebar.default.open": false,
+	
+	// browser
+	"brwser.defaultUrl": "google.com",
+
+	// colors
+	"colors.tabs.background": "rgb(30,50,70)",
+	"colors.tabs.foreground": "white",
+	"colors.tabs.borderBottom": "rgb(34,34,34)",
+	"colors.menu.background": "rgb(30,50,70)",
+
+};

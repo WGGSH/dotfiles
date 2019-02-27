@@ -10,6 +10,9 @@ repo = 'flazz/vim-colorschemes'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+# [[plugins]]
+# repo = 'powerline/powerline'
+
 [[plugins]]
 repo = 'sophacles/vim-processing'
 

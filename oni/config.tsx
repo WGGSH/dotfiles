@@ -71,4 +71,6 @@ export const configuration = {
 	"colors.tabs.borderBottom": "rgb(34,34,34)",
 	"colors.menu.background": "rgb(30,50,70)",
 
+  "autoClosingPairs.enabled": false,
+  "commandline.mode": false,
 };

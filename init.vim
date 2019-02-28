@@ -46,25 +46,45 @@ syntax enable
 
 " end dein script
 
+set encoding=utf-8
+scriptencoding utf-8
+set fileencoding=utf-8 " 保存時の文字コード
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
+set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
+set ambiwidth=double " □や○文字が崩れる問題を解決
+
 set number
 set cursorline
 set showmatch
 set fenc=utf-8
 set nobackup
 set noswapfile
+set autoread
+set hidden
+set showcmd
 
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set noexpandtab
+set expandtab
+
+" set autoindent " 改行時に前の行のインデントを継続する
+set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 
 set ignorecase
 set smartcase
+set incsearch
+
+set list listchars=tab:\▸\-,
 
 
 " ノーマルモード時だけ ; と : を入れ替える (USキー対応)
 nnoremap ; :
 nnoremap : ;
+
+" Escキーを2回押すとハイライトを消す
+nnoremap <ESC><ESC> :nohl<CR>
+
 
 " Ctrl+Shift+Vでペースト
 noremap! <C-S-v> <C-R>+
@@ -73,6 +93,7 @@ noremap! <C-S-v> <C-R>+
 " Ubuntuの場合 '$ sudo apt-get install xsel'が必要
 set clipboard+=unnamedplus
 
+" カラースキームの設定（ダウンロードが必要）
 colorscheme molokai
 
 
@@ -81,7 +102,7 @@ let g:js_indent_typescript = 1
 let g:deoplete#enable_at_startup = 1
 
 
-""" deoplete
+""" Pythonのパス指定
 if has('win32')
   let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
@@ -118,3 +139,5 @@ augroup END
 " ファイル名指定なしで起動した場合にNERDTreeの自動起動
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+let g:tcomment_mapleader1 = '<c-/>'

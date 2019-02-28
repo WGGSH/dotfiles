@@ -36,3 +36,16 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'sophacles/vim-processing'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo ='bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'

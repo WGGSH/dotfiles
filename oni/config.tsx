@@ -37,7 +37,7 @@ export const configuration = {
   "editor.linePadding": -2,
   "editor.maximizeScreenOnStart": true,
   "editor.renderer": "WebGL",
-	"editor.scrollBar.visible": false,
+  "editor.scrollBar.visible": false,
 
   // oni
   //"oni.hideMenu": true,
@@ -61,15 +61,15 @@ export const configuration = {
   "sidebar.enabled": false,
   "sidebar.width": "20em",
   "sidebar.default.open": false,
-	
-	// browser
-	"brwser.defaultUrl": "google.com",
 
-	// colors
-	"colors.tabs.background": "rgb(30,50,70)",
-	"colors.tabs.foreground": "white",
-	"colors.tabs.borderBottom": "rgb(34,34,34)",
-	"colors.menu.background": "rgb(30,50,70)",
+  // browser
+  "brwser.defaultUrl": "google.com",
+
+  // colors
+  "colors.tabs.background": "rgb(30,50,70)",
+  "colors.tabs.foreground": "white",
+  "colors.tabs.borderBottom": "rgb(34,34,34)",
+  "colors.menu.background": "rgb(30,50,70)",
 
   "autoClosingPairs.enabled": false,
   "commandline.mode": false,

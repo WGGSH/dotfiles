@@ -1,5 +1,5 @@
-[[plugins]]
-repo = 'scrooloose/nerdtree'
+# [[plugins]]
+# repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'tomasr/molokai'
@@ -49,3 +49,9 @@ repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo ='Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'

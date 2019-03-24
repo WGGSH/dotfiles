@@ -54,8 +54,10 @@ set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先�
 set ambiwidth=double " □や○文字が崩れる問題を解決
 
 if has('win32')
-  set nonumber
-  set nocursorline
+  if exists("g:gui_oni")
+    set number
+    set cursorline
+  endif
 else
   set number
   set cursorline

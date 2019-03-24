@@ -53,8 +53,13 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コー�
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=double " □や○文字が崩れる問題を解決
 
-set number
-set cursorline
+if has('win32')
+  set nonumber
+  set nocursorline
+else
+  set number
+  set cursorline
+endif
 set showmatch
 set fenc=utf-8
 set nobackup
@@ -68,7 +73,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" set autoindent " 改行時に前の行のインデントを継続する
+set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 
 set ignorecase
@@ -129,13 +134,13 @@ endif
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'landscape',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"x":""}',
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
+     \ 'colorscheme': 'landscape',
+     \ 'component': {
+     \   'readonly': '%{&readonly?"x":""}',
+     \ },
+     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+     \ }
 
 " C++のファイル編集時に補完機能を有効にする
 augroup deoplete_clang
@@ -217,3 +222,5 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 	endfunction
+
+"

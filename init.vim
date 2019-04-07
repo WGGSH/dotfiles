@@ -54,6 +54,7 @@ set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先�
 set ambiwidth=double " □や○文字が崩れる問題を解決
 
 if has('win32')
+  set sh=powershell
   if exists("g:gui_oni")
     set number
     set cursorline
@@ -103,6 +104,9 @@ nnoremap <ESC><ESC> :nohl<CR>
 " Ctrl+Shift+Vでペースト
 noremap! <C-S-v> <C-R>+
 
+" terminal mode でEscキーを押すと normal mode に戻る
+tnoremap <silent> <ESC> <C-\><C-n>
+
 " クリップボードを有効化
 " Ubuntuの場合 '$ sudo apt-get install xsel'が必要
 set clipboard+=unnamedplus
@@ -122,16 +126,17 @@ if has('win32')
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 endif
 
- """ markdown {{{
-   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
-   autocmd BufRead,BufNewFile *.md  set filetype=markdown
-   " Need: kannokanno/previm
-   nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
-   inoremap <silent> <C-p> :PrevimOpen<CR> 
-   " 自動で折りたたまないようにする
-   let g:vim_markdown_folding_disabled=1
-   let g:previm_enable_realtime = 1
- " }}}
+
+""" markdown {{{
+  autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+  autocmd BufRead,BufNewFile *.md  set filetype=markdown
+  " Need: kannokanno/previm
+  nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+  inoremap <silent> <C-p> :PrevimOpen<CR> 
+  " 自動で折りたたまないようにする
+  let g:vim_markdown_folding_disabled=1
+  let g:previm_enable_realtime = 1
+" }}}
 
 
 " lightline
@@ -189,8 +194,8 @@ autocmd FileType defx call s:defx_my_settings()
 	  \                'mark:filename:type:size:time')
 	  nnoremap <silent><buffer><expr> S
 	  \ defx#do_action('toggle_sort', 'time')
-	  " nnoremap <silent><buffer><expr> d
-	  " \ defx#do_action('remove')
+	  nnoremap <silent><buffer><expr> D
+	  \ defx#do_action('remove')
 	  nnoremap <silent><buffer><expr> r
 	  \ defx#do_action('rename')
 	  nnoremap <silent><buffer><expr> !
@@ -225,4 +230,3 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('change_vim_cwd')
 	endfunction
 
-"

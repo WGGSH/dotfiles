@@ -72,3 +72,10 @@ repo ='Shougo/defx.nvim'
 
 # [[plugins]]
 # repo = 'Shougo/denite.nvim'
+
+# フォントサイズの変更
+[[plugins]]
+repo = 'vim-scripts/fontzoom.vim'
+# on_cmd = ['Fontzoom']
+# on_map = ['<Plug>(fontzoom-']
+# gui    = 1

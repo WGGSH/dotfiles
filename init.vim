@@ -55,10 +55,10 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 
 if has('win32')
   set sh=powershell
-  if exists("g:gui_oni")
+  " if exists("g:gui_oni")
     set number
     set cursorline
-  endif
+  " endif
 else
   set number
   set cursorline
@@ -114,6 +114,11 @@ set clipboard+=unnamedplus
 " カラースキームの設定（ダウンロードが必要）
 colorscheme molokai
 
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+" highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none 
 
 let g:js_indent_typescript = 1
 
@@ -140,14 +145,14 @@ endif
 
 
 " lightline
-let g:lightline = {
-     \ 'colorscheme': 'landscape',
-     \ 'component': {
-     \   'readonly': '%{&readonly?"x":""}',
-     \ },
-     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-     \ }
+" let g:lightline = {
+  "   \ 'colorscheme': 'landscape',
+  "   \ 'component': {
+  "   \   'readonly': '%{&readonly?"x":""}',
+  "   \ },
+  "   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  "   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  "   \ }
 
 " C++のファイル編集時に補完機能を有効にする
 augroup deoplete_clang

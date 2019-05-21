@@ -157,7 +157,7 @@ module.exports = {
     hyperBorder: {
       // borderColors: ['#fc1da7', '#fba506'],
       // borderColors: ['#0077ff', '#33ffcc', '#ff5555'],
-      borderColors: ['#000'],
+      borderColors: ['#ccc'],
       borderAngle: '90deg',
       borderRadiusInner: '10px',
       borderRadiusOuter: '10px',

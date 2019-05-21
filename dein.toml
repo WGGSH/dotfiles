@@ -1,23 +1,123 @@
-[[plugins]]
-repo = 'scrooloose/nerdtree'
+# NERDTree: ファイラー， Defxを使うようになったので停止
+# [[plugins]]
+# repo = 'scrooloose/nerdtree'
 
+# Molokai: カラースキーム
 [[plugins]]
 repo = 'tomasr/molokai'
 
+# カラースキーム集
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'flazz/vim-colorschemes'
 
+# Lightline: PowerLine風のステータスバー
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
+
+# Airline:
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline_theme = 'badwolf'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+# Powerline: 上手く動かなかった
+# [[plugins]]
+# repo = 'powerline/powerline'
+
+# Processing用プラグイン
 [[plugins]]
 repo = 'sophacles/vim-processing'
+on_ft = ["pde"]
 
+# スニペット集?
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+# Markdown
 [[plugins]]
 repo = 'tpope/vim-markdown'
+on_ft = ["md"]
 
+# 主にMarkdonwのリアルタイム表示用
 [[plugins]]
 repo = 'kannokanno/previm'
+on_ft = ["md"]
 
+# URLを開く, 主にMarkdown用
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+
+# typescript用: 上手く動かなかった?
+# [[plugins]]
+# repo = 'mhartington/nvim-typescript'
+
+# 複数の言語を同一ファイルで扱うプラグイン? 未使用
+# [[plugins]]
+# repo = 'Shougo/context_filetype.vim'
+
+# 自動で閉じ括弧をつけてくれる
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+# 不要な空白を強調表示する
+[[plugins]]
+repo ='bronson/vim-trailing-whitespace'
+
+# インデントを見やすくする
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# ファイラー: 設定が複雑
+[[plugins]]
+repo ='Shougo/defx.nvim'
+
+
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+
+# フォントサイズの変更
+[[plugins]]
+repo = 'vim-scripts/fontzoom.vim'
+# on_cmd = ['Fontzoom']
+# on_map = ['<Plug>(fontzoom-']
+# gui    = 1

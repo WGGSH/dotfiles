@@ -6,10 +6,10 @@ module.exports = {
   config: {
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
-    updateChannel: 'less',
+    updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 18,
+    fontSize: 12,
 
     // font family with optional fallbacks
     fontFamily: '"Roboto Mono for Powerline"',
@@ -33,7 +33,7 @@ module.exports = {
     // terminal text color under BLOCK cursor
     cursorAccentColor: '#000',
 
-    // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
+    // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for ?
     cursorShape: 'BEAM',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
@@ -89,7 +89,7 @@ module.exports = {
       lightBlue: '#6A76FB',
       lightMagenta: '#FD7CFC',
       lightCyan: '#68FDFE',
-      lightWhite: '#FFFFFF',
+      lightWhite: '#FFFFFF'
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -105,8 +105,9 @@ module.exports = {
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
     // shell: 'C:\\Windows\\System32\\bash.exe',
-    shell: 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
+    // shell: 'C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
     // shell: 'C:\\WINDOWS\\System32\\wlinux.exe',
+    shell: 'bash',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -134,44 +135,45 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    
+
     // over-lay
-    overlay:{
-      animate:true,
-      primaryDisplay: true,
+    overlay: {
+      animate: true,
+      // primaryDisplay: true,
       startAlone: true,
-      alwaysOnTop: false,
-      unique: true,
-      size:{
+      // alwaysOnTop: false,
+      // unique: true,
+      size: {
         width: 1.0,
-        height: 1.0,
+        height: 1.0
       },
-      hotkeys:{
-        open: ['F1'],
-        close: ['F1'],
-      },
+      // hotkeys: {
+      //   open: ['F1'],
+      //   close: ['F1']
+      // }
     },
-    
+
     // hyperborder
     hyperBorder: {
       // borderColors: ['#fc1da7', '#fba506'],
-      borderColors: ['#0077ff', '#33ffcc','#ff5555'],
-      borderAngle: '0deg',
+      // borderColors: ['#0077ff', '#33ffcc', '#ff5555'],
+      borderColors: ['#ccc'],
+      borderAngle: '90deg',
       borderRadiusInner: '10px',
       borderRadiusOuter: '10px',
-      borderWidth: '5px'
+      borderWidth: '0px'
     },
 
     // nativeWindowDecoration
     nativeWindowDecoration: {
-      menuBar: 'hide',
+      menuBar: 'hide'
     },
 
     // hyper-opacity
     opacity: {
       focus: 0.95,
       blur: 0.8
-    },
+    }
   },
 
   // a list of plugins to fetch and install from npm
@@ -181,14 +183,14 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-  	'hyper-overlay',
+    // 'hyper-overlay',
     'hyper-darkmatter',
     'hyperborder',
-    'hyper-statusline',
+    // 'hyper-statusline',
     'hyperfullscreen',
-    'hyper-dark-scrollbar',
+    // 'hyper-dark-scrollbar',
     'hyper-native-window-decoration',
-    'hyper-opacity',
+    'hyper-opacity'
   ],
 
   // in development, you can create a directory under
@@ -205,20 +207,14 @@ module.exports = {
     'tab:new': 'alt+t',
     'tab:next': 'alt+pagedown',
     'tab:prev': 'alt+pageup',
-    'pane:next': [
-      'alt+right',
-      'alt+down',
-    ],
-    'pane:prev': [
-      'alt+left',
-      'alt+up',
-    ],
+    'pane:next': ['alt+right', 'alt+down'],
+    'pane:prev': ['alt+left', 'alt+up'],
     'pane:splitVertical': 'alt+d',
     'pane:splitHorizontal': 'alt+e',
     'pane:close': 'alt+w',
     'editor:movePreviousWord': '',
     'editor:moveNextWord': '',
     'editor:moveBeginningLine': '',
-    'editor:moveEndLine': '',
-  },
-};
+    'editor:moveEndLine': ''
+  }
+}

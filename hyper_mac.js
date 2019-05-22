@@ -157,11 +157,11 @@ module.exports = {
     hyperBorder: {
       // borderColors: ['#fc1da7', '#fba506'],
       // borderColors: ['#0077ff', '#33ffcc', '#ff5555'],
-      borderColors: ['#ccc'],
+      borderColors: ['#ccc','#777'],
       borderAngle: '90deg',
       borderRadiusInner: '10px',
       borderRadiusOuter: '10px',
-      borderWidth: '0px'
+      borderWidth: '2px'
     },
 
     // nativeWindowDecoration

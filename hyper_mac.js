@@ -157,8 +157,8 @@ module.exports = {
     hyperBorder: {
       // borderColors: ['#fc1da7', '#fba506'],
       // borderColors: ['#0077ff', '#33ffcc', '#ff5555'],
-      borderColors: ['#ccc','#777'],
-      borderAngle: '90deg',
+      borderColors: ['#ccc','#777,#48c'],
+      borderAngle: '45deg',
       borderRadiusInner: '10px',
       borderRadiusOuter: '10px',
       borderWidth: '2px'
@@ -172,7 +172,7 @@ module.exports = {
     // hyper-opacity
     opacity: {
       focus: 0.95,
-      blur: 0.8
+      blur: 0.90
     }
   },
 

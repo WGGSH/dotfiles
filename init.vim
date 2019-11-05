@@ -127,7 +127,8 @@ let g:deoplete#enable_at_startup = 1
 
 """ Pythonのパス指定
 if has('win32')
-  let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
+  let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
+  " let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 endif
 
@@ -155,16 +156,16 @@ endif
   "   \ }
 
 " C++のファイル編集時に補完機能を有効にする
-augroup deoplete_clang
-  autocmd!
-  autocmd BufRead,BufNewFile *.cpp call dein#update() call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang') call deoplete#custom#var('clangx', 'default_c_options', '') call deoplete#custom#var('clangx', 'default_cpp_options', '')
-augroup END
+" augroup deoplete_clang
+  " autocmd!
+  " autocmd BufRead,BufNewFile *.cpp call dein#update() call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang') call deoplete#custom#var('clangx', 'default_c_options', '') call deoplete#custom#var('clangx', 'default_cpp_options', '')
+" augroup END
 
 " ファイル名指定なしで起動した場合にNERDTreeの自動起動
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-let g:tcomment_mapleader1 = '<c-/>'
+" let g:tcomment_mapleader1 = '<c-/>'
 
 " let g:extra_whitespace_ignored_filetypes = 'defx'
 nnoremap <M-e> :Defx -split=horizontal -winheight=10 -direction=botright<CR>
@@ -236,3 +237,8 @@ autocmd FileType defx call s:defx_my_settings()
 	endfunction
 
 
+nnoremap d h
+nnoremap h j
+nnoremap t k
+nnoremap n l
+nnoremap e d

@@ -66,22 +66,22 @@ repo = 'sophacles/vim-processing'
 on_ft = ["pde"]
 
 # スニペット集?
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+# [[plugins]]
+# repo = 'Shougo/neosnippet-snippets'
 
 # Markdown
-[[plugins]]
-repo = 'tpope/vim-markdown'
-on_ft = ["md"]
+# [[plugins]]
+# repo = 'tpope/vim-markdown'
+# on_ft = ["md"]
 
 # 主にMarkdonwのリアルタイム表示用
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ["md"]
+# [[plugins]]
+# repo = 'kannokanno/previm'
+# on_ft = ["md"]
 
 # URLを開く, 主にMarkdown用
-[[plugins]]
-repo = 'tyru/open-browser.vim'
+# [[plugins]]
+# repo = 'tyru/open-browser.vim'
 
 # typescript用: 上手く動かなかった?
 # [[plugins]]
@@ -116,8 +116,11 @@ repo ='Shougo/defx.nvim'
 # repo = 'Shougo/denite.nvim'
 
 # フォントサイズの変更
-[[plugins]]
-repo = 'vim-scripts/fontzoom.vim'
+# [[plugins]]
+# repo = 'vim-scripts/fontzoom.vim'
 # on_cmd = ['Fontzoom']
 # on_map = ['<Plug>(fontzoom-']
 # gui    = 1
+
+# [[plugins]]
+# repo = 'beyondmarc/glsl.vim'

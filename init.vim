@@ -168,7 +168,7 @@ endif
 " let g:tcomment_mapleader1 = '<c-/>'
 
 " let g:extra_whitespace_ignored_filetypes = 'defx'
-nnoremap <M-e> :Defx -split=horizontal -winheight=10 -direction=botright<CR>
+nnoremap <M-e> :Defx -split=vertical -winwidth=30 -direction=botright<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
@@ -200,8 +200,8 @@ autocmd FileType defx call s:defx_my_settings()
 	  \                'mark:filename:type:size:time')
 	  nnoremap <silent><buffer><expr> S
 	  \ defx#do_action('toggle_sort', 'time')
-	  nnoremap <silent><buffer><expr> D
-	  \ defx#do_action('remove')
+	  " nnoremap <silent><buffer><expr> D
+	  " \ defx#do_action('remove')
 	  nnoremap <silent><buffer><expr> r
 	  \ defx#do_action('rename')
 	  nnoremap <silent><buffer><expr> !
@@ -214,7 +214,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('toggle_ignored_files')
 	  nnoremap <silent><buffer><expr> ;
 	  \ defx#do_action('repeat')
-	  nnoremap <silent><buffer><expr> h
+	  nnoremap <silent><buffer><expr> d
 	  \ defx#do_action('cd', ['..'])
 	  nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
@@ -225,8 +225,8 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> *
 	  \ defx#do_action('toggle_select_all')
 	  nnoremap <silent><buffer><expr> j
-	  \ line('.') == line('$') ? 'gg' : 'j'
-	  nnoremap <silent><buffer><expr> k
+	  \ line('.') == line('$') ? 'gg' : 'h'
+	  nnoremap <silent><buffer><expr> t
 	  \ line('.') == 1 ? 'G' : 'k'
 	  nnoremap <silent><buffer><expr> <C-l>
 	  \ defx#do_action('redraw')
@@ -242,3 +242,5 @@ nnoremap h j
 nnoremap t k
 nnoremap n l
 nnoremap e d
+
+autocmd VimEnter * execute 'Defx -split=vertical -winwidth=40 -direction=botright'

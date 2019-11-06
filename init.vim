@@ -9,16 +9,16 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  
+
 
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイルを用意しておく
-	if has('win32')
-  	let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
+  if has('win32')
+    let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
     let s:toml      = g:rc_dir . '\\dein.toml'
     let s:lazy_toml = g:rc_dir . '\\dein_lazy.toml'
-	else
-		let g:rc_dir = expand("~/.config/nvim")
+  else
+    let g:rc_dir = expand("~/.config/nvim")
     let s:toml      = g:rc_dir . '/dein.toml'
     let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   endif
@@ -56,8 +56,8 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 if has('win32')
   set sh=powershell
   " if exists("g:gui_oni")
-    set relativenumber
-    set cursorline
+  set relativenumber
+  set cursorline
   " endif
 else
   set relativenumber
@@ -112,7 +112,7 @@ tnoremap <silent> <ESC> <C-\><C-n>
 set clipboard+=unnamedplus
 
 " カラースキームの設定（ダウンロードが必要）
-colorscheme molokai
+colorscheme onedark
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none

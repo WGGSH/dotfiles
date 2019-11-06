@@ -56,11 +56,11 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 if has('win32')
   set sh=powershell
   " if exists("g:gui_oni")
-    set number
+    set relativenumber
     set cursorline
   " endif
 else
-  set number
+  set relativenumber
   set cursorline
 endif
 set showmatch
@@ -84,7 +84,7 @@ set smartcase
 set incsearch
 
 set list listchars=tab:\▸\-,
-
+set mouse=a
 
 " ノーマルモード時だけ ; と : を入れ替える (USキー対応)
 nnoremap ; :
@@ -242,5 +242,19 @@ nnoremap h j
 nnoremap t k
 nnoremap n l
 nnoremap e d
+nnoremap ee dd
 
-autocmd VimEnter * execute 'Defx -split=vertical -winwidth=40 -direction=botright'
+" autocmd VimEnter * execute 'Defx -split=vertical -winwidth=40 -direction=botright'
+nnoremap <silent><C-f> :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
+call defx#custom#option('_', {
+    \ 'columns': 'indent:git:icons:filename',
+    \ 'show_ignored_files': 1,
+    \ })
+
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+
+nnoremap <C-p> :FZFFileList<CR>
+command! FZFFileList call fzf#run(fzf#wrap({
+  \ 'source': 'find . -type d -name .git -prune -o ! -name htdocs',
+  \ 'down': '40%'}))

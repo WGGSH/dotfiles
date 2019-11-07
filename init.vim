@@ -9,16 +9,16 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-
+  
 
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイルを用意しておく
-  if has('win32')
-    let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
+	if has('win32')
+  	let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
     let s:toml      = g:rc_dir . '\\dein.toml'
     let s:lazy_toml = g:rc_dir . '\\dein_lazy.toml'
-  else
-    let g:rc_dir = expand("~/.config/nvim")
+	else
+		let g:rc_dir = expand("~/.config/nvim")
     let s:toml      = g:rc_dir . '/dein.toml'
     let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   endif
@@ -56,13 +56,14 @@ set ambiwidth=double " □や○文字が崩れる問題を解決
 if has('win32')
   set sh=powershell
   " if exists("g:gui_oni")
-  set relativenumber
-  set cursorline
+    set number
+    set cursorline
   " endif
 else
   set relativenumber
   set cursorline
 endif
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 set showmatch
 set fenc=utf-8
 set nobackup
@@ -84,11 +85,13 @@ set smartcase
 set incsearch
 
 set list listchars=tab:\▸\-,
-set mouse=a
+
 
 " ノーマルモード時だけ ; と : を入れ替える (USキー対応)
 nnoremap ; :
 nnoremap : ;
+
+set mouse=a
 
 " Ctrl+BackSpaceで手前の単語を削除
 inoremap <C-BS> <C-W>
@@ -130,6 +133,8 @@ if has('win32')
   let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
   " let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
+else
+  let g:python3_host_prog = '/usr/bin/python3.6'
 endif
 
 
@@ -166,6 +171,7 @@ endif
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " let g:tcomment_mapleader1 = '<c-/>'
+let g:tcomment_mapleader1 = '<C-\>'
 
 " let g:extra_whitespace_ignored_filetypes = 'defx'
 nnoremap <M-e> :Defx -split=vertical -winwidth=30 -direction=botright<CR>
@@ -244,6 +250,11 @@ nnoremap n l
 nnoremap e d
 nnoremap ee dd
 
+nnoremap <C-w>d <C-w>h
+nnoremap <C-w>h <C-w>j
+nnoremap <C-w>t <C-w>k
+nnoremap <C-w>n <C-w>l
+
 " autocmd VimEnter * execute 'Defx -split=vertical -winwidth=40 -direction=botright'
 nnoremap <silent><C-f> :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
 call defx#custom#option('_', {
@@ -258,3 +269,4 @@ nnoremap <C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run(fzf#wrap({
   \ 'source': 'find . -type d -name .git -prune -o ! -name htdocs',
   \ 'down': '40%'}))
+

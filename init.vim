@@ -183,13 +183,13 @@ autocmd FileType defx call s:defx_my_settings()
 	  " \ defx#do_action('open')
     nnoremap <silent><buffer><expr> <CR>
     \ defx#do_action('drop')
-	  nnoremap <silent><buffer><expr> c
-	  \ defx#do_action('copy')
-	  nnoremap <silent><buffer><expr> m
-	  \ defx#do_action('move')
-	  nnoremap <silent><buffer><expr> p
-	  \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> l
+	  " nnoremap <silent><buffer><expr> c
+	  " \ defx#do_action('copy')
+	  " nnoremap <silent><buffer><expr> m
+	  " \ defx#do_action('move')
+	  " nnoremap <silent><buffer><expr> p
+	  " \ defx#do_action('paste')
+	  nnoremap <silent><buffer><expr> o
 	  \ defx#do_action('open')
 	  nnoremap <silent><buffer><expr> E
 	  \ defx#do_action('open', 'vsplit')
@@ -212,7 +212,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('rename')
 	  nnoremap <silent><buffer><expr> !
 	  \ defx#do_action('execute_command')
-	  nnoremap <silent><buffer><expr> x
+	  nnoremap <silent><buffer><expr> 
 	  \ defx#do_action('execute_system')
 	  nnoremap <silent><buffer><expr> yy
 	  \ defx#do_action('yank_path')
@@ -240,6 +240,8 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('print')
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
+    nnoremap <silent><buffer><expr> s
+    \ defx#do_action('open', 'vsplit')
 	endfunction
 
 
@@ -267,6 +269,7 @@ let g:defx_icons_column_length = 2
 
 nnoremap <C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run(fzf#wrap({
-  \ 'source': 'find . -type d -name .git -prune -o ! -name htdocs',
+  \ 'source': 'find . -type d -name .git -prune -o -type f',
   \ 'down': '40%'}))
 
+set guicursor=

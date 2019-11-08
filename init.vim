@@ -139,31 +139,31 @@ endif
 
 
 """ markdown {{{
-  autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
-  autocmd BufRead,BufNewFile *.md  set filetype=markdown
-  " Need: kannokanno/previm
-  nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
-  inoremap <silent> <C-p> :PrevimOpen<CR> 
-  " 自動で折りたたまないようにする
-  let g:vim_markdown_folding_disabled=1
-  let g:previm_enable_realtime = 1
+autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+autocmd BufRead,BufNewFile *.md  set filetype=markdown
+" Need: kannokanno/previm
+nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+inoremap <silent> <C-p> :PrevimOpen<CR> 
+" 自動で折りたたまないようにする
+let g:vim_markdown_folding_disabled=1
+let g:previm_enable_realtime = 1
 " }}}
 
 
 " lightline
 " let g:lightline = {
-  "   \ 'colorscheme': 'landscape',
-  "   \ 'component': {
-  "   \   'readonly': '%{&readonly?"x":""}',
-  "   \ },
-  "   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  "   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-  "   \ }
+"   \ 'colorscheme': 'landscape',
+"   \ 'component': {
+"   \   'readonly': '%{&readonly?"x":""}',
+"   \ },
+"   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+"   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+"   \ }
 
 " C++のファイル編集時に補完機能を有効にする
 " augroup deoplete_clang
-  " autocmd!
-  " autocmd BufRead,BufNewFile *.cpp call dein#update() call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang') call deoplete#custom#var('clangx', 'default_c_options', '') call deoplete#custom#var('clangx', 'default_cpp_options', '')
+" autocmd!
+" autocmd BufRead,BufNewFile *.cpp call dein#update() call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang') call deoplete#custom#var('clangx', 'default_c_options', '') call deoplete#custom#var('clangx', 'default_cpp_options', '')
 " augroup END
 
 " ファイル名指定なしで起動した場合にNERDTreeの自動起動
@@ -177,72 +177,72 @@ let g:tcomment_mapleader1 = '<C-\>'
 nnoremap <M-e> :Defx -split=vertical -winwidth=30 -direction=botright<CR>
 
 autocmd FileType defx call s:defx_my_settings()
-	function! s:defx_my_settings() abort
-	  " Define mappings
-	  " nnoremap <silent><buffer><expr> <CR>
-	  " \ defx#do_action('open')
-    nnoremap <silent><buffer><expr> <CR>
-    \ defx#do_action('drop')
-	  " nnoremap <silent><buffer><expr> c
-	  " \ defx#do_action('copy')
-	  " nnoremap <silent><buffer><expr> m
-	  " \ defx#do_action('move')
-	  " nnoremap <silent><buffer><expr> p
-	  " \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> o
-	  \ defx#do_action('open')
-	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('open', 'vsplit')
-	  nnoremap <silent><buffer><expr> P
-	  \ defx#do_action('open', 'pedit')
-	  nnoremap <silent><buffer><expr> K
-	  \ defx#do_action('new_directory')
-	  nnoremap <silent><buffer><expr> N
-	  \ defx#do_action('new_file')
-	  nnoremap <silent><buffer><expr> M
-	  \ defx#do_action('new_multiple_files')
-	  nnoremap <silent><buffer><expr> C
-	  \ defx#do_action('toggle_columns',
-	  \                'mark:filename:type:size:time')
-	  nnoremap <silent><buffer><expr> S
-	  \ defx#do_action('toggle_sort', 'time')
-	  " nnoremap <silent><buffer><expr> D
-	  " \ defx#do_action('remove')
-	  nnoremap <silent><buffer><expr> r
-	  \ defx#do_action('rename')
-	  nnoremap <silent><buffer><expr> !
-	  \ defx#do_action('execute_command')
-	  nnoremap <silent><buffer><expr> 
-	  \ defx#do_action('execute_system')
-	  nnoremap <silent><buffer><expr> yy
-	  \ defx#do_action('yank_path')
-	  nnoremap <silent><buffer><expr> .
-	  \ defx#do_action('toggle_ignored_files')
-	  nnoremap <silent><buffer><expr> ;
-	  \ defx#do_action('repeat')
-	  nnoremap <silent><buffer><expr> d
-	  \ defx#do_action('cd', ['..'])
-	  nnoremap <silent><buffer><expr> ~
-	  \ defx#do_action('cd')
-	  nnoremap <silent><buffer><expr> q
-	  \ defx#do_action('quit')
-	  nnoremap <silent><buffer><expr> <Space>
-	  \ defx#do_action('toggle_select') . 'j'
-	  nnoremap <silent><buffer><expr> *
-	  \ defx#do_action('toggle_select_all')
-	  nnoremap <silent><buffer><expr> j
-	  \ line('.') == line('$') ? 'gg' : 'h'
-	  nnoremap <silent><buffer><expr> t
-	  \ line('.') == 1 ? 'G' : 'k'
-	  nnoremap <silent><buffer><expr> <C-l>
-	  \ defx#do_action('redraw')
-	  nnoremap <silent><buffer><expr> <C-g>
-	  \ defx#do_action('print')
-	  nnoremap <silent><buffer><expr> cd
-	  \ defx#do_action('change_vim_cwd')
-    nnoremap <silent><buffer><expr> s
-    \ defx#do_action('open', 'vsplit')
-	endfunction
+function! s:defx_my_settings() abort
+  " Define mappings
+  " nnoremap <silent><buffer><expr> <CR>
+  " \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('drop')
+  " nnoremap <silent><buffer><expr> c
+  " \ defx#do_action('copy')
+  " nnoremap <silent><buffer><expr> m
+  " \ defx#do_action('move')
+  " nnoremap <silent><buffer><expr> p
+  " \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+        \ defx#do_action('toggle_columns',
+        \                'mark:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+        \ defx#do_action('toggle_sort', 'time')
+  " nnoremap <silent><buffer><expr> D
+  " \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+        \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> 
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+        \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'h'
+  nnoremap <silent><buffer><expr> t
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+        \ defx#do_action('change_vim_cwd')
+  nnoremap <silent><buffer><expr> s
+        \ defx#do_action('open', 'vsplit')
+endfunction
 
 
 nnoremap d h
@@ -260,16 +260,20 @@ nnoremap <C-w>n <C-w>l
 " autocmd VimEnter * execute 'Defx -split=vertical -winwidth=40 -direction=botright'
 nnoremap <silent><C-f> :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
 call defx#custom#option('_', {
-    \ 'columns': 'indent:git:icons:filename',
-    \ 'show_ignored_files': 1,
-    \ })
+      \ 'columns': 'indent:git:icons:filename',
+      \ 'show_ignored_files': 1,
+      \ })
 
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2
 
 nnoremap <C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run(fzf#wrap({
-  \ 'source': 'find . -type d -name .git -prune -o -type f',
-  \ 'down': '40%'}))
+      \ 'source': 'find . -type d -name .git -prune -o -type f',
+      \ 'down': '40%'}))
 
 set guicursor=
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <C-n> <Plug>AirlineSelectPrevTab
+nmap <C-S-n> <Plug>AirlineSelectNextTab

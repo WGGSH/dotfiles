@@ -117,3 +117,6 @@ repo = 'kristijanhusak/defx-icons'
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"

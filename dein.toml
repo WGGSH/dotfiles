@@ -2,19 +2,18 @@
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
 
-# Airline:
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-
+# 今使ってるカラースキーム
 [[plugins]]
 repo = 'tomasiser/vim-code-dark'
 hook_add = '''
 colorscheme codedark
 '''
 
+# Airline
+## 本体
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['vim-airline-themes']
+depends = ['/vim-airline-themes']
 hook_add = '''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -30,6 +29,10 @@ if !exists('g:airline_symbols')
 endif
 '''
 
+## テーマ
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
 # Processing用プラグイン
 [[plugins]]
 repo = 'sophacles/vim-processing'
@@ -38,7 +41,7 @@ on_ft = ["pde"]
 # 自動で閉じ括弧をつける
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_i = 1
+on_event = 'InsertEnter'
 
 # 不要な空白の強調表示
 [[plugins]]
@@ -55,12 +58,7 @@ hook_add = '''
 let g:tcomment_mapleader1 = '<C-\>'
 '''
 
-
-# Defx: 設定が複雑
-## アイコン
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
+# Defx: ファイラー
 ## 本体
 [[plugins]]
 repo ='Shougo/defx.nvim'
@@ -143,14 +141,15 @@ function! s:defx_my_settings() abort
 endfunction
 '''
 
-# fzf
+## アイコン
 [[plugins]]
-repo = 'junegunn/fzf'
-build = './install --all'
+repo = 'kristijanhusak/defx-icons'
 
-#fzf.vim : ファイルのインクリメンタルサーチ
+# fzf (今はWinでは動かさない)
+## fzf.vim : ファイルのインクリメンタルサーチ
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+if = '''!has('win32')'''
 depends = ['fzf']
 hook_add='''
 nnoremap <C-o> :FZFFileList<CR>
@@ -159,9 +158,11 @@ command! FZFFileList call fzf#run(fzf#wrap({
       \ 'down': '40%'}))
 '''
 
-# カラースキーム
+## fzfのバイナリ
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'junegunn/fzf'
+if = '''!has('win32')'''
+build = './install --all'
 
 # gitの差分表示
 [[plugins]]

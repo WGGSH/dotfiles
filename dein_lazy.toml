@@ -1,48 +1,20 @@
-# deoplete------------------
+# omnisharp: 主にUnity用
+## 上手く動いていないので一旦なしで
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-let g:deoplete#enable_at_startup   = 1
-let g:deoplete#auto_complete_delay = 0
-inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-'''
-on_i = 1
+## 本体
+# [[plugins]]
+# repo = 'OmniSharp/omnisharp-vim'
+# on_ft = ['cs']
+# hook_add = '''
+# let g:OmniSharp_server_stdio = 1
+# if has('win32')
+#   let g:OmniSharp_translate_cygwin_wsl = 0
+# else
+#   let g:OmniSharp_translate_cygwin_wsl = 1
+# endif
+# '''
 
-[[plugins]]
-repo = 'Shougo/deoplete-clangx'
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
-hook_add = '''
-	if has("win32")
-		let g:deoplete#sources#jedi#python_path = 'python'
-	endif
-'''
-
-# neosnippet
-[[plugins]]
-repo = 'Shougo/neosnippet'
-hook_source = '''
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
-'''
-on_i  = 1
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
-
-[[plugins]]
-repo = "OmniSharp/omnisharp-vim"
-build = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe server\\OmniSharp.sln"
-on_ft = ["cs"]
-[[plugins]]
-repo = "Robzz/deoplete-omnisharp"
-# on_source = ["deoplete.nvim"]
-on_ft = ["cs"]
+## deoplete
+# [[plugins]]
+# repo = 'Robzz/deoplete-omnisharp'
+# on_source = ['deoplete.nvim']

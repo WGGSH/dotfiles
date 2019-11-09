@@ -2,7 +2,6 @@
 if &compatible
   set nocompatible
 endif
-" Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
@@ -20,7 +19,6 @@ if dein#load_state('~/.cache/dein')
     let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   endif
 
-  " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
@@ -100,14 +98,16 @@ tnoremap <silent> <ESC> <C-\><C-n>
 set clipboard+=unnamedplus
 
 " wsl→winのクリップボードにコピーする
-if executable('win32yank.exe')
-  augroup Yank
-    autocmd!
-    autocmd TextYankPost * :call system('win32yank.exe -i', @")
-  augroup END
-endif
+" tmux で上手く動かなさそうなので一旦保留
+" if executable('win32yank.exe')
+"   augroup Yank
+"     autocmd!
+"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
+"   augroup END
+" endif
 
 " Pythonのパス指定
+" バージョン書きたくないと思いつつも，いいやり方が浮かばない
 if has('win32') || has('win64')
   let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'

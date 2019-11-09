@@ -10,12 +10,12 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-	if has('win32') || has('win64')
-  	let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
+  if has('win32') || has('win64')
+    let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
     let s:toml      = g:rc_dir . '\\dein.toml'
     let s:lazy_toml = g:rc_dir . '\\dein_lazy.toml'
-	else
-		let g:rc_dir = expand("~/.config/nvim")
+  else
+    let g:rc_dir = expand("~/.config/nvim")
     let s:toml      = g:rc_dir . '/dein.toml'
     let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   endif
@@ -44,10 +44,10 @@ syntax enable
 
 set encoding=utf-8
 scriptencoding utf-8
-set fileencoding=utf-8 " 保存時の文字コード
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
-set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+set ambiwidth=double
 
 if has('win32')
   set sh=powershell
@@ -78,19 +78,14 @@ set ignorecase
 set smartcase
 set incsearch
 
-set list listchars=tab:\▸\-, " タブ文字は普段使わないので目立つようにする
+set mouse=a
 
+set list listchars=tab:\▸\-, " タブ文字は普段使わないので目立つようにする
 
 " ノーマルモード時だけ ; と : を入れ替える (USキー対応)
 nnoremap ; :
 nnoremap : ;
 
-set mouse=a
-
-" Ctrl+BackSpaceで手前の単語を削除
-" inoremap <C-BS> <C-W>
-" Ctrl+Deleteで選択中の単語を削除
-" inoremap <C-DEL> <C-o>ciw
 
 " Escキーを2回押すとハイライトを消す
 nnoremap <ESC><ESC> :nohl<CR>
@@ -104,27 +99,26 @@ tnoremap <silent> <ESC> <C-\><C-n>
 " クリップボードを有効化?
 set clipboard+=unnamedplus
 
-" カラースキームの設定（ダウンロードが必要）
-colorscheme onedark
+" wsl→winのクリップボードにコピーする
+if executable('win32yank.exe')
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+  augroup END
+endif
 
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-" highlight LineNr ctermbg=none
-highlight Folded ctermbg=none
-highlight EndOfBuffer ctermbg=none
-
-""" Pythonのパス指定
-if has('win32')
+" Pythonのパス指定
+if has('win32') || has('win64')
   let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
-  " let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 else
   let g:python3_host_prog = '/usr/bin/python3.6'
 endif
 
+" Dvorak配列用設定
 nnoremap d h
-nnoremap h j
-nnoremap t k
+nnoremap h gj
+nnoremap t gk
 nnoremap n l
 nnoremap e d
 nnoremap ee dd
@@ -138,8 +132,5 @@ vnoremap d h
 vnoremap h j
 vnoremap t k
 vnoremap n l
-
-
-
 
 set guicursor=

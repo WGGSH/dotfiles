@@ -134,3 +134,11 @@ vnoremap t k
 vnoremap n l
 
 set guicursor=
+
+
+" oni用の設定
+if exists("g:gui_oni")
+  " 動かないので一旦無効
+  " source './oni/config.vim'
+  let g:airline_theme = 'behelit'
+endif

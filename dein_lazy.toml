@@ -18,3 +18,11 @@
 # [[plugins]]
 # repo = 'Robzz/deoplete-omnisharp'
 # on_source = ['deoplete.nvim']
+
+
+# [[plugins]]
+# repo = 'OmniSharp/omnisharp-vim'
+# on_ft = ['cs']
+# hook_add = '''
+# let g:OmniSharp_translate_cygwin_wsl = 1
+# '''

@@ -19,14 +19,20 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'behelit'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+if has ('win32')
+  let g:airline_theme = 'zenburn'
+else
+  let g:airline_theme = 'behelit'
+endif
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'b' ,'x' ],
+  \ [ 'warning', 'error', 'y', 'z', 'c']
+  \ ]
 '''
 
 ## テーマ
@@ -147,22 +153,22 @@ repo = 'kristijanhusak/defx-icons'
 
 # fzf (今はWinでは動かさない)
 ## fzf.vim : ファイルのインクリメンタルサーチ
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-if = '''!has('win32')'''
-depends = ['fzf']
-hook_add='''
-nnoremap <C-o> :FZFFileList<CR>
-command! FZFFileList call fzf#run(fzf#wrap({
-      \ 'source': 'find . -type d -name .git -prune -o -type f',
-      \ 'down': '40%'}))
-'''
-
-## fzfのバイナリ
-[[plugins]]
-repo = 'junegunn/fzf'
-if = '''!has('win32')'''
-build = './install --all'
+# [[plugins]]
+# repo = 'junegunn/fzf.vim'
+# if = '''!has('win32')'''
+# depends = ['fzf']
+# hook_add='''
+# nnoremap <C-o> :FZFFileList<CR>
+# command! FZFFileList call fzf#run(fzf#wrap({
+#       \ 'source': 'find . -type d -name .git -prune -o -type f',
+#       \ 'down': '40%'}))
+# '''
+#
+# ## fzfのバイナリ
+# [[plugins]]
+# repo = 'junegunn/fzf'
+# if = '''!has('win32')'''
+# build = './install --all'
 
 # gitの差分表示
 [[plugins]]
@@ -181,4 +187,17 @@ let g:deoplete#enable_ignore_case = 0
 let g:deoplete#enable_refresh_always = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#max_list = 10000
+'''
+
+# [[plugins]]
+# repo = 'lambdalisue/gina.vim'
+# hook_add = '''
+# '''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+hook_source = '''
+let g:coc_global_extensions=[ 'coc-omnisharp' ]
 '''

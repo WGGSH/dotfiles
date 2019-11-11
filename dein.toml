@@ -152,23 +152,23 @@ endfunction
 repo = 'kristijanhusak/defx-icons'
 
 # fzf (今はWinでは動かさない)
-## fzf.vim : ファイルのインクリメンタルサーチ
-# [[plugins]]
-# repo = 'junegunn/fzf.vim'
-# if = '''!has('win32')'''
-# depends = ['fzf']
-# hook_add='''
-# nnoremap <C-o> :FZFFileList<CR>
-# command! FZFFileList call fzf#run(fzf#wrap({
-#       \ 'source': 'find . -type d -name .git -prune -o -type f',
-#       \ 'down': '40%'}))
-# '''
-#
-# ## fzfのバイナリ
-# [[plugins]]
-# repo = 'junegunn/fzf'
-# if = '''!has('win32')'''
-# build = './install --all'
+# fzf.vim : ファイルのインクリメンタルサーチ
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+if = '''!has('win32')'''
+depends = ['fzf']
+hook_add='''
+nnoremap <C-o> :FZFFileList<CR>
+command! FZFFileList call fzf#run(fzf#wrap({
+      \ 'source': 'find . -type d -name .git -prune -o -type f',
+      \ 'down': '40%'}))
+'''
+
+## fzfのバイナリ
+[[plugins]]
+repo = 'junegunn/fzf'
+if = '''!has('win32')'''
+build = './install --all'
 
 # gitの差分表示
 [[plugins]]

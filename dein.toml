@@ -1,123 +1,203 @@
-# NERDTree: ファイラー， Defxを使うようになったので停止
-# [[plugins]]
-# repo = 'scrooloose/nerdtree'
-
-# Molokai: カラースキーム
-[[plugins]]
-repo = 'tomasr/molokai'
-
 # カラースキーム集
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
 
-# Lightline: PowerLine風のステータスバー
-# [[plugins]]
-# repo = 'itchyny/lightline.vim'
+# 今使ってるカラースキーム
+[[plugins]]
+repo = 'tomasiser/vim-code-dark'
+hook_add = '''
+colorscheme codedark
+'''
 
-# Airline:
+# Airline
+## 本体
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+depends = ['/vim-airline-themes']
 hook_add = '''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'badwolf'
+if has ('win32')
+  let g:airline_theme = 'zenburn'
+else
+  let g:airline_theme = 'behelit'
+endif
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'b' ,'x' ],
+  \ [ 'warning', 'error', 'y', 'z', 'c']
+  \ ]
 '''
 
+## テーマ
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-
-# Powerline: 上手く動かなかった
-# [[plugins]]
-# repo = 'powerline/powerline'
 
 # Processing用プラグイン
 [[plugins]]
 repo = 'sophacles/vim-processing'
 on_ft = ["pde"]
 
-# スニペット集?
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-# Markdown
-[[plugins]]
-repo = 'tpope/vim-markdown'
-on_ft = ["md"]
-
-# 主にMarkdonwのリアルタイム表示用
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ["md"]
-
-# URLを開く, 主にMarkdown用
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-
-# typescript用: 上手く動かなかった?
-# [[plugins]]
-# repo = 'mhartington/nvim-typescript'
-
-# 複数の言語を同一ファイルで扱うプラグイン? 未使用
-# [[plugins]]
-# repo = 'Shougo/context_filetype.vim'
-
-# 自動で閉じ括弧をつけてくれる
+# 自動で閉じ括弧をつける
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_i = 1
+on_event = 'InsertEnter'
 
-# 不要な空白を強調表示する
+# 不要な空白の強調表示
 [[plugins]]
-repo ='bronson/vim-trailing-whitespace'
+repo = 'ntpeters/vim-better-whitespace'
 
 # インデントを見やすくする
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
+# コメントの簡易挿入
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
+hook_add = '''
+let g:tcomment_mapleader1 = '<C-\>'
+'''
 
-# ファイラー: 設定が複雑
+# Defx: ファイラー
+## 本体
 [[plugins]]
 repo ='Shougo/defx.nvim'
+depends = ['defx-icons']
+on_cmd='Defx'
+hook_add='''
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+nnoremap <silent><C-e> :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
+call defx#custom#option('_', {
+      \ 'columns': 'indent:git:icons:filename',
+      \ 'show_ignored_files': 1,
+      \ })
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  " Define mappings
+  " nnoremap <silent><buffer><expr> <CR>
+  " \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('drop')
+  " nnoremap <silent><buffer><expr> c
+  " \ defx#do_action('copy')
+  " nnoremap <silent><buffer><expr> m
+  " \ defx#do_action('move')
+  " nnoremap <silent><buffer><expr> p
+  " \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+        \ defx#do_action('toggle_columns',
+        \                'mark:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+        \ defx#do_action('toggle_sort', 'time')
+  " nnoremap <silent><buffer><expr> D
+  " \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+        \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr>
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+        \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'h'
+  nnoremap <silent><buffer><expr> t
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+        \ defx#do_action('change_vim_cwd')
+  nnoremap <silent><buffer><expr> s
+        \ defx#do_action('open', 'vsplit')
+endfunction
+'''
 
+## アイコン
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+# fzf (今はWinでは動かさない)
+# fzf.vim : ファイルのインクリメンタルサーチ
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+if = '''!has('win32')'''
+depends = ['fzf']
+hook_add='''
+nnoremap <C-o> :FZFFileList<CR>
+command! FZFFileList call fzf#run(fzf#wrap({
+      \ 'source': 'find . -type d -name .git -prune -o -type f',
+      \ 'down': '40%'}))
+'''
+
+## fzfのバイナリ
+[[plugins]]
+repo = 'junegunn/fzf'
+if = '''!has('win32')'''
+build = './install --all'
+
+# gitの差分表示
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+
+# deoplete: 補完してくれる君
+[[plugins]]
+repo = "Shougo/deoplete.nvim"
+on_event = 'InsertCharPre'
+hook_source = '''
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#max_list = 10000
+'''
 
 # [[plugins]]
-# repo = 'Shougo/denite.nvim'
+# repo = 'lambdalisue/gina.vim'
+# hook_add = '''
+# '''
 
-# フォントサイズの変更
 [[plugins]]
-repo = 'vim-scripts/fontzoom.vim'
-# on_cmd = ['Fontzoom']
-# on_map = ['<Plug>(fontzoom-']
-# gui    = 1
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = '0'
+hook_source = '''
+let g:coc_global_extensions=[ 'coc-omnisharp' ]
+'''

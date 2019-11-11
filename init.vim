@@ -142,4 +142,5 @@ if exists("g:gui_oni")
   " 動かないので一旦無効
   " source './oni/config.vim'
   let g:airline_theme = 'behelit'
+  let g:airline#extensions#tabline#enabled = 1
 endif

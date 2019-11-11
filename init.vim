@@ -111,7 +111,8 @@ set clipboard+=unnamedplus
 if has('win32') || has('win64')
   let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
-else
+elseif has('mac')
+elseif has('unix')
   let g:python3_host_prog = '/usr/bin/python3.6'
 endif
 

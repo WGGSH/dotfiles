@@ -211,3 +211,10 @@ merged = '0'
 hook_source = '''
 let g:coc_global_extensions=[ 'coc-omnisharp' ]
 '''
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
+hook_source = '''
+autocmd FileType vue syntax sync fromstart
+'''

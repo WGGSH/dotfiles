@@ -203,6 +203,7 @@ let g:deoplete#max_list = 10000
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
+on_ft = ['cs']
 rev = 'release'
 merged = '0'
 hook_source = '''

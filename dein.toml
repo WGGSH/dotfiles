@@ -25,8 +25,10 @@ if has ('win32')
 else
   let g:airline_theme = 'behelit'
 endif
-nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
+nmap <C-j> <Plug>AirlineSelectPrevTab
+nmap <C-k> <Plug>AirlineSelectNextTab
+imap <C-j> <Esc><Plug>AirlineSelectPrevTab
+imap <C-k> <Esc><Plug>AirlineSelectNextTab
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -203,8 +205,16 @@ let g:deoplete#max_list = 10000
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
+on_ft = ['cs']
 rev = 'release'
 merged = '0'
 hook_source = '''
 let g:coc_global_extensions=[ 'coc-omnisharp' ]
+'''
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
+hook_source = '''
+autocmd FileType vue syntax sync fromstart
 '''

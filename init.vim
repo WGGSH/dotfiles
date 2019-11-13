@@ -143,4 +143,5 @@ if exists("g:gui_oni")
   " source './oni/config.vim'
   let g:airline_theme = 'nord'
   let g:airline#extensions#tabline#enabled = 1
+  nnoremap <C-f> :call OniCommand('workspace.openFolder')<CR>
 endif

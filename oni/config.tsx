@@ -23,54 +23,55 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 export const configuration = {
   //add custom config here, such as
 
-  "ui.colorscheme": "PerfectDark",
+  "ui.colorscheme": "nord",
 
+  // oni
+  "oni.hideMenu": true,
   "oni.useDefaultConfig": false,
   //'oni.bookmarks': ['~/Documents'],
   //'oni.loadInitVim': false,
-  "editor.fontSize": "18px",
-  "editor.fontFamily": "Roboto Mono for Powerline",
 
   // editor
+  "editor.fontSize": "20px",
+  "editor.fontFamily": "Cica",
   "editor.fontWeight": "normal",
-  "editor.fullScreenOnStart": false,
+  "editor.fullScreenOnStart": true,
   "editor.linePadding": -2,
   "editor.maximizeScreenOnStart": true,
   "editor.renderer": "WebGL",
-	"editor.scrollBar.visible": false,
-
-  // oni
-  //"oni.hideMenu": true,
+  "editor.scrollBar.visible": true,
+  "editor.quickInfo.enabled": true
+  "editor.completions.mode": "native",
 
   // UI customizations
   "ui.animations.enabled": true,
   "ui.fontSmoothing": "auto",
-  "ui.fontFamily": "Roboto Mono for Powerline",
+  "ui.fontFamily": "Cica",
 
   // statusbar
-  "statusbar.enabled": false,
+  "statusbar.enabled": true,
   "statusbar.fontSize": "1.0em",
 
   // tabs
-  "tabs.mode": "tabs",
+  "tabs.mode": "buffer",
   "tabs.height": "2.0em",
-	"tabs.highlight": true,
-
+  "tabs.highlight": true,
+  "tabs.showIndex": true,
 
   // sidebar
   "sidebar.enabled": false,
   "sidebar.width": "20em",
   "sidebar.default.open": false,
-	
-	// browser
-	"brwser.defaultUrl": "google.com",
 
-	// colors
-	"colors.tabs.background": "rgb(30,50,70)",
-	"colors.tabs.foreground": "white",
-	"colors.tabs.borderBottom": "rgb(34,34,34)",
-	"colors.menu.background": "rgb(30,50,70)",
+  // browser
+  "brwser.defaultUrl": "google.com",
 
-  "autoClosingPairs.enabled": false,
-  "commandline.mode": false,
+  // colors
+  "colors.tabs.background": "rgb(30,50,70)",
+  "colors.tabs.foreground": "white",
+  "colors.tabs.borderBottom": "rgb(34,34,34)",
+  "colors.menu.background": "rgb(30,50,70)",
+
+  "autoClosingPairs.enabled": false, // Vimの拡張と干渉すろので無効
+  "commandline.mode": true,
 };

@@ -1,6 +1,6 @@
 # カラースキーム集
-[[plugins]]
-repo = 'flazz/vim-colorschemes'
+# [[plugins]]
+# repo = 'flazz/vim-colorschemes'
 
 # 今使ってるカラースキーム
 [[plugins]]
@@ -13,7 +13,7 @@ colorscheme codedark
 ## 本体
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['/vim-airline-themes', 'tpope/vim-fugitive']
+depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive','arcticicestudio/nord-vim']
 hook_add = '''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -23,7 +23,7 @@ let g:airline#extensions#branch#enabled = 1
 if has ('win32')
   let g:airline_theme = 'zenburn'
 else
-  let g:airline_theme = 'behelit'
+  let g:airline_theme = 'codedark'
 endif
 nmap <C-j> <Plug>AirlineSelectPrevTab
 nmap <C-k> <Plug>AirlineSelectNextTab
@@ -47,6 +47,9 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 ## テーマ
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+
+## nord テーマ
+repo = 'arcticicestudio/nord-vim'
 
 ## git ブランチ
 [[plugins]]

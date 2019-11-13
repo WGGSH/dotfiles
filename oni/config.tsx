@@ -23,7 +23,7 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 export const configuration = {
   //add custom config here, such as
 
-  "ui.colorscheme": "codedark",
+  "ui.colorscheme": "nord",
 
   // oni
   "oni.hideMenu": true,

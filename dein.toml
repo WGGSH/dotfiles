@@ -34,10 +34,14 @@ if !exists('g:airline_symbols')
 endif
 let g:airline#extensions#default#layout = [
   \ [ 'a', 'b' ,'x' ],
-  \ [ 'y', 'z', 'c']
+  \ [ 'c', 'y', 'z']
   \ ]
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 '''
 
 ## テーマ

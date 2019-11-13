@@ -136,6 +136,12 @@ vnoremap n l
 
 set guicursor=
 
+" 言語別のインデント設定
+augroup MyFileTypeEvent
+  autocmd!
+  autocmd FileType pm setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType pl setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
 " oni用の設定
 if exists("g:gui_oni")

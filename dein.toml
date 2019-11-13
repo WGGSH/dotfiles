@@ -3,17 +3,14 @@
 # repo = 'flazz/vim-colorschemes'
 
 # 今使ってるカラースキーム
-[[plugins]]
-repo = 'tomasiser/vim-code-dark'
-hook_add = '''
-colorscheme codedark
-'''
+# [[plugins]]
+# repo = 'tomasiser/vim-code-dark'
 
 # Airline
 ## 本体
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive','arcticicestudio/nord-vim']
+depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive','xero/nord-vim-mod']
 hook_add = '''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -53,7 +50,9 @@ let g:airline_symbols.maxlinenr = ''
 repo = 'vim-airline/vim-airline-themes'
 
 ## nord テーマ
-repo = 'arcticicestudio/nord-vim'
+[[plugins]]
+# repo = 'arcticicestudio/nord-vim'
+repo = 'xero/nord-vim-mod'
 
 ## git ブランチ
 [[plugins]]

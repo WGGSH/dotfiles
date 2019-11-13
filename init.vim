@@ -1,3 +1,8 @@
+
+" コンフィグディレクトリ
+let g:win_config_dir    = expand("~\\AppData\\Local\\nvim")
+let g:unix_config_dir   = expand("~/.config/nvim")
+
 " dein script
 if &compatible
   set nocompatible
@@ -10,13 +15,11 @@ if dein#load_state('~/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   if has('win32') || has('win64')
-    let g:rc_dir    = expand("~\\AppData\\Local\\nvim")
-    let s:toml      = g:rc_dir . '\\dein.toml'
-    let s:lazy_toml = g:rc_dir . '\\dein_lazy.toml'
+    let s:toml      = g:win_config_dir. '\\dein.toml'
+    let s:lazy_toml = g:win_config_dir . '\\dein_lazy.toml'
   else
-    let g:rc_dir = expand("~/.config/nvim")
-    let s:toml      = g:rc_dir . '/dein.toml'
-    let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+    let s:toml      = g:unix_config_dir. '/dein.toml'
+    let s:lazy_toml = g:unix_config_dir . '/dein_lazy.toml'
   endif
 
   call dein#load_toml(s:toml,      {'lazy': 0})
@@ -139,15 +142,19 @@ set guicursor=
 " 言語別のインデント設定
 augroup MyFileTypeEvent
   autocmd!
-  autocmd FileType pm setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType pl setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
-" oni用の設定
+" OniVim用の設定
 if exists("g:gui_oni")
-  " 動かないので一旦無効
-  " source './oni/config.vim'
-  let g:airline_theme = 'nord'
-  let g:airline#extensions#tabline#enabled = 1
-  nnoremap <C-f> :call OniCommand('workspace.openFolder')<CR>
+  if has('win32')
+    if filereadable(expand(g:win_config_dir .'\\oni\\config.vim'))
+      source ~/AppData/Local/nvim/oni/config.vim
+    endif
+  endif
+  if has('mac')
+    if filereadable(expand(g:unix_config_dir . '/oni/config.vim'))
+      source ~/.config/nvim/oni/config.vim
+    endif
+  endif
 endif

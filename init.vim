@@ -139,6 +139,9 @@ vnoremap n l
 
 set guicursor=
 
+" カラーテーマ
+colorscheme codedark
+
 " 言語別のインデント設定
 augroup MyFileTypeEvent
   autocmd!

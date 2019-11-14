@@ -3,8 +3,8 @@
 # repo = 'flazz/vim-colorschemes'
 
 # 今使ってるカラースキーム
-# [[plugins]]
-# repo = 'tomasiser/vim-code-dark'
+[[plugins]]
+repo = 'tomasiser/vim-code-dark'
 
 # Airline
 ## 本体

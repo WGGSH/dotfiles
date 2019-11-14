@@ -35,7 +35,7 @@ export const configuration = {
   "editor.fontSize": "20px",
   "editor.fontFamily": "Cica",
   "editor.fontWeight": "normal",
-  "editor.fullScreenOnStart": true,
+  "editor.fullScreenOnStart": false,
   "editor.linePadding": -2,
   "editor.maximizeScreenOnStart": true,
   "editor.renderer": "WebGL",
@@ -53,7 +53,7 @@ export const configuration = {
   "statusbar.fontSize": "1.0em",
 
   // tabs
-  "tabs.mode": "buffer",
+  "tabs.mode": "buffers",
   "tabs.height": "1.4em",
   "tabs.highlight": true,
   "tabs.showIndex": false,

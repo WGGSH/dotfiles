@@ -22,10 +22,10 @@ if has ('win32')
 else
   let g:airline_theme = 'codedark'
 endif
-nmap <C-j> <Plug>AirlineSelectPrevTab
-nmap <C-k> <Plug>AirlineSelectNextTab
-imap <C-j> <Esc><Plug>AirlineSelectPrevTab
-imap <C-k> <Esc><Plug>AirlineSelectNextTab
+nmap <C-h> <Plug>AirlineSelectPrevTab
+nmap <C-l> <Plug>AirlineSelectNextTab
+imap <C-h> <Esc><Plug>AirlineSelectPrevTab
+imap <C-l> <Esc><Plug>AirlineSelectNextTab
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif

@@ -126,6 +126,8 @@ nnoremap t gk
 nnoremap n l
 nnoremap e d
 nnoremap ee dd
+nnoremap r n
+nnoremap R N
 
 nnoremap <C-w>d <C-w>h
 nnoremap <C-w>h <C-w>j

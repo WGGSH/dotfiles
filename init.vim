@@ -1,9 +1,18 @@
+" init.vim
+
+set encoding=utf-8
+scriptencoding utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+set ambiwidth=double
+
 
 " コンフィグディレクトリ
 let g:win_config_dir    = expand("~\\AppData\\Local\\nvim")
 let g:unix_config_dir   = expand("~/.config/nvim")
 
-" dein script
+" -------- dein script --------
 if &compatible
   set nocompatible
 endif
@@ -41,17 +50,11 @@ endif
 filetype plugin indent on
 syntax enable
 
-" end dein script
-
-set encoding=utf-8
-scriptencoding utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932
-set fileformats=unix,dos,mac
-set ambiwidth=double
+" -------- end dein script --------
 
 if has('win32')
   set sh=powershell
+  set termguicolors
 else
 endif
 
@@ -129,10 +132,15 @@ nnoremap ee dd
 nnoremap r n
 nnoremap R N
 
-nnoremap <C-w>d <C-w>h
-nnoremap <C-w>h <C-w>j
-nnoremap <C-w>t <C-w>k
-nnoremap <C-w>n <C-w>l
+" nnoremap <C-w>d <C-w>h
+" nnoremap <C-w>h <C-w>j
+" nnoremap <C-w>t <C-w>k
+" nnoremap <C-w>n <C-w>l
+
+nnoremap <Space>d <C-w>h
+nnoremap <Space>h <C-w>j
+nnoremap <Space>t <C-w>k
+nnoremap <Space>n <C-w>l
 
 vnoremap d h
 vnoremap h j
@@ -142,7 +150,11 @@ vnoremap n l
 set guicursor=
 
 " カラーテーマ
-colorscheme codedark
+colorscheme nord
+
+" 透過設定
+" set pumblend=10
+" set winblend=10
 
 " 言語別のインデント設定
 augroup MyFileTypeEvent

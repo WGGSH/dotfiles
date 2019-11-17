@@ -18,7 +18,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 if has ('win32')
-  let g:airline_theme = 'zenburn'
+  let g:airline_theme = 'nord'
 else
   let g:airline_theme = 'codedark'
 endif
@@ -227,4 +227,12 @@ repo = 'posva/vim-vue'
 on_ft = ['vue']
 hook_source = '''
 autocmd FileType vue syntax sync fromstart
+'''
+
+# ターミナル拡張
+[[plugins]]
+repo = 'vimlab/split-term.vim'
+hook_add = '''
+set splitbelow
+nnoremap <Space>k :20Term<CR>
 '''

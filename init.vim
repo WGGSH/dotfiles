@@ -54,8 +54,8 @@ syntax enable
 
 if has('win32')
   set sh=powershell
-  set termguicolors
-else
+elseif has('mac')
+elseif has('unix')
 endif
 
 set number
@@ -151,6 +151,7 @@ set guicursor=
 
 " カラーテーマ
 colorscheme nord
+set termguicolors
 
 " 透過設定
 " set pumblend=10

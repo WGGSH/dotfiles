@@ -61,7 +61,6 @@ endif
 set number
 set relativenumber
 set cursorline
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 set showmatch
 set fenc=utf-8
 set nobackup
@@ -153,6 +152,9 @@ set guicursor=
 colorscheme nord
 set termguicolors
 
+" 下線表示: カラーテーマよりも後に呼ぶ
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+
 " 透過設定
 " set pumblend=10
 " set winblend=10
@@ -176,3 +178,4 @@ if exists("g:gui_oni")
     endif
   endif
 endif
+

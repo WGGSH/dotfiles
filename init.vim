@@ -80,6 +80,8 @@ set smartindent " 改行時に前の行の構文をチェックし次の行の�
 set ignorecase
 set smartcase
 set incsearch
+set wildignorecase
+set wildmode=full
 
 set mouse=a
 
@@ -153,7 +155,7 @@ colorscheme nord
 set termguicolors
 
 " 下線表示: カラーテーマよりも後に呼ぶ
-highlight CursorLine gui=underline guifg=NONE guibg=NONE
+highlight CursorLine gui=underline guifg=NONE guibg=black
 
 " 透過設定
 " set pumblend=10

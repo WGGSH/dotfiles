@@ -167,6 +167,12 @@ augroup MyFileTypeEvent
   autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
+" 最後に編集した箇所から開くようにする
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+
 " OniVim用の設定
 if exists("g:gui_oni")
   if has('win32')

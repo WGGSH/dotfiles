@@ -155,11 +155,11 @@ colorscheme nord
 set termguicolors
 
 " 下線表示: カラーテーマよりも後に呼ぶ
-highlight CursorLine gui=underline guifg=NONE guibg=black
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 " 透過設定
-" set pumblend=10
-" set winblend=10
+set pumblend=20
+set winblend=20
 
 " 言語別のインデント設定
 augroup MyFileTypeEvent

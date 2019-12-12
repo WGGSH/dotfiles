@@ -236,3 +236,14 @@ hook_add = '''
 set splitbelow
 nnoremap <Space>k :20Term<CR>
 '''
+
+# 検索の拡張
+[[plugins]]
+repo = 'haya14busa/incsearch-fuzzy.vim'
+depends = ['haya14busa/incsearch.vim']
+hook_add = '''
+nmap / <Plug>(incsearch-fuzzy-/)
+'''
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'

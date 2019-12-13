@@ -242,7 +242,7 @@ nnoremap <Space>k :20Term<CR>
 repo = 'haya14busa/incsearch-fuzzy.vim'
 depends = ['haya14busa/incsearch.vim']
 hook_add = '''
-nmap / <Plug>(incsearch-fuzzy-/)
+nmap f <Plug>(incsearch-fuzzy-/)
 '''
 
 [[plugins]]

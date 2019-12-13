@@ -147,6 +147,10 @@ vnoremap d h
 vnoremap h j
 vnoremap t k
 vnoremap n l
+vnoremap e d
+vnoremap ee dd
+vnoremap r n
+vnoremap R N
 
 set guicursor=
 

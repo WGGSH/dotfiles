@@ -152,6 +152,10 @@ vnoremap ee dd
 vnoremap r n
 vnoremap R N
 
+nnoremap <Space>s :w<CR>
+nnoremap <Space>w :bw<CR>
+nnoremap <Space>q :q<CR>
+
 set guicursor=
 
 " カラーテーマ

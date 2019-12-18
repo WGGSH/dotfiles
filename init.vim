@@ -134,13 +134,13 @@ nnoremap r n
 nnoremap R N
 
 " nnoremap <C-w>d <C-w>h
-" nnoremap <C-w>h <C-w>j
-" nnoremap <C-w>t <C-w>k
+nnoremap <C-w>h <C-w>j
+nnoremap <C-w>t <C-w>k
 " nnoremap <C-w>n <C-w>l
 
 nnoremap <Space>d <C-w>h
-nnoremap <Space>h <C-w>j
-nnoremap <Space>t <C-w>k
+" nnoremap <Space>h <C-w>j
+" nnoremap <Space>t <C-w>k
 nnoremap <Space>n <C-w>l
 
 vnoremap d h
@@ -155,6 +155,8 @@ vnoremap R N
 nnoremap <Space>s :w<CR>
 nnoremap <Space>w :bw<CR>
 nnoremap <Space>q :q<CR>
+nnoremap <Space>- :sp<CR>
+nnoremap <Space>\ :vs<CR>
 
 set guicursor=
 

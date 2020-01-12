@@ -197,3 +197,11 @@ if exists("g:gui_oni")
   endif
 endif
 
+" 背景透過設定 (Winのみ)
+if has('win32') || has('win64')
+  highlight Normal ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=none
+  highlight LineNr ctermbg=none guibg=none
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=red guibg=none
+endif

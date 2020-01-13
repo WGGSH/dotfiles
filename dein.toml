@@ -247,3 +247,7 @@ nmap f <Plug>(incsearch-fuzzy-/)
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']

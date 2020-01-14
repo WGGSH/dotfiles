@@ -251,3 +251,38 @@ repo = 'haya14busa/incsearch.vim'
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
+
+[[plugins]]
+repo = 'dense-analysis/ale'
+on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
+depends = 'asyncomplete.vim'
+hook_add = '''
+let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
+let g:ale_linters = {
+  \   'typescript': ['tsserver']
+  \   }
+
+function! s:typescript() abort
+  ALEEnable
+  call asyncomplete#enable_for_buffer()
+  map <buffer> <C-]> <Plug>(ale_go_to_definition)
+  imap <buffer> <C-y> <Plug>(asyncomplete_force_refresh)
+endfunction
+
+augroup TypeScript
+  autocmd!
+  autocmd FileType typescript call s:typescript()
+augroup END
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+on_func = 'asyncomplete#enable_for_buffer'
+hook_add = '''
+let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
+set completeopt+=preview
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+\ 'priority': 10
+\ }))
+'''

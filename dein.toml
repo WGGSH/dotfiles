@@ -36,13 +36,25 @@ let g:airline#extensions#default#layout = [
   \ [ 'a', 'b' ,'x' ],
   \ [ 'c', 'y', 'z']
   \ ]
+let g:airline#extensions#tabline#buffer_idx_format = {
+	\ '0': '',
+	\ '1': '',
+	\ '2': '',
+	\ '3': '',
+	\ '4': '',
+	\ '5': '',
+	\ '6': '',
+	\ '7': '',
+	\ '8': '',
+	\ '9': ''
+	\}
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_left_sep= ''
 " let g:airline_left_sep= ''
 let g:airline_left_alt_sep= ''
-" let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+"let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''

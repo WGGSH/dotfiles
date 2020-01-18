@@ -161,7 +161,7 @@ nnoremap <Space>\ :vs<CR>
 set guicursor=
 
 " カラーテーマ
-colorscheme nord
+colorscheme darkspace
 set termguicolors
 
 " 下線表示: カラーテーマよりも後に呼ぶ
@@ -201,7 +201,11 @@ endif
 if has('win32') || has('win64')
   highlight Normal ctermbg=none guibg=none
   highlight NonText ctermbg=none guibg=none
-  highlight LineNr ctermbg=none guibg=none
   highlight Folded ctermbg=none guibg=none
   highlight EndOfBuffer ctermbg=red guibg=none
 endif
+
+" 行番号の色を変える
+highlight LineNr guibg = none
+highlight LineNr guifg = #428896
+

@@ -2,6 +2,9 @@
 # [[plugins]]
 # repo = 'flazz/vim-colorschemes'
 
+[[plugins]]
+repo = 'niklas-8/vim-darkspace'
+
 # 今使ってるカラースキーム
 [[plugins]]
 repo = 'tomasiser/vim-code-dark'
@@ -18,7 +21,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 if has ('win32')
-  let g:airline_theme = 'nord'
+  let g:airline_theme = 'wombat'
 else
   let g:airline_theme = 'codedark'
 endif
@@ -36,7 +39,9 @@ let g:airline#extensions#default#layout = [
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_left_sep= ''
+" let g:airline_left_sep= ''
 let g:airline_left_alt_sep= ''
+" let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''

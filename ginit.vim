@@ -2,12 +2,16 @@ if exists ('g:fvim_loaded')
   set guifont=Cica:h20
   FVimUIPopupMenu v:false
   FVimCustomTitleBar v:true
-  nnoremap <Space>z :FVimToggleFullScreen<CR>
   let g:airline#extensions#tabline#left_sep = ''
   FVimBackgroundComposition 'acrylic'
   FVimBackgroundOpacity 0.85
   FVimBackgroundAltOpacity 0.85
   highlight Comment guifg = #a0a0a0
+  FVimFontLineHeight '+0.0'
+  nnoremap <C-=> :set guifont=+<CR>
+  nnoremap <C--> :set guifont=-<CR>
+  nnoremap <A-CR> :FVimToggleFullScreen<CR>
+  set nocursorline
 
 else "nvim-qt
 

@@ -10,6 +10,7 @@ if exists ('g:fvim_loaded')
   FVimFontLineHeight '+0.0'
   nnoremap <C-=> :set guifont=+<CR>
   nnoremap <C--> :set guifont=-<CR>
+  nnoremap <C-0> :set guifont=Cica:h20<CR>
   nnoremap <A-CR> :FVimToggleFullScreen<CR>
   set nocursorline
 

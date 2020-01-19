@@ -9,6 +9,11 @@ repo = 'niklas-8/vim-darkspace'
 [[plugins]]
 repo = 'tomasiser/vim-code-dark'
 
+
+# Vim用のアイコン
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
 # Airline
 ## 本体
 [[plugins]]
@@ -37,24 +42,27 @@ let g:airline#extensions#default#layout = [
   \ [ 'c', 'y', 'z']
   \ ]
 let g:airline#extensions#tabline#buffer_idx_format = {
-	\ '0': '',
-	\ '1': '',
-	\ '2': '',
-	\ '3': '',
-	\ '4': '',
-	\ '5': '',
-	\ '6': '',
-	\ '7': '',
-	\ '8': '',
-	\ '9': ''
-	\}
+  \ '0': '',
+  \ '1': '',
+  \ '2': '',
+  \ '3': '',
+  \ '4': '',
+  \ '5': '',
+  \ '6': '',
+  \ '7': '',
+  \ '8': '',
+  \ '9': ''
+  \}
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_left_sep= ''
 " let g:airline_left_sep= ''
 let g:airline_left_alt_sep= ''
-let g:airline#extensions#tabline#left_sep = ''
-"let g:airline#extensions#tabline#left_sep = ''
+if exists('g: fvim_loaded')
+  let g:airline#extensions#tabline#left_sep = ''
+else
+  let g:airline#extensions#tabline#left_sep = ''
+endif
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''

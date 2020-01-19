@@ -158,8 +158,6 @@ nnoremap <Space>q :q<CR>
 nnoremap <Space>- :sp<CR>
 nnoremap <Space>\ :vs<CR>
 
-set guicursor=
-
 " カラーテーマ
 colorscheme darkspace
 set termguicolors
@@ -202,10 +200,9 @@ if has('win32') || has('win64')
   highlight Normal ctermbg=none guibg=none
   highlight NonText ctermbg=none guibg=none
   highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=red guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
 " 行番号の色を変える
 highlight LineNr guibg = none
 highlight LineNr guifg = #428896
-

@@ -28,7 +28,7 @@ let g:airline#extensions#branch#enabled = 1
 if has ('win32')
   let g:airline_theme = 'wombat'
 else
-  let g:airline_theme = 'codedark'
+  let g:airline_theme = 'wombat'
 endif
 nmap <Space>h <Plug>AirlineSelectPrevTab
 nmap <Space>t <Plug>AirlineSelectNextTab

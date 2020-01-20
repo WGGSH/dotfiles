@@ -1,7 +1,7 @@
 if exists ('g:fvim_loaded')
   set guifont=Cica:h20
   FVimUIPopupMenu v:false
-  FVimCustomTitleBar v:true
+  FVimCustomTitleBar v:false
   let g:airline#extensions#tabline#left_sep = ''
   FVimBackgroundComposition 'acrylic'
   FVimBackgroundOpacity 0.85

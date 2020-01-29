@@ -68,6 +68,7 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
+let g:airline#extensions#tabline#ignore_bufadd_pat = 'gundo|undotree|vimfiler|tagbar|nerd_tree|startify|!'
 '''
 
 ## テーマ
@@ -238,14 +239,14 @@ let g:deoplete#max_list = 10000
 # hook_add = '''
 # '''
 
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-on_ft = ['cs']
-rev = 'release'
-merged = '0'
-hook_source = '''
-let g:coc_global_extensions=[ 'coc-omnisharp' ]
-'''
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# on_ft = ['cs']
+# rev = 'release'
+# merged = '0'
+# hook_source = '''
+# let g:coc_global_extensions=[ 'coc-omnisharp' ]
+# '''
 
 [[plugins]]
 repo = 'posva/vim-vue'

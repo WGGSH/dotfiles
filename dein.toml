@@ -9,6 +9,9 @@ repo = 'niklas-8/vim-darkspace'
 [[plugins]]
 repo = 'tomasiser/vim-code-dark'
 
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
+
 
 # Vim用のアイコン
 [[plugins]]
@@ -26,7 +29,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 if has ('win32')
-  let g:airline_theme = 'wombat'
+  " let g:airline_theme = 'wombat'
+  let g:airline_theme = 'papercolor'
 else
   let g:airline_theme = 'wombat'
 endif
@@ -233,6 +237,33 @@ let g:deoplete#enable_refresh_always = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#max_list = 10000
 '''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 # [[plugins]]
 # repo = 'lambdalisue/gina.vim'

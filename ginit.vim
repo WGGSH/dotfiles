@@ -3,9 +3,9 @@ if exists ('g:fvim_loaded')
   FVimUIPopupMenu v:false
   FVimCustomTitleBar v:false
   let g:airline#extensions#tabline#left_sep = ''
-  FVimBackgroundComposition 'acrylic'
-  FVimBackgroundOpacity 0.85
-  FVimBackgroundAltOpacity 0.85
+  " FVimBackgroundComposition 'acrylic'
+  " FVimBackgroundOpacity 0.85
+  " FVimBackgroundAltOpacity 0.85
   highlight Comment guifg = #a0a0a0
   FVimFontLineHeight '+0.0'
   nnoremap <C-=> :set guifont=+<CR>

@@ -159,7 +159,7 @@ nnoremap <Space>- :sp<CR>
 nnoremap <Space>\ :vs<CR>
 
 " カラーテーマ
-colorscheme darkspace
+set background=light
 set termguicolors
 
 " 下線表示: カラーテーマよりも後に呼ぶ
@@ -197,12 +197,13 @@ endif
 
 " 背景透過設定 (Winのみ)
 if has('win32') || has('win64')
-  highlight Normal ctermbg=none guibg=none
-  highlight NonText ctermbg=none guibg=none
-  highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=white guibg=none
+  " highlight Normal ctermbg=none guibg=none
+  " highlight NonText ctermbg=none guibg=none
+  " highlight Folded ctermbg=none guibg=none
+  " highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
 " 行番号の色を変える
 highlight LineNr guibg = none
 highlight LineNr guifg = #428896
+colorscheme PaperColor

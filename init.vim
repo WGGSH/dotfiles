@@ -196,14 +196,14 @@ if exists("g:gui_oni")
 endif
 
 " 背景透過設定 (Winのみ)
+colorscheme darkspace
 if has('win32') || has('win64')
-  " highlight Normal ctermbg=none guibg=none
-  " highlight NonText ctermbg=none guibg=none
-  " highlight Folded ctermbg=none guibg=none
-  " highlight EndOfBuffer ctermbg=white guibg=none
+  highlight Normal ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=none
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
 " 行番号の色を変える
 highlight LineNr guibg = none
 highlight LineNr guifg = #428896
-colorscheme PaperColor

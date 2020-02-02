@@ -29,8 +29,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 if has ('win32')
-  " let g:airline_theme = 'wombat'
-  let g:airline_theme = 'papercolor'
+  let g:airline_theme = 'wombat'
+  " let g:airline_theme = 'papercolor'
 else
   let g:airline_theme = 'wombat'
 endif

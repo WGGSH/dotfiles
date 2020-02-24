@@ -12,6 +12,8 @@ repo = 'tomasiser/vim-code-dark'
 [[plugins]]
 repo = 'NLKNguyen/papercolor-theme'
 
+[[plugins]]
+repo = 'crusoexia/vim-monokai'
 
 # Vim用のアイコン
 [[plugins]]
@@ -29,10 +31,10 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 if has ('win32')
-  let g:airline_theme = 'wombat'
+  " let g:airline_theme = 'wombat'
   " let g:airline_theme = 'papercolor'
 else
-  let g:airline_theme = 'wombat'
+  " let g:airline_theme = 'wombat'
 endif
 nmap <Space>h <Plug>AirlineSelectPrevTab
 nmap <Space>t <Plug>AirlineSelectNextTab
@@ -376,3 +378,20 @@ repo = 'hrsh7th/vim-vsnip'
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
+
+[[plugins]]
+repo = 'tikhomirov/vim-glsl'
+on_ft = ['vs', 'fs']
+hook_add = '''
+autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
+'''
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['js']
+hook_source =
+'''
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+'''

@@ -43,9 +43,10 @@ nmap <Space>t <Plug>AirlineSelectNextTab
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b' ,'x' ],
-  \ [ 'c', 'y', 'z']
+  \ [ 'a', 'b' ,'z','c','x', 'y' ],
+  \ [  ],
   \ ]
 let g:airline#extensions#tabline#buffer_idx_format = {
   \ '0': '',

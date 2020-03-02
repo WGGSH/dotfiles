@@ -199,7 +199,8 @@ endif
 colorscheme darkspace
 if has('win32') || has('win64')
   " highlight Normal ctermbg=none guibg=#272822
-  " highlight NonText ctermbg=none guibg=none
+  highlight Normal ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=none
   " highlight Folded ctermbg=none guibg=none
   " highlight EndOfBuffer ctermbg=white guibg=none
   " highlight Normal ctermbg=none guibg=none

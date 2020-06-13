@@ -34,7 +34,7 @@ if has ('win32')
   " let g:airline_theme = 'wombat'
   " let g:airline_theme = 'papercolor'
 else
-  " let g:airline_theme = 'wombat'
+  let g:airline_theme = 'codedark'
 endif
 nmap <Space>h <Plug>AirlineSelectPrevTab
 nmap <Space>t <Plug>AirlineSelectNextTab
@@ -124,11 +124,18 @@ depends = ['defx-icons']
 on_cmd='Defx'
 hook_add='''
 let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-nnoremap <silent><Space>. :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
+let g:defx_icons_column_length = 1
+" nnoremap <silent><Space>. :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
+nnoremap <silent><Space>. :<C-u>Defx<CR>
 call defx#custom#option('_', {
+      \ 'winwidth': 25,
+      \ 'split': 'vertical',
+      \ 'direction': 'botright',
       \ 'columns': 'indent:git:icons:filename',
       \ 'show_ignored_files': 1,
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ 'buffer_name': 'explorer',
       \ })
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -136,7 +143,7 @@ function! s:defx_my_settings() abort
   " nnoremap <silent><buffer><expr> <CR>
   " \ defx#do_action('open')
   nnoremap <silent><buffer><expr> <CR>
-        \ defx#do_action('drop')
+       \ defx#do_action('open_or_close_tree')
   " nnoremap <silent><buffer><expr> c
   " \ defx#do_action('copy')
   " nnoremap <silent><buffer><expr> m
@@ -144,7 +151,7 @@ function! s:defx_my_settings() abort
   " nnoremap <silent><buffer><expr> p
   " \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> o
-        \ defx#do_action('open')
+        \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> E
         \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> P
@@ -176,6 +183,8 @@ function! s:defx_my_settings() abort
         \ defx#do_action('repeat')
   nnoremap <silent><buffer><expr> d
         \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> n
+        \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> ~
         \ defx#do_action('cd')
   nnoremap <silent><buffer><expr> q
@@ -202,6 +211,21 @@ endfunction
 ## アイコン
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
+
+## git の status 表示
+[[plugins]]
+repo ='kristijanhusak/defx-git'
+hook_add = '''
+let g:defx_git#indicators = {
+  \ 'Modified'  : 'ᴍ',
+  \ 'Staged'    : '+',
+  \ 'Untracked' : '-',
+  \ 'Renamed'   : 'ʀ',
+  \ 'Unmerged'  : '',
+  \ 'Deleted'   : 'ᴅ',
+  \ 'Unknown'   : '?'
+    \ }
+'''
 
 # fzf (今はWinでは動かさない)
 # fzf.vim : ファイルのインクリメンタルサーチ
@@ -232,13 +256,23 @@ repo = "Shougo/deoplete.nvim"
 on_event = 'InsertCharPre'
 hook_source = '''
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#max_list = 10000
+" let g:deoplete#auto_complete_delay = 0
+" let g:deoplete#auto_complete_start_length = 1
+" let g:deoplete#enable_camel_case = 0
+" let g:deoplete#enable_ignore_case = 0
+" let g:deoplete#enable_refresh_always = 0
+" let g:deoplete#enable_smart_case = 0
+" let g:deoplete#max_list = 10000
+call deoplete#custom#option({
+    " \ 'enable_at_startup': 1,
+    \ 'auto_complete_delay': 0,
+    \ 'auto_complete_start_length': 1,
+    \ 'enable_camel_case': 0,
+    \ 'enable_ignore_case': 0,
+    \ 'enable_smart_case': 0,
+    \ 'max_list': 10000,
+    \ 'smart_case': v:true,
+    \ })
 '''
 
 [[plugins]]

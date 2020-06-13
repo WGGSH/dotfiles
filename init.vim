@@ -160,7 +160,7 @@ nnoremap <Space>\ :vs<CR>
 
 " カラーテーマ
 set background=light
-set termguicolors
+" set termguirolors
 
 " 下線表示: カラーテーマよりも後に呼ぶ
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
@@ -196,7 +196,7 @@ if exists("g:gui_oni")
 endif
 
 " 背景透過設定 (Winのみ)
-colorscheme darkspace
+colorscheme monokai
 if has('win32') || has('win64')
   " highlight Normal ctermbg=none guibg=#272822
   highlight Normal ctermbg=none guibg=none

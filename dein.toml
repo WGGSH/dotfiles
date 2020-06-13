@@ -15,6 +15,12 @@ repo = 'NLKNguyen/papercolor-theme'
 [[plugins]]
 repo = 'crusoexia/vim-monokai'
 
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+colorscheme tender
+'''
+
 # Vim用のアイコン
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -34,7 +40,7 @@ if has ('win32')
   " let g:airline_theme = 'wombat'
   " let g:airline_theme = 'papercolor'
 else
-  let g:airline_theme = 'codedark'
+  let g:airline_theme = 'deus'
 endif
 nmap <Space>h <Plug>AirlineSelectPrevTab
 nmap <Space>t <Plug>AirlineSelectNextTab
@@ -68,7 +74,8 @@ let g:airline_left_alt_sep= ''
 if exists('g: fvim_loaded')
   let g:airline#extensions#tabline#left_sep = ''
 else
-  let g:airline#extensions#tabline#left_sep = ''
+  " let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_sep = ''
 endif
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -135,7 +142,7 @@ call defx#custom#option('_', {
       \ 'show_ignored_files': 1,
       \ 'toggle': 1,
       \ 'resume': 1,
-      \ 'buffer_name': 'explorer',
+      " \ 'buffer_name': 'explorer',
       \ })
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -263,17 +270,18 @@ let g:deoplete#enable_at_startup = 1
 " let g:deoplete#enable_refresh_always = 0
 " let g:deoplete#enable_smart_case = 0
 " let g:deoplete#max_list = 10000
-call deoplete#custom#option({
-    " \ 'enable_at_startup': 1,
-    \ 'auto_complete_delay': 0,
-    \ 'auto_complete_start_length': 1,
-    \ 'enable_camel_case': 0,
-    \ 'enable_ignore_case': 0,
-    \ 'enable_smart_case': 0,
-    \ 'max_list': 10000,
-    \ 'smart_case': v:true,
-    \ })
+" call deoplete#custom#option({
+"     " \ 'enable_at_startup': 1,
+"     \ 'auto_complete_delay': 0,
+"     \ 'auto_complete_start_length': 1,
+"     \ 'enable_camel_case': 0,
+"     \ 'enable_ignore_case': 0,
+"     \ 'enable_smart_case': 0,
+"     \ 'max_list': 10000,
+"     \ 'smart_case': v:true,
+"     \ })
 '''
+
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'

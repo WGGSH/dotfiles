@@ -160,6 +160,8 @@ nnoremap <Space>\ :vs<CR>
 
 " カラーテーマ
 set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
 
 " 下線表示: カラーテーマよりも後に呼ぶ
@@ -208,10 +210,12 @@ if has('win32') || has('win64')
   " highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
-colorscheme tender
+colorscheme monokai
 set background=dark
 
 " 行番号の色を変える
 highlight LineNr guibg = none
 highlight LineNr guifg = #428896
 highlight CursorLineNr guifg = #FF8700
+
+let g:deoplete#enable_at_startup = 1

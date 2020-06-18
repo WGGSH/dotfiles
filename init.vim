@@ -217,5 +217,6 @@ set background=dark
 highlight LineNr guibg = none
 highlight LineNr guifg = #428896
 highlight CursorLineNr guifg = #FF8700
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0

@@ -116,7 +116,8 @@ set clipboard+=unnamedplus
 " Pythonのパス指定
 " バージョン書きたくないと思いつつも，いいやり方が浮かばない
 if has('win32') || has('win64')
-  let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
+  " let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
+  let g:python3_host_prog = 'C:\Users\naoki\AppData\Local\Programs\Python\Python37\python.exe'
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 elseif has('mac')
 elseif has('unix')

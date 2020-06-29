@@ -201,8 +201,9 @@ endif
 " 背景透過設定 (Winのみ)
 if has('win32') || has('win64')
   " highlight Normal ctermbg=none guibg=#272822
+  highlight Normal ctermbg=none guibg=black
   highlight Normal ctermbg=none guibg=none
-  highlight NonText ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=black
   " highlight Folded ctermbg=none guibg=none
   " highlight EndOfBuffer ctermbg=white guibg=none
   " highlight Normal ctermbg=none guibg=none
@@ -215,9 +216,13 @@ colorscheme monokai
 set background=dark
 
 " 行番号の色を変える
-highlight LineNr guibg = none
+" highlight LineNr guibg = none
+highlight LineNr guibg = black
 highlight LineNr guifg = #428896
-highlight CursorLineNr guifg = #FF8700
-highlight CursorLine gui=underline guifg=NONE guibg=NONE
+" highlight CursorLineNr guifg = #FF8700
+highlight CursorLineNr guifg = #FF8700 guibg=black
+highlight Normal ctermbg=none guibg=black
+highlight SignColumn ctermbg=none guibg=black
+" highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1

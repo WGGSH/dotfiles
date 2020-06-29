@@ -39,6 +39,7 @@ let g:airline#extensions#branch#enabled = 1
 if has ('win32')
   " let g:airline_theme = 'wombat'
   " let g:airline_theme = 'papercolor'
+  let g:airline_theme = 'deus'
 else
   let g:airline_theme = 'deus'
 endif
@@ -51,21 +52,21 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_section_z = '%{strftime("%m/%d %H:%M")}'
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'b' ,'z','c','x', 'y' ],
-  \ [  ],
-  \ ]
-let g:airline#extensions#tabline#buffer_idx_format = {
-  \ '0': '',
-  \ '1': '',
-  \ '2': '',
-  \ '3': '',
-  \ '4': '',
-  \ '5': '',
-  \ '6': '',
-  \ '7': '',
-  \ '8': '',
-  \ '9': ''
-  \}
+ \ [ 'a', 'b' ,'z','c','x', 'y' ],
+ \ [  ],
+ \ ]
+""let g:airline#extensions#tabline#buffer_idx_format = {
+""  \ '0': '0',
+""  \ '1': '1',
+""  \ '2': '2',
+""  \ '3': '3',
+""  \ '4': '4',
+""  \ '5': '5',
+""  \ '6': '6',
+""  \ '7': '7',
+""  \ '8': '8',
+""  \ '9': '9'
+""  \}
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_left_sep= ''
@@ -362,40 +363,51 @@ repo = 'haya14busa/incsearch.vim'
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
 
-# [[plugins]]
-# repo = 'dense-analysis/ale'
-# on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
-# depends = 'asyncomplete.vim'
-# hook_add = '''
-# let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
-# let g:ale_linters = {
-#   \   'typescript': ['tsserver']
-#   \   }
-#
-# function! s:typescript() abort
-#   ALEEnable
-#   call asyncomplete#enable_for_buffer()
-#   map <buffer> <C-]> <Plug>(ale_go_to_definition)
-#   imap <buffer> <C-y> <Plug>(asyncomplete_force_refresh)
-# endfunction
-#
-# augroup TypeScript
-#   autocmd!
-#   autocmd FileType typescript call s:typescript()
-# augroup END
-# '''
-#
-# [[plugins]]
-# repo = 'prabirshrestha/asyncomplete.vim'
-# on_func = 'asyncomplete#enable_for_buffer'
-# hook_add = '''
-# let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
-# set completeopt+=preview
-#
-# autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-# \ 'priority': 10
-# \ }))
-# '''
+[[plugins]]
+repo = 'dense-analysis/ale'
+on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
+depends = 'asyncomplete.vim'
+hook_add = '''
+let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
+let g:ale_linters = {
+  \   'typescript': ['eslint']
+  \   }
+let g:ale_fixers = {
+  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \  'javascript': ['eslint', 'prettier'],
+  \   }
+let g:ale_fix_on_save = 1
+
+let g:ale_sign_error =''
+let g:ale_sign_warning = ''
+
+function! s:typescript() abort
+  ALEEnable
+  call asyncomplete#enable_for_buffer()
+  map <buffer> <C-]> <Plug>(ale_go_to_definition)
+  imap <buffer> <C-y> <Plug>(asyncomplete_force_refresh)
+endfunction
+
+augroup TypeScript
+  autocmd!
+  autocmd FileType typescript call s:typescript()
+augroup END
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+on_func = 'asyncomplete#enable_for_buffer'
+hook_add = '''
+let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
+set completeopt+=preview
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+\ 'priority': 10
+\ }))
+'''
+
+# [[Plugins]]
+# repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'

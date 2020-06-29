@@ -52,11 +52,11 @@ syntax enable
 
 " -------- end dein script --------
 
-if has('win32')
-  set sh=powershell
-elseif has('mac')
-elseif has('unix')
-endif
+" if has('win32')
+"   set sh=powershell
+" elseif has('mac')
+" elseif has('unix')
+" endif
 
 set number
 set relativenumber

@@ -33,14 +33,20 @@ repo = 'voldikss/vim-floaterm'
 hook_source = '''
 tnoremap <silent><Space>k <C-\><C-n>:FloatermToggle<CR>
 nnoremap <silent><Space>k :FloatermToggle<CR>
+nnoremap <silent><Space>r :FloatermNew --height=0.6 --width=0.8 --position=top fzf<CR>
 
+let g:floaterm_shell = 'powershell'
+let g:floaterm_wintype = 'floating'
+let g:floaterm_wintitle = ''
 let g:floaterm_winblend = 1
 let g:floaterm_position = 'bottom'
 let g:floaterm_width = 0.6
 let g:floaterm_height = 0.3
+let g:floaterm_open_command = 'drop'
+let g:floaterm_autoclose = 2
 " let g:floaterm_borderchars = ['-', '|', '-', '|', '-', '-', '|', '|']
 let g:floaterm_borderchars = ['', '', '', '', '', '', '', '']
 highlight FloatermBorder guibg=gray guifg=white
-set windblend=20
+set winblend=20
 '''
 on_event = 'VimEnter'

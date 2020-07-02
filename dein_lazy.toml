@@ -47,7 +47,7 @@ let g:floaterm_autoclose = 2
 let g:floaterm_borderchars = ['', '', '', '', '', '', '', '']
 let g:floaterm_keymap_toggle = '<Space>k'
 
-highlight FloatermBorder guibg=#005F87 guifg=white
+" highlight FloatermBorder guibg=#005F87 guifg=white
 set winblend=20
 '''
 on_event = 'VimEnter'

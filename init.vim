@@ -166,7 +166,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
 
 " 下線表示: カラーテーマよりも後に呼ぶ
-highlight CursorLine gui=underline guifg=NONE guibg=NONE
+" highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 " 透過設定
 set pumblend=20
@@ -212,17 +212,13 @@ if has('win32') || has('win64')
   " highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
-colorscheme monokai
+colorscheme OceanicNext
 set background=dark
 
 " 行番号の色を変える
-" highlight LineNr guibg = none
-highlight LineNr guibg = black
-highlight LineNr guifg = #428896
-" highlight CursorLineNr guifg = #FF8700
-highlight CursorLineNr guifg = #FF8700 guibg=black
-highlight Normal ctermbg=none guibg=black
-highlight SignColumn ctermbg=none guibg=black
-" highlight CursorLine gui=underline guifg=NONE guibg=NONE
+highlight LineNr guibg = none guifg = $428896
+highlight CursorLineNr guifg = #FF8700 guibg = none
+" highlight Normal ctermbg=none guibg=#202020
+" highlight SignColumn ctermbg=none guibg = none
 
 let g:deoplete#enable_at_startup = 1

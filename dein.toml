@@ -18,8 +18,10 @@ repo = 'crusoexia/vim-monokai'
 [[plugins]]
 repo = 'jacoborus/tender.vim'
 hook_add = '''
-colorscheme tender
 '''
+
+[[plugins]]
+repo = 'mhartington/oceanic-next'
 
 # Vim用のアイコン
 [[plugins]]
@@ -39,7 +41,7 @@ let g:airline#extensions#branch#enabled = 1
 if has ('win32')
   " let g:airline_theme = 'wombat'
   " let g:airline_theme = 'papercolor'
-  let g:airline_theme = 'deus'
+  let g:airline_theme = 'oceanicnext'
 else
   let g:airline_theme = 'deus'
 endif
@@ -382,8 +384,7 @@ let g:ale_linters = {
   \   'typescript': ['eslint']
   \   }
 let g:ale_fixers = {
-  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \  'javascript': ['eslint', 'prettier'],
+  \  'javascript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
   \   }
 let g:ale_fix_on_save = 1
 

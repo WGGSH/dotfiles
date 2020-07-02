@@ -51,3 +51,21 @@ highlight FloatermBorder guibg=#005F87 guifg=white
 set winblend=20
 '''
 on_event = 'VimEnter'
+
+# conflict-marker
+# git のコンフリクト箇所をハイライトする
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+hook_source = '''
+let g:conflict_marker_highlight_group = ''
+
+let g:conflict_marker_begin = '^<<<<<<< .*$'
+let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+highlight ConflictMarkerBegin     guibg = #4a8277
+highlight ConflictMarkerOurs      guibg = #4a8277
+highlight ConflictMarkerTheirs    guibg = #4085c2
+highlight ConflictMarkerEnd       guibg = #4085c2
+highlight ConflictMarkerSeparator guibg = none
+'''
+on_event = 'VimEnter'

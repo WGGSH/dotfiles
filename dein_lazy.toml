@@ -34,20 +34,23 @@ hook_source = '''
 nnoremap <silent><Space>r :FloatermNew --height=0.4 --width=0.7 --position=top fzf<CR>
 
 if has ('win32')
-  let g:floaterm_shell = 'powershell'
+  let g:floaterm_shell = 'cmd'
 endif
 let g:floaterm_wintype = 'floating'
-let g:floaterm_wintitle = ''
-let g:floaterm_winblend = 1
+let g:floaterm_wintitle = 'TERM'
+let g:floaterm_winblend = 20
 let g:floaterm_position = 'bottom'
 let g:floaterm_width = 0.6
 let g:floaterm_height = 0.3
 let g:floaterm_open_command = 'drop'
 let g:floaterm_autoclose = 2
-let g:floaterm_borderchars = ['', '', '', '', '', '', '', '']
+" let g:floaterm_borderchars = ['➖', '', '➖', '', '', '', '', '']
+let g:floaterm_borderchars = ['━', '┃', '━', '┃', '┏', '┓', '┛', '┗']
+" let g:floaterm_borderchars = ['─', '│', '─', '│', '┌', '┐', '┘', '└']
 let g:floaterm_keymap_toggle = '<Space>k'
 
 " highlight FloatermBorder guibg=#005F87 guifg=white
+highlight FloatermBorder guibg = none guifg=white
 set winblend=20
 '''
 on_event = 'VimEnter'
@@ -67,5 +70,17 @@ highlight ConflictMarkerOurs      guibg = #4a8277
 highlight ConflictMarkerTheirs    guibg = #4085c2
 highlight ConflictMarkerEnd       guibg = #4085c2
 highlight ConflictMarkerSeparator guibg = none
+'''
+on_event = 'VimEnter'
+
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+hook_source = '''
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
+let g:blamer_prefix = '      '
+let g:blamer_template = '<committer-time> - <author> : <summary> : <commit-short>'
+let g:blamer_date_format = '%y-%m/%d'
+highlight Blamer guifg = #707070
 '''
 on_event = 'VimEnter'

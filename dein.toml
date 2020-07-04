@@ -59,7 +59,7 @@ endif
 let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
 let g:airline_section_x = '%{strftime("%m/%d %H:%M")}'
 let g:airline#extensions#default#layout = [
- \ [ 'a', 'null', 'c', 'b', 'null', 'y'],
+ \ [ 'a', 'null', 'b', 'null', 'y', 'c'],
  \ [ 'z', 'null', 'x'],
  \ ]
 

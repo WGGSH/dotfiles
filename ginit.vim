@@ -1,5 +1,5 @@
 if exists ('g:fvim_loaded')
-  set guifont=RobotoMono\ Nerd\ Font:h21.5
+  set guifont=Cica:h21.5
   FVimUIPopupMenu v:false
   FVimCustomTitleBar v:false
   " let g:airline#extensions#tabline#left_sep = ''

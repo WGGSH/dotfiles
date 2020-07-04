@@ -222,3 +222,23 @@ highlight CursorLineNr guifg = #FF8700 guibg = none
 " highlight SignColumn ctermbg=none guibg = none
 
 let g:deoplete#enable_at_startup = 1
+
+" スクロールバー
+" https://qiita.com/1007/items/f2308fd3203a34422fb3
+func! STL()
+  let barWidth = &columns / 4
+  let barWidth = barWidth < 3 ? 3 : barWidth
+  let n = line('$') > 1 ? line('$') - 1 : line('$')
+  let buf_top    = (line('w0') - 1) * (barWidth - 1) / n
+  let buf_bottom = (line('w$')    ) * (barWidth - 1) / n
+  let cursor     = (line('.')  - 1) * (barWidth - 1) / n
+  let n1 = buf_top
+  let n2 = cursor - n1
+  let n2 = n1 + n2 >= barWidth ? barWidth - n1 - 1 : n2
+  let n3 = buf_bottom - cursor
+  let n3 = n1 + n2 + n3 >= barWidth ? barWidth - n1 - n2 - 1 : n3
+  let n4 = barWidth - n1 - n2 - n3 - 1
+  let bar = '['.repeat(' ', n1).repeat('━', n2).'❚'.repeat('━', n3).repeat(' ', n4).']'
+  let stl_left = ' '
+  return stl_left.bar
+endfunc

@@ -132,17 +132,25 @@ let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 1
 " nnoremap <silent><Space>. :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
 nnoremap <silent><Space>. :<C-u>Defx<CR>
+
+let s:defx_win_width_percent = 0.7
+let s:defx_win_height_percent = 0.5
+
 call defx#custom#option('_', {
-      \ 'winwidth': 25,
-      \ 'split': 'vertical',
+      \ 'winwidth': float2nr(&columns * s:defx_win_width_percent),
+      \ 'split': 'floating',
       \ 'direction': 'botright',
       \ 'columns': 'indent:git:icons:filename',
       \ 'show_ignored_files': 1,
       \ 'toggle': 1,
       \ 'resume': 1,
+      \ 'wincol': float2nr((&columns - (&columns * s:defx_win_width_percent)) / 2),
+      \ 'winheight': float2nr(&lines * s:defx_win_height_percent),
+      \ 'winrow': 2,
       " \ 'buffer_name': 'explorer',
       \ })
 autocmd FileType defx call s:defx_my_settings()
+
 function! s:defx_my_settings() abort
   " Define mappings
   " nnoremap <silent><buffer><expr> <CR>
@@ -458,6 +466,21 @@ let g:javascript_plugin_flow = 1
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add='''
+
+let s:denite_win_width_percent = 0.7
+let s:denite_win_height_percent = 0.5
+
+" Change denite default options
+call denite#custom#option('default', {
+    \ 'split': 'floating',
+    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+    \ 'winrow': 2,
+    \ 'start_filter': v:true,
+    \ 'highlight_filter_background': 'DeniteFilter',
+    \ })
+
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -471,22 +494,14 @@ function! s:denite_my_settings() abort
   \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> i
   \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> a
+  \ denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
-
-let s:denite_win_width_percent = 0.85
-let s:denite_win_height_percent = 0.5
-
-" Change denite default options
-call denite#custom#option('default', {
-    \ 'split': 'floating',
-    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
-    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
-    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
-    \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
-    \ 'direction': 'botright',
-    \ })
 endfunction
+
+nnoremap <silent><C-s-p> :<C-u>Denite command<CR>
+nnoremap <silent><C-f> :<C-u>Denite grep<CR>
 '''
 [[plugins]]
 repo = 'Shougo/unite-outline'

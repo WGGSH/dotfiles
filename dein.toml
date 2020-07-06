@@ -164,6 +164,9 @@ function! s:defx_my_settings() abort
   " nnoremap <silent><buffer><expr> p
   " \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> o
+        " \ defx#do_action('drop')
+        \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> e
         \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> E
         \ defx#do_action('open', 'vsplit')
@@ -500,7 +503,8 @@ function! s:denite_my_settings() abort
   \ denite#do_map('toggle_select').'j'
 endfunction
 
-nnoremap <silent><C-s-p> :<C-u>Denite command<CR>
+nnoremap <silent><C-p> :<C-u>Denite file<CR>
+nnoremap <silent><C-S-p> :<C-u>Denite command<CR>
 nnoremap <silent><C-f> :<C-u>Denite grep<CR>
 '''
 [[plugins]]

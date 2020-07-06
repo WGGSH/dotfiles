@@ -226,7 +226,7 @@ let g:deoplete#enable_at_startup = 1
 " スクロールバー
 " https://qiita.com/1007/items/f2308fd3203a34422fb3
 func! STL()
-  let barWidth = &columns / 4
+  let barWidth = &columns / 8
   let barWidth = barWidth < 3 ? 3 : barWidth
   let n = line('$') > 1 ? line('$') - 1 : line('$')
   let buf_top    = (line('w0') - 1) * (barWidth - 1) / n

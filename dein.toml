@@ -513,11 +513,3 @@ repo = 'Shougo/unite-outline'
 repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
-
-[[plugins]]
-repo = 'OmniSharp/omnisharp-vim'
-on_ft = ['cs']
-hook_source =
-'''
-
-'''

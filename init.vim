@@ -121,7 +121,8 @@ if has('win32') || has('win64')
   let g:python_host_prog = 'C:\Program Files\download\Python27\python.exe'
 elseif has('mac')
 elseif has('unix')
-  let g:python3_host_prog = '/usr/bin/python3.6'
+  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = '/usr/bin/python2'
 endif
 
 " Dvorak配列用設定
@@ -166,7 +167,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
 
 " 下線表示: カラーテーマよりも後に呼ぶ
-" highlight CursorLine gui=underline guifg=NONE guibg=NONE
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 " 透過設定
 set pumblend=20
@@ -212,14 +213,30 @@ if has('win32') || has('win64')
   " highlight EndOfBuffer ctermbg=white guibg=none
 endif
 
-colorscheme OceanicNext
-set background=dark
+colorscheme neodark
+" set background=dark
 
 " 行番号の色を変える
-highlight LineNr guibg = none guifg = $428896
-highlight CursorLineNr guifg = #FF8700 guibg = none
+" highlight LineNr guibg = none guifg = $428896
+highlight LineNr guibg = none
+" highlight CursorLineNr guifg = #FF8700 guibg = none
+highlight CursorLineNr guibg = none
 " highlight Normal ctermbg=none guibg=#202020
 " highlight SignColumn ctermbg=none guibg = none
+
+if has('unix')
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
+  highlight Normal ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=none
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
+  highlight SignColumn ctermbg=none guibg = none
+  highlight GitGutterAdd ctermbg=none guibg=none
+  " 下線表示: カラーテーマよりも後に呼ぶ
+  highlight CursorLine gui=underline guifg=NONE guibg=NONE
+endif
+
 
 let g:deoplete#enable_at_startup = 1
 

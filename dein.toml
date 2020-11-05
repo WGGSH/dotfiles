@@ -21,6 +21,9 @@ repo = 'jacoborus/tender.vim'
 hook_add = '''
 '''
 
+[[plugins]]
+repo = 'gosukiwi/vim-atom-dark'
+
 ## nord テーマ
 [[plugins]]
 repo = 'xero/nord-vim-mod'
@@ -41,7 +44,8 @@ repo = 'vim-airline/vim-airline'
 depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive']
 hook_add = '''
 " カラースキーム
-let g:airline_theme = 'oceanicnext'
+" let g:airline_theme = 'oceanicnext'
+let g:airline_theme = 'luna'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -67,7 +71,7 @@ let g:airline_section_c = '%{STL()} %<%<%{airline#extensions#fugitiveline#bufnam
 let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
 
 let g:airline#extensions#default#layout = [
- \ [ 'a', 'null', 'b', 'null',  'c'],
+ \ [ 'a',  'b', 'c', ],
  \ [ 'y', 'z', 'x'],
  \ ]
 
@@ -419,8 +423,8 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'

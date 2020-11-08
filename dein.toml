@@ -517,3 +517,7 @@ repo = 'Shougo/unite-outline'
 repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'suan/vim-instant-markdown'
+on_ft = ['md']

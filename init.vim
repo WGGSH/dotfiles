@@ -140,10 +140,12 @@ nnoremap <C-w>h <C-w>j
 nnoremap <C-w>t <C-w>k
 " nnoremap <C-w>n <C-w>l
 
-nnoremap <Space><Space>d <C-w>h
-nnoremap <Space><Space>h <C-w>j
-nnoremap <Space><Space>t <C-w>k
-nnoremap <Space><Space>n <C-w>l
+let mapleader = "\<Space>"
+
+nnoremap <Leader><Leader>d <C-w>h
+nnoremap <Leader><Leader>h <C-w>j
+nnoremap <Leader><Leader>t <C-w>k
+nnoremap <Leader><Leader>n <C-w>l
 
 vnoremap d h
 vnoremap h j
@@ -154,11 +156,11 @@ vnoremap ee dd
 vnoremap r n
 vnoremap R N
 
-nnoremap <Space>s :w<CR>
-nnoremap <Space>w :bw<CR>
-nnoremap <Space>q :q<CR>
-nnoremap <Space>- :sp<CR>
-nnoremap <Space>\ :vs<CR>
+nnoremap <Leader>s :w<CR>
+nnoremap <Leader>w :bw<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>- :sp<CR>
+nnoremap <Leader>z :vs<CR>
 
 " カラーテーマ
 set termguicolors
@@ -237,6 +239,16 @@ if has('unix')
   highlight CursorLine gui=underline guifg=NONE guibg=NONE
 endif
 
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
+  highlight Normal ctermbg=none guibg=none
+  highlight NonText ctermbg=none guibg=none
+  highlight Folded ctermbg=none guibg=none
+  highlight EndOfBuffer ctermbg=white guibg=none
+  highlight SignColumn ctermbg=none guibg = none
+  highlight GitGutterAdd ctermbg=none guibg=none
+  " 下線表示: カラーテーマよりも後に呼ぶ
+  highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
 let g:deoplete#enable_at_startup = 1
 
@@ -259,3 +271,4 @@ func! STL()
   let stl_left = ' '
   return stl_left.bar
 endfunc
+

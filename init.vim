@@ -126,12 +126,13 @@ elseif has('unix')
 endif
 
 " Dvorak配列用設定
+nnoremap e a
 nnoremap d h
 nnoremap h gj
 nnoremap t gk
 nnoremap n l
-nnoremap e d
-nnoremap ee dd
+nnoremap a d
+nnoremap aa dd
 nnoremap r n
 nnoremap R N
 
@@ -151,8 +152,8 @@ vnoremap d h
 vnoremap h j
 vnoremap t k
 vnoremap n l
-vnoremap e d
-vnoremap ee dd
+vnoremap a d
+vnoremap aa dd
 vnoremap r n
 vnoremap R N
 

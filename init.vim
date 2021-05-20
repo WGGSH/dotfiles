@@ -7,57 +7,66 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 set ambiwidth=single
 
+" Space キーを Leader に設定
+" 理由よくわかっていないが，ダブルクォート(")で記述しなければ動かなかった
+" プラグインのショートカットを割り当てたいため dein の読み込みよりも先に記述する
+let mapleader = "\<Space>"
 
 " コンフィグディレクトリ
-let g:win_config_dir    = expand("~\\AppData\\Local\\nvim")
-let g:unix_config_dir   = expand("~/.config/nvim")
+let g:win_config_dir  = expand('~\\AppData\\Local\\nvim')
+let g:unix_config_dir = expand('~/.config/nvim')
 
 " -------- dein script --------
 if &compatible
-  set nocompatible
+  set nocompatible " Be iMproved
 endif
+
+" Required:
+" Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
+
+  " Required:
   call dein#begin('~/.cache/dein')
 
+  " Let dein manage dein
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   if has('win32') || has('win64')
-    let s:toml      = g:win_config_dir. '\\dein.toml'
-    let s:lazy_toml = g:win_config_dir . '\\dein_lazy.toml'
+    let s:toml = g:win_config_dir. '\\dein.toml'
   else
-    let s:toml      = g:unix_config_dir. '/dein.toml'
-    let s:lazy_toml = g:unix_config_dir . '/dein_lazy.toml'
+    let s:toml = g:unix_config_dir. '/dein.toml'
   endif
 
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#load_toml(s:toml, {'lazy': 0})
 
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
 
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+
+  " Required:
   call dein#end()
   call dein#save_state()
 endif
 
-if dein#check_install()
-  call dein#install()
-endif
-
+" Required:
 filetype plugin indent on
 syntax enable
 
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+ call dein#install()
+endif
+
 " -------- end dein script --------
 
-" if has('win32')
-"   set sh=powershell
-" elseif has('mac')
-" elseif has('unix')
-" endif
-
+" 基本的設定
 set number
 set relativenumber
 set cursorline
@@ -83,8 +92,6 @@ set incsearch
 set wildignorecase
 set wildmode=full
 
-set mouse=a
-
 set list listchars=tab:\▸\-, " タブ文字は普段使わないので目立つようにする
 
 " ノーマルモード時だけ ; と : を入れ替える (USキー対応)
@@ -104,16 +111,8 @@ tnoremap <silent> <ESC> <C-\><C-n>
 " クリップボードを有効化?
 set clipboard+=unnamedplus
 
-" wsl→winのクリップボードにコピーする
-" tmux で上手く動かなさそうなので一旦保留
-" if executable('win32yank.exe')
-"   augroup Yank
-"     autocmd!
-"     autocmd TextYankPost * :call system('win32yank.exe -i', @")
-"   augroup END
-" endif
 
-" Pythonのパス指定
+" Python のパス指定
 " バージョン書きたくないと思いつつも，いいやり方が浮かばない
 if has('win32') || has('win64')
   " let g:python3_host_prog = 'C:\Program Files\download\python37\python.exe'
@@ -124,6 +123,7 @@ elseif has('unix')
   let g:python3_host_prog = '/usr/bin/python3'
   let g:python_host_prog = '/usr/bin/python2'
 endif
+
 
 " Dvorak配列用設定
 nnoremap e a
@@ -141,11 +141,9 @@ nnoremap <C-w>h <C-w>j
 nnoremap <C-w>t <C-w>k
 " nnoremap <C-w>n <C-w>l
 
-let mapleader = "\<Space>"
-
 nnoremap <Leader><Leader>d <C-w>h
-nnoremap <Leader><Leader>h <C-w>j
-nnoremap <Leader><Leader>t <C-w>k
+" nnoremap <Leader><Leader>h <C-w>j
+" nnoremap <Leader><Leader>t <C-w>k
 nnoremap <Leader><Leader>n <C-w>l
 
 vnoremap d h
@@ -157,6 +155,7 @@ vnoremap aa dd
 vnoremap r n
 vnoremap R N
 
+" Leader を使用したショートカット
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>w :bw<CR>
 nnoremap <Leader>q :q<CR>
@@ -164,10 +163,10 @@ nnoremap <Leader>- :sp<CR>
 nnoremap <Leader>z :vs<CR>
 
 " カラーテーマ
-set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=light
+set termguicolors
+" set background=light
 
 " 下線表示: カラーテーマよりも後に呼ぶ
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
@@ -188,70 +187,26 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 
-" OniVim用の設定
-if exists("g:gui_oni")
-  if has('win32')
-    if filereadable(expand(g:win_config_dir .'\\oni\\config.vim'))
-      source ~/AppData/Local/nvim/oni/config.vim
-    endif
-  endif
-  if has('mac')
-    if filereadable(expand(g:unix_config_dir . '/oni/config.vim'))
-      source ~/.config/nvim/oni/config.vim
-    endif
-  endif
-endif
+" colorscheme neodark
+colorscheme material
 
-" 背景透過設定 (Winのみ)
-if has('win32') || has('win64')
-  " highlight Normal ctermbg=none guibg=#272822
-  highlight Normal ctermbg=none guibg=black
-  highlight Normal ctermbg=none guibg=none
-  highlight NonText ctermbg=none guibg=black
-  " highlight Folded ctermbg=none guibg=none
-  " highlight EndOfBuffer ctermbg=white guibg=none
-  " highlight Normal ctermbg=none guibg=none
-  " highlight NonText ctermbg=none guibg=none
-  " highlight Folded ctermbg=none guibg=none
-  " highlight EndOfBuffer ctermbg=white guibg=none
-endif
+" カラースキームに合わせて色のリンクを作成する
+highlight CursorLineNr none
+highlight link CursorLineNr function
 
-colorscheme neodark
-" set background=dark
+"highlight Folded ctermbg=none guibg=none
+"highlight EndOfBuffer ctermbg=white guibg=none
+"highlight Normal ctermbg=none guibg=none
+"highlight NonText ctermbg=none guibg=none
+"highlight Folded ctermbg=none guibg=none
+"highlight EndOfBuffer ctermbg=white guibg=none
+"highlight SignColumn ctermbg=none guibg = none
+"highlight GitGutterAdd ctermbg=none guibg=none
 
-" 行番号の色を変える
-" highlight LineNr guibg = none guifg = $428896
-highlight LineNr guibg = none
-" highlight CursorLineNr guifg = #FF8700 guibg = none
-highlight CursorLineNr guibg = none
-" highlight Normal ctermbg=none guibg=#202020
-" highlight SignColumn ctermbg=none guibg = none
+" 下線表示: カラーテーマよりも後に呼ぶ
+" goneovim でバグが有り， guibg を背景色と同一か透明にすると下線が残るため，背景色から僅かにずらす
+highlight CursorLine gui=underline guifg=none guibg=#212122
 
-if has('unix')
-  highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=white guibg=none
-  highlight Normal ctermbg=none guibg=none
-  highlight NonText ctermbg=none guibg=none
-  highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=white guibg=none
-  highlight SignColumn ctermbg=none guibg = none
-  highlight GitGutterAdd ctermbg=none guibg=none
-  " 下線表示: カラーテーマよりも後に呼ぶ
-  highlight CursorLine gui=underline guifg=NONE guibg=NONE
-endif
-
-  highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=white guibg=none
-  highlight Normal ctermbg=none guibg=none
-  highlight NonText ctermbg=none guibg=none
-  highlight Folded ctermbg=none guibg=none
-  highlight EndOfBuffer ctermbg=white guibg=none
-  highlight SignColumn ctermbg=none guibg = none
-  highlight GitGutterAdd ctermbg=none guibg=none
-  " 下線表示: カラーテーマよりも後に呼ぶ
-  highlight CursorLine gui=underline guifg=NONE guibg=NONE
-
-let g:deoplete#enable_at_startup = 1
 
 " スクロールバー
 " https://qiita.com/1007/items/f2308fd3203a34422fb3
@@ -273,3 +228,31 @@ func! STL()
   return stl_left.bar
 endfunc
 
+" LSP のハイライト表示
+" highlight LspErrorHighlight       gui=underline guifg=#DC657D guibg=none
+highlight link LspErrorHighlight Error
+highlight link LspWarningHighlight Exception
+highlight LspInformationHighlight none
+highlight LspHintHighlight none
+
+" highlight link LspErrorVirtualText Error;
+" highlight LspErrorVirtualText   gui=none guifg=darkred guibg=none
+" highlight LspWarningVirtualText gui=none guifg=darkyellow guibg=none
+highlight link LspInformationVirtualText Comment
+highlight link LspHintVirtualText Comment
+
+" dein.toml ファイルを開いた際に hook 部分を 正しくハイライトする
+augroup tomlSyntax
+    autocmd!
+augroup END
+
+autocmd tomlSyntax BufNewFile,BufRead dein*.toml call s:syntax_range_dein()
+
+function! s:syntax_range_dein() abort
+  let start = '^\s*hook_\%('.
+  \           'add\|source\|post_source\|post_update'.
+  \           '\)\s*=\s*%s'
+
+  call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
+  call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
+endfunction

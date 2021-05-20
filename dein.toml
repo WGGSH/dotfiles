@@ -4,38 +4,107 @@
 repo = 'flazz/vim-colorschemes'
 
 [[plugins]]
-repo = 'niklas-8/vim-darkspace'
-
-# 今使ってるカラースキーム
-[[plugins]]
-repo = 'tomasiser/vim-code-dark'
-
-[[plugins]]
-repo = 'NLKNguyen/papercolor-theme'
-
-[[plugins]]
-repo = 'crusoexia/vim-monokai'
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
-hook_add = '''
-'''
-
-[[plugins]]
-repo = 'gosukiwi/vim-atom-dark'
-
-## nord テーマ
-[[plugins]]
 repo = 'xero/nord-vim-mod'
 
 [[plugins]]
-repo = 'mhartington/oceanic-next'
+repo = 'joshdick/onedark.vim'
 
-# --- --- --- --- ---
+[[plugins]]
+repo = 'haishanh/night-owl.vim'
 
-# Vim用のアイコン
+[[plugins]]
+repo = 'pineapplegiant/spaceduck'
+
+[[plugins]]
+repo = 'rakr/vim-one'
+
+[[plugins]]
+repo = 'ulwlu/elly.vim'
+
+[[plugins]]
+repo = 'kaicataldo/material.vim'
+hook_add = '''
+let g:material_theme_style = 'darker-community'
+'''
+
+# --- Vim 用のアイコン ---
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+
+# deoplete: 補完機能
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = ['lighttiger2505/deoplete-vim-lsp']
+on_event = 'InsertCherPre'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><C-h> deoplete#smart_close_popup().'<C-h>'
+inoremap <expr><BS> deoplete#smart_close_popup().'<C-h>'
+
+call deoplete#custom#option({
+  \ 'auto_complete': v:true,
+  \ 'min_pattern_length': 2,
+  \ 'auto_complete_delay': 0,
+  \ 'auto_refresh_delay': 20,
+  \ 'refresh_always': v:true,
+  \ 'smart_case': v:true,
+  \ 'camel_case': v:true,
+\ })
+let s:use_lsp_sources = ['lsp', 'dictionary', 'file']
+call deoplete#custom#option('sources', {
+  \ 'go': s:use_lsp_sources,
+  \ 'python': s:use_lsp_sources,
+  \ 'js': s:use_lsp_sources,
+  \ 'vim': ['vim', 'buffer', 'dictionary', 'file'],
+\})
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+" ハイライト設定
+let g:lsp_signs_enabled = 0           " enable signs
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+
+" 行頭に表示されるマーカーの文章
+let g:lsp_diagnostics_signs_error       = {'text': 'X:'}
+let g:lsp_diagnostics_signs_warning     = {'text': 'W:'}
+let g:lsp_diagnostics_signs_information = {'text': 'I:'}
+let g:lsp_diagnostics_signs_hint        = {'text': 'H:'}
+
+let g:lsp_fold_enabled = 1
+
+
+if !empty(globpath(&rtp, 'autoload/lsp.vim'))
+  " vim-lspが有効になったバッファで次の設定を行う
+  function! s:on_lsp_buffer_enabled() abort
+    " (必須)オムニ補完の関数を設定
+    setlocal omnifunc=lsp#complete
+    " (任意)補完の表示をメニューのみにする
+    setlocal completeopt=menu
+    " (任意)エラー列を常に表示する
+    " setlocal signcolumn=yes
+    " (任意)定義ジャンプをgdに割り当てる
+    nmap <buffer> gd <plug>(lsp-definition)
+  endfunction
+  augroup lsp_install
+    autocmd!
+    autocmd User lsp_buffer_enabled
+    \ call s:on_lsp_buffer_enabled()
+  augroup END
+
+  " (必須)プロジェクトルートのマーカーとなるファイル、ディレクトリ一覧
+  " デフォルトではAssembly-CSharp.csprojが含まれていないため、これを追加する
+  " コメント:なくても動いたような？
+  " let g:lsp_settings_root_markers = ['*.csproj', '.git', '.git/']
+endif
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
 
 # Airline
 ## 本体
@@ -45,7 +114,11 @@ depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive']
 hook_add = '''
 " カラースキーム
 " let g:airline_theme = 'oceanicnext'
-let g:airline_theme = 'luna'
+let g:airline_theme = 'onedark'
+
+" タブ切り替えのキーマップ
+nmap <Leader>h <Plug>AirlineSelectPrevTab
+nmap <Leader>t <Plug>AirlineSelectNextTab
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -53,27 +126,25 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#branch#enabled = 1
 
-" タブ切り替えのキーマップ
-nmap <Leader>h <Plug>AirlineSelectPrevTab
-nmap <Leader>t <Plug>AirlineSelectNextTab
-
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+" let g:airline_section_c = '%{STL()} %<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%#__restore__#'
+let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%#__restore__# %{STL()}'
 let g:airline_section_x = '%{strftime("%m/%d %H:%M")}'
-" let g:airline_section_d = '%{STL()}'
-" let g:airline_section_d = Airline#Section#Create(['%{STL()}'])
-" let g:airline_section_c = '%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%#__restore__#%{STL()}'
-
-
-let g:airline_section_c = '%{STL()} %<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%#__restore__#'
-
-let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
+" lsp のエラー・警告を取得する
+" let g:airline_section_z = '%3l:%2v %{airline#extensions#lsp#get_warning()} %{airline#extensions#lsp#get_error()}'
+" let g:airline_section_z = '%3l:%2v %#accent_blue#%{airline#extensions#lsp#get_warning()}%#__restore__#%#__accent_yellow#%{airline#extensions#lsp#get_error()}%#__restore__#'
 
 let g:airline#extensions#default#layout = [
- \ [ 'a',  'b', 'c', ],
+ \ [ 'a', 'b', 'c'],
  \ [ 'y', 'z', 'x'],
  \ ]
+
+" call airline#parts#define_accent('foo', 'red')
+" let g:airline_section_a = airline#section#create(['mode', ' ', '%{airline#extensions#lsp#get_warning()}'])
+
+let g:airline_section_z = airline#section#create(['linenr','maxlinenr','%{airline#extensions#lsp#get_warning()}','%{airline#extensions#lsp#get_error()}'])
 
  " セパレータ
 let g:airline_right_sep = ''
@@ -85,20 +156,28 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
+let g:airline_symbols.linenr = 'L'
+let g:airline_symbols.maxlinenr = ''
+
 let g:airline#extensions#tabline#ignore_bufadd_pat = 'gundo|undotree|vimfiler|tagbar|nerd_tree|startify|!'
 
-" エラーシンボル
-let g:airline#extensions#ale#error_symbol = ' '
-let g:airline#extensions#ale#warning_symbol = ' '
+" エラーシンボル (lsp を使用)
+let g:airline#extensions#lsp#error_symbol = ' '
+let g:airline#extensions#lsp#warning_symbol = ' '
 '''
 
 ## テーマ
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
-## git ブランチ
+# git 操作
+# airline の git ブランチ表示も可能
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+# fugitive からブラウザを開けるようにする
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
 
 # Processing用プラグイン
 [[plugins]]
@@ -117,6 +196,11 @@ repo = 'ntpeters/vim-better-whitespace'
 # インデントを見やすくする
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indentLine_char='|'
+'''
+
+
 
 # コメントの簡易挿入
 [[plugins]]
@@ -125,241 +209,18 @@ hook_add = '''
 let g:tcomment_mapleader1 = '<C-\>'
 '''
 
-# Defx: ファイラー
-# 本体
-[[plugins]]
-repo ='Shougo/defx.nvim'
-depends = ['defx-icons']
-on_cmd='Defx'
-hook_add='''
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 1
-" nnoremap <silent><Space>. :<C-u>Defx -split=vertical -winwidth=40 -direction=botright<CR>
-" nnoremap <silent><Space>. :<C-u>Defx<CR>
-nnoremap <silent><Leader>. :<C-u>Defx<CR>
-
-let s:defx_win_width_percent = 0.7
-let s:defx_win_height_percent = 0.5
-
-call defx#custom#option('_', {
-      \ 'winwidth': float2nr(&columns * s:defx_win_width_percent),
-      \ 'split': 'floating',
-      \ 'direction': 'botright',
-      \ 'columns': 'indent:git:icons:filename',
-      \ 'show_ignored_files': 1,
-      \ 'toggle': 1,
-      \ 'resume': 1,
-      \ 'wincol': float2nr((&columns - (&columns * s:defx_win_width_percent)) / 2),
-      \ 'winheight': float2nr(&lines * s:defx_win_height_percent),
-      \ 'winrow': 2,
-      \ 'buffer_name': 'explorer',
-      \ })
-autocmd FileType defx call s:defx_my_settings()
-
-function! s:defx_my_settings() abort
-  " Define mappings
-  " nnoremap <silent><buffer><expr> <CR>
-  " \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> <CR>
-       \ defx#do_action('open_or_close_tree')
-  " nnoremap <silent><buffer><expr> c
-  " \ defx#do_action('copy')
-  " nnoremap <silent><buffer><expr> m
-  " \ defx#do_action('move')
-  " nnoremap <silent><buffer><expr> p
-  " \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> o
-        " \ defx#do_action('drop')
-        \ defx#do_action('multi', ['drop', 'quit'])
-  nnoremap <silent><buffer><expr> e
-        \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> E
-        \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> P
-        \ defx#do_action('open', 'pedit')
-  nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-        \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-        \ defx#do_action('toggle_columns',
-        \                'mark:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-        \ defx#do_action('toggle_sort', 'time')
-  " nnoremap <silent><buffer><expr> D
-  " \ defx#do_action('remove')
-  " nnoremap <silent><buffer><expr> r
-  "      \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-        \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr>
-        \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-        \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-        \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> d
-        \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> n
-        \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> ~
-        \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-        \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-        \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-        \ line('.') == line('$') ? 'gg' : 'h'
-  nnoremap <silent><buffer><expr> t
-        \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-l>
-        \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-        \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-        \ defx#do_action('change_vim_cwd')
-  nnoremap <silent><buffer><expr> s
-        \ defx#do_action('open', 'vsplit')
-endfunction
-'''
-
-# アイコン
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
-## git の status 表示
-[[plugins]]
-repo ='kristijanhusak/defx-git'
-hook_add = '''
-let g:defx_git#indicators = {
-  \ 'Modified'  : 'ᴍ',
-  \ 'Staged'    : '+',
-  \ 'Untracked' : '-',
-  \ 'Renamed'   : 'ʀ',
-  \ 'Unmerged'  : '',
-  \ 'Deleted'   : 'ᴅ',
-  \ 'Unknown'   : '?'
-    \ }
-'''
-
-# fzf (今はWinでは動かさない)
-# fzf.vim : ファイルのインクリメンタルサーチ
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-if = '''!has('win32')'''
-depends = ['fzf']
-hook_add='''
-nnoremap <Leader>r :FZFFileList<CR>
-command! FZFFileList call fzf#run(fzf#wrap({
-      \ 'source': 'find . -type d -name .git -prune -o -type f',
-      \ 'down': '40%'}))
-'''
-
-## fzfのバイナリ
-[[plugins]]
-repo = 'junegunn/fzf'
-if = '''!has('win32')'''
-build = './install --all'
-
 # gitの差分表示
 [[plugins]]
 repo = "airblade/vim-gitgutter"
-
-# deoplete: 補完してくれる君
-
-# lsp
-# [[plugins]]
-# repo = 'lighttiger2505/deoplete-vim-lsp'
-
-# 本体
-# [[plugins]]
-# repo = "Shougo/deoplete.nvim"
-# on_event = 'InsertCharPre'
-# hook_add = '''
-# " let g:deoplete#enable_at_startup = 1
-#
-# " inoremap <expr><C-h> deoplete#smart_close_popup()."<C-h>"
-# " inoremap <expr><BS> deoplete#smart_close_popup()."<C-h>"
-#
-# " call deoplete#custom#option({
-#     " \ 'auto_complete': v:true,
-#     " \ 'min_pattern_length': 2,
-#     " \ 'auto_complete_delay': 0,
-#     " \ 'auto_refresh_delay': 20,
-#     " \ 'refresh_always': v:true,
-#     " \ 'smart_case': v:true,
-#     " \ 'camel_case': v:true,
-# "   \ })
-# " let s:use_lsp_sources = ['lsp', 'dictionary', 'file']
-# " call deoplete#custom#option('sources', {
-#     " \ 'go': s:use_lsp_sources,
-#     " \ 'python': s:use_lsp_sources,
-#     " \ 'js': s:use_lsp_sources,
-#     " \ 'vim': ['vim', 'buffer', 'dictionary', 'file'],
-# "   \})
-# '''
-
-# [[plugins]]
-# repo = 'Shougo/neosnippet.vim'
-# hook_add = '''
-# " Plugin key-mappings.
-# " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-# imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-# smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-# xmap <C-k>     <Plug>(neosnippet_expand_target)
-#
-# " SuperTab like snippets behavior.
-# " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-# "imap <expr><TAB>
-# " \ pumvisible() ? "\<C-n>" :
-# " \ neosnippet#expandable_or_jumpable() ?
-# " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-# smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-# \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-#
-# " For conceal markers.
-# if has('conceal')
-#   set conceallevel=2 concealcursor=niv
-# endif
-# '''
-
-# [[plugins]]
-# repo = 'Shougo/neosnippet-snippets'
-
-# [[plugins]]
-# repo = 'lambdalisue/gina.vim'
-# hook_add = '''
-# '''
-
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# on_ft = ['cs']
-# rev = 'release'
-# merged = '0'
-# hook_source = '''
-# let g:coc_global_extensions=[ 'coc-omnisharp' ]
-# '''
-
-[[plugins]]
-repo = 'posva/vim-vue'
-on_ft = ['vue']
-hook_source = '''
-autocmd FileType vue syntax sync fromstart
-'''
-
-# ターミナル拡張
-[[plugins]]
-repo = 'vimlab/split-term.vim'
 hook_add = '''
-set splitbelow
-" nnoremap <Leader>k :20Term<CR>
+" airline のタブ移動を邪魔されるのでデフォルトの nmap を剥がす
+nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
 '''
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
 
 # 検索の拡張
 [[plugins]]
@@ -372,183 +233,25 @@ nmap f <Plug>(incsearch-fuzzy-/)
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']
-depends = 'asyncomplete.vim'
-hook_add = '''
-let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
-let g:ale_linters = {
-  \   'typescript': ['eslint']
-  \   }
-let g:ale_fixers = {
-  \  'javascript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
-  \   }
-let g:ale_fix_on_save = 0
-
-let g:ale_sign_error =''
-let g:ale_sign_warning = ''
-
-function! s:typescript() abort
-  ALEEnable
-  call asyncomplete#enable_for_buffer()
-  map <buffer> <C-]> <Plug>(ale_go_to_definition)
-  imap <buffer> <C-y> <Plug>(asyncomplete_force_refresh)
-endfunction
-
-augroup TypeScript
-  autocmd!
-  autocmd FileType typescript call s:typescript()
-augroup END
-'''
-
-# [[plugins]]
-# repo = 'prabirshrestha/asyncomplete.vim'
-# on_func = 'asyncomplete#enable_for_buffer'
-# hook_add = '''
-# let g:asyncomplete_enable_for_all = 0 " TypeScriptファイルの編集時のみ使用したいため
-# set completeopt+=preview
-#
-# autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-# \ 'priority': 10
-# \ }))
-# '''
-
-# [[Plugins]]
-# repo = 'w0rp/ale'
-
-# [[plugins]]
-# repo = 'prabirshrestha/async.vim'
-
-# [[plugins]]
-# repo = 'prabirshrestha/asyncomplete.vim'
-
-# [[plugins]]
-# repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-let g:lsp_signs_enabled = 1         " enable signs
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-
-"let g:asyncomplete_remove_duplicates = 1
-"let g:asyncomplete_smart_completion = 1
-"let g:asyncomplete_auto_popup = 1
-
-'''
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-icons'
-
-# [[plugins]]
-# repo = 'hrsh7th/vim-vsnip'
-
-# [[plugins]]
-# repo = 'hrsh7th/vim-vsnip-integ'
-
-[[plugins]]
-repo = 'tikhomirov/vim-glsl'
-on_ft = ['vs', 'fs']
-hook_add = '''
-autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
-'''
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['js']
-hook_source =
-'''
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-'''
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add='''
-
-let s:denite_win_width_percent = 0.7
-let s:denite_win_height_percent = 0.5
-
-" Change denite default options
-call denite#custom#option('default', {
-    \ 'split': 'floating',
-    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
-    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
-    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
-    \ 'winrow': 2,
-    \ 'start_filter': v:true,
-    \ 'highlight_filter_background': 'DeniteFilter',
-    \ })
-
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  " nnoremap <silent><buffer><expr> d
-  " \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> a
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
-
-nnoremap <silent><C-p> :<C-u>Denite file<CR>
-nnoremap <silent><C-S-p> :<C-u>Denite command<CR>
-nnoremap <silent><C-f> :<C-u>Denite grep<CR>
-'''
-[[plugins]]
-repo = 'Shougo/unite-outline'
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-
-[[plugins]]
-repo = 'suan/vim-instant-markdown'
-on_ft = ['md']
-
-
 # ターミナル
 [[plugins]]
 repo = 'voldikss/vim-floaterm'
 hook_source = '''
-nnoremap <silent><Space>r :FloatermNew --height=0.4 --width=0.7 --position=top fzf<CR>
+nnoremap <silent><Space>r :FloatermNev --height=0.4 --width=0.7 --position=top fzf<CR>
 
 if has ('win32')
-  let g:floaterm_shell = 'cmd'
+  let g:floaterm_shell = 'powershell'
 endif
 let g:floaterm_wintype = 'floating'
-let g:floaterm_wintitle = 'TERM'
+let g:floaterm_wintype = 'TERM'
 let g:floaterm_winblend = 20
 let g:floaterm_position = 'bottom'
 let g:floaterm_width = 0.6
 let g:floaterm_height = 0.3
 let g:floaterm_open_command = 'drop'
 let g:floaterm_autoclose = 2
-" let g:floaterm_borderchars = ['➖', '', '➖', '', '', '', '', '']
-let g:floaterm_borderchars = ['━', '┃', '━', '┃', '┏', '┓', '┛', '┗']
-" let g:floaterm_borderchars = ['─', '│', '─', '│', '┌', '┐', '┘', '└']
 let g:floaterm_keymap_toggle = '<Space>k'
-
-" highlight FloatermBorder guibg=#005F87 guifg=white
-highlight FloatermBorder guibg = none guifg=white
-set winblend=20
+let g:floaterm_borderchars = ['━', '┃', '━', '┃', '┏', '┓', '┛', '┗']
 '''
 on_event = 'VimEnter'
 
@@ -572,13 +275,154 @@ on_event = 'VimEnter'
 
 [[plugins]]
 repo = 'APZelos/blamer.nvim'
-hook_source = '''
+hook_add = '''
 let g:blamer_enabled = 1
 let g:blamer_delay = 200
 let g:blamer_prefix = '      '
 let g:blamer_template = '<committer-time> - <author> : <summary> : <commit-short>'
 let g:blamer_date_format = '%y-%m/%d'
 let g:blamer_show_in_visual_modes = 0
-highlight Blamer guifg = #707070
+" highlight Blamer guifg = #707070
+highlight Blamer guifg=#000000
 '''
 on_event = 'VimEnter'
+
+# toml ファイルのハイライト
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# Defx: ファイラー
+# 本体
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ['defx-icons']
+on_cmd = 'Defx'
+hook_add = '''
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 1
+nnoremap <silent><Leader>. :<C-u>Defx<CR>
+
+let s:defx_win_width_percent = 0.3
+let s:defx_win_width_min = 35
+" let s:defx_win_height_percent = 0.5
+
+let s:defx_win_width = float2nr(&columns * s:defx_win_width_percent) > s:defx_win_width_min ? s:defx_win_width_min : float2nr(&columns * s:defx_win_width_percent)
+
+call defx#custom#option('_', {
+      \ 'split'             : 'vertical',
+      \ 'direction'         : 'topleft',
+      \ 'columns'           : 'indent:git:icons:filename',
+      \ 'show_ignored_files': 1,
+      \ 'toggle'            : 1,
+      \ 'resume'            : 1,
+      \ 'winwidth'          : s:defx_win_width,
+      \ 'buffer_name'       : 'explorer',
+      \ })
+autocmd FileType defx call s:defx_my_settings()
+
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+    \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> o
+    \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> yy
+    \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+    \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> d
+    \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> n
+    \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> n
+    \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> q
+    \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+    \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+    \ defx#do_action('toggle_select_all')
+  " 上下端で移動すると反対側にループ
+  nnoremap <silent><buffer><expr> h
+    \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> t
+    \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+    \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+    \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+    \ defx#do_action('change_vim_cwd')
+  nnoremap <silent><buffer><expr> s
+    \ defx#do_action('open', 'vsplit')
+endfunction
+'''
+
+## アイコン
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+## git の status 表示
+[[plugins]]
+repo ='kristijanhusak/defx-git'
+hook_add = '''
+let g:defx_git#indicators = {
+  \ 'Modified'  : 'M ',
+  \ 'Staged'    : '+ ',
+  \ 'Untracked' : '- ',
+  \ 'Renamed'   : 'R ',
+  \ 'Unmerged'  : '',
+  \ 'Deleted'   : 'D ',
+  \ 'Unknown'   : '? '
+    \ }
+'''
+
+# 指定した範囲の syntax を変更する
+# 主に dein.toml で Vim Script をハイライトする為に使用
+[[plugins]]
+repo = 'inkarkat/vim-SyntaxRange'
+
+# Denite
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+let s:denite_win_width_percent = 0.8
+let s:denite_win_height_percent = 0.4
+call denite#custom#option('default', {
+  \ 'split': 'floating',
+  \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+  \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+  \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+  \ 'winrow': float2nr(&lines*(1 - s:denite_win_height_percent) - 2),
+\ })
+
+autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+      \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> p
+      \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+      \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+      \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+      \ denite#do_map('toggle_select').'j'
+endfunction
+'''
+
+# ヤンクした領域をハイライトする
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+hook_add = '''
+let g:highlightedyank_highlight_duration = -1
+'''
+
+# ヘルプの日本語化
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+# 選択範囲を Google 翻訳で日本語化する
+[[plugins]]
+repo = 'skanehira/translate.vim'

@@ -25,6 +25,7 @@ repo = 'ulwlu/elly.vim'
 repo = 'kaicataldo/material.vim'
 hook_add = '''
 let g:material_theme_style = 'darker-community'
+colorscheme material
 '''
 
 # --- Vim 用のアイコン ---
@@ -105,6 +106,20 @@ endif
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+
+# gitの差分表示
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = '''
+" airline のタブ移動を邪魔されるのでデフォルトの nmap を剥がす
+nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+'''
 
 # Airline
 ## 本体
@@ -209,16 +224,6 @@ hook_add = '''
 let g:tcomment_mapleader1 = '<C-\>'
 '''
 
-# gitの差分表示
-[[plugins]]
-repo = "airblade/vim-gitgutter"
-hook_add = '''
-" airline のタブ移動を邪魔されるのでデフォルトの nmap を剥がす
-nmap ghp <Plug>(GitGutterPreviewHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghs <Plug>(GitGutterStageHunk)
-'''
-
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 
@@ -261,15 +266,8 @@ on_event = 'VimEnter'
 repo = 'rhysd/conflict-marker.vim'
 hook_source = '''
 let g:conflict_marker_highlight_group = ''
-
 let g:conflict_marker_begin = '^<<<<<<< .*$'
 let g:conflict_marker_end   = '^>>>>>>> .*$'
-
-highlight ConflictMarkerBegin     guibg = #4a8277
-highlight ConflictMarkerOurs      guibg = #4a8277
-highlight ConflictMarkerTheirs    guibg = #4085c2
-highlight ConflictMarkerEnd       guibg = #4085c2
-highlight ConflictMarkerSeparator guibg = none
 '''
 on_event = 'VimEnter'
 
@@ -282,8 +280,6 @@ let g:blamer_prefix = '      '
 let g:blamer_template = '<committer-time> - <author> : <summary> : <commit-short>'
 let g:blamer_date_format = '%y-%m/%d'
 let g:blamer_show_in_visual_modes = 0
-" highlight Blamer guifg = #707070
-highlight Blamer guifg=#000000
 '''
 on_event = 'VimEnter'
 
@@ -333,8 +329,6 @@ function! s:defx_my_settings() abort
     \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> d
     \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> n
-    \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> n
     \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> q

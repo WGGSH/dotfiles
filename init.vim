@@ -188,7 +188,7 @@ augroup vimrcEx
 augroup END
 
 " colorscheme neodark
-colorscheme material
+" colorscheme material
 
 " カラースキームに合わせて色のリンクを作成する
 highlight CursorLineNr none
@@ -235,9 +235,6 @@ highlight link LspWarningHighlight Exception
 highlight LspInformationHighlight none
 highlight LspHintHighlight none
 
-" highlight link LspErrorVirtualText Error;
-" highlight LspErrorVirtualText   gui=none guifg=darkred guibg=none
-" highlight LspWarningVirtualText gui=none guifg=darkyellow guibg=none
 highlight link LspInformationVirtualText Comment
 highlight link LspHintVirtualText Comment
 
@@ -256,3 +253,10 @@ function! s:syntax_range_dein() abort
   call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
   call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
 endfunction
+
+" rhysd/conflict-marker.vim のコンフリクトマーカー設定
+highlight ConflictMarkerBegin     guibg = #4a8277
+highlight ConflictMarkerOurs      guibg = #4a8277
+highlight ConflictMarkerTheirs    guibg = #4085c2
+highlight ConflictMarkerEnd       guibg = #4085c2
+highlight ConflictMarkerSeparator guibg = none

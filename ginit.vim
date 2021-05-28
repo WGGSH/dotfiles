@@ -28,7 +28,7 @@ else "nvim-qt
   endif
 
   let g:defoultFontFamily='Cica'
-  let g:defaultFontSize=16
+  let g:defaultFontSize=14
 
   execute 'GuiFont! ' . g:defoultFontFamily . ':h' . g:defaultFontSize
   GuiPopupmenu 0

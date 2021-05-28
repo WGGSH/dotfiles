@@ -192,7 +192,7 @@ augroup END
 
 " カラースキームに合わせて色のリンクを作成する
 highlight CursorLineNr none
-highlight link CursorLineNr function
+highlight link CursorLineNr Statement
 
 "highlight Folded ctermbg=none guibg=none
 "highlight EndOfBuffer ctermbg=white guibg=none
@@ -260,3 +260,7 @@ highlight ConflictMarkerOurs      guibg = #4a8277
 highlight ConflictMarkerTheirs    guibg = #4085c2
 highlight ConflictMarkerEnd       guibg = #4085c2
 highlight ConflictMarkerSeparator guibg = none
+
+
+" エラーログを書き出す
+

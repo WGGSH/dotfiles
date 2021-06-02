@@ -20,20 +20,21 @@ if exists ('g:fvim_loaded')
 
 else "nvim-qt
 
-  set showtabline=2
   " set guioptions-=e
 
   if exists("g:gui_oni")
     let g:airline_theme = 'behelit'
   endif
 
-  let g:defoultFontFamily='Cica'
+  " let g:defoultFontFamily='Cica'
+  let g:defoultFontFamily='HackGen35Nerd Console'
   let g:defaultFontSize=14
 
   execute 'GuiFont! ' . g:defoultFontFamily . ':h' . g:defaultFontSize
+  set mouse=a
+  set showtabline=2
   GuiPopupmenu 0
-  GuiLinespace 0
-  " GuiTabLine 0
+  GuiLinespace -2
   if exists(':GuiTabline') == 2
     " echo 'hoge'
     GuiTabline 0

@@ -135,6 +135,8 @@ nnoremap a d
 nnoremap aa dd
 nnoremap r n
 nnoremap R N
+nnoremap c r
+nnoremap C R
 
 " nnoremap <C-w>d <C-w>h
 nnoremap <C-w>h <C-w>j
@@ -191,8 +193,8 @@ augroup END
 " colorscheme material
 
 " カラースキームに合わせて色のリンクを作成する
-highlight CursorLineNr none
-highlight link CursorLineNr Statement
+" highlight CursorLineNr none
+" highlight link CursorLineNr Statement
 
 "highlight Folded ctermbg=none guibg=none
 "highlight EndOfBuffer ctermbg=white guibg=none
@@ -205,7 +207,7 @@ highlight link CursorLineNr Statement
 
 " 下線表示: カラーテーマよりも後に呼ぶ
 " goneovim でバグが有り， guibg を背景色と同一か透明にすると下線が残るため，背景色から僅かにずらす
-highlight CursorLine gui=underline guifg=none guibg=#212122
+" highlight CursorLine gui=underline guifg=none guibg=#212122
 
 
 " スクロールバー
@@ -230,13 +232,14 @@ endfunc
 
 " LSP のハイライト表示
 " highlight LspErrorHighlight       gui=underline guifg=#DC657D guibg=none
-highlight link LspErrorHighlight Error
-highlight link LspWarningHighlight Exception
+highlight link LspErrorHighlight none
+highlight link LspWarningHighlight none
 highlight LspInformationHighlight none
 highlight LspHintHighlight none
 
-highlight link LspInformationVirtualText Comment
-highlight link LspHintVirtualText Comment
+highlight link LspInformationVirtualText NonText
+highlight link LspHintVirtualText NonText
+execute 'highlight LspErrorVirtualText gui=bold guifg=' .g:material_color_red.gui . ' guibg=none'
 
 " dein.toml ファイルを開いた際に hook 部分を 正しくハイライトする
 augroup tomlSyntax
@@ -261,6 +264,9 @@ highlight ConflictMarkerTheirs    guibg = #4085c2
 highlight ConflictMarkerEnd       guibg = #4085c2
 highlight ConflictMarkerSeparator guibg = none
 
+
+" APZelos/blamer.nvim のハイライト設定
+highlight link Blamer NonText
 
 " エラーログを書き出す
 

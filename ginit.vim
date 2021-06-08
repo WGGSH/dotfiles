@@ -78,4 +78,11 @@ else "nvim-qt
   nnoremap <C-=> :call FontSizePlus()<CR>
   nnoremap <C--> :call FontSizeMinus()<CR>
   nnoremap <C-0> :call FontSizeReset()<CR>
+
+  " highlight LspErrorHighlight none
+  " highlight LspErrorHighlight gui=undercurl guisp=red
+  execute 'highlight LspErrorHighlight gui=undercurl guisp=' .g:material_color_red.gui
+  " highlight LspWarningHighlight gui=none guifg=none guibg=none guisp=none
+  " highlight LspWarningHighlight gui=undercurl guisp=g:material_color_orange.gui
+  execute 'highlight LspWarningHighlight gui=undercurl guisp=' .g:material_color_orange.gui
 endif

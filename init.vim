@@ -164,6 +164,19 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>- :sp<CR>
 nnoremap <Leader>z :vs<CR>
 
+" fold 設定
+nnoremap zh zj
+nnoremap zt zk
+set foldmethod=indent
+set foldlevel=1
+" folding 状態の保存
+autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
+autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
+" au BufWinLeave * mkview
+" au BufWinEnter * silent loadview
+set viewoptions-=options
+
+
 " カラーテーマ
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -240,6 +253,7 @@ highlight LspHintHighlight none
 highlight link LspInformationVirtualText NonText
 highlight link LspHintVirtualText NonText
 execute 'highlight LspErrorVirtualText gui=bold guifg=' .g:material_color_red.gui . ' guibg=none'
+execute 'highlight LspErrorText gui=bold guifg=' .g:material_color_red.gui . ' guibg=none'
 
 " dein.toml ファイルを開いた際に hook 部分を 正しくハイライトする
 augroup tomlSyntax

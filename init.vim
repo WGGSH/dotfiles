@@ -168,10 +168,10 @@ nnoremap <Leader>z :vs<CR>
 nnoremap zh zj
 nnoremap zt zk
 set foldmethod=indent
-set foldlevel=1
+set foldlevel=99
 " folding 状態の保存
 autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' | mkview | endif
-autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent loadview | endif
+autocmd BufRead * if expand('%') != '' && &buftype !~ 'nofile' | silent! loadview | endif
 " au BufWinLeave * mkview
 " au BufWinEnter * silent loadview
 set viewoptions-=options
@@ -281,6 +281,12 @@ highlight ConflictMarkerSeparator guibg = none
 
 " APZelos/blamer.nvim のハイライト設定
 highlight link Blamer NonText
+
+" テキスト系ファイルを開いた場合にカラースキームを白背景に変更する
+augroup lightmode
+  autocmd!
+  autocmd BufNewFile,BufRead *.txt,*.md let g:material_theme_style='custom-lighter' | colorscheme material | AirlineTheme material
+augroup END
 
 " エラーログを書き出す
 

@@ -1,7 +1,8 @@
 # --- 各種カラースキーム ---
 # カラースキーム集
-[[plugins]]
-repo = 'flazz/vim-colorschemes'
+# 干渉しそうなので一旦やめる
+# [[plugins]]
+# repo = 'flazz/vim-colorschemes'
 
 [[plugins]]
 repo = 'xero/nord-vim-mod'

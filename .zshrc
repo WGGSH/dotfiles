@@ -2,7 +2,7 @@ if [[ ! -n $TMUX ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
-    tmux new-session
+    # tmux new-session
   fi
   create_new_session="Create New Session"
   ID="$ID\n${create_new_session}:"

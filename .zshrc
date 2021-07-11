@@ -17,7 +17,8 @@ if [[ ! -n $TMUX ]]; then
 fi
 
 function powerline_precmd() {
-    PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+    #PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+    PS1="$(powerline-go --shell zsh $?)"
 }
 
 function install_powerline_precmd() {

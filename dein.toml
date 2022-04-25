@@ -42,7 +42,7 @@ repo = 'lighttiger2505/deoplete-vim-lsp'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['lighttiger2505/deoplete-vim-lsp']
+# depends = ['lighttiger2505/deoplete-vim-lsp']
 on_event = 'InsertCherPre'
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
@@ -133,7 +133,7 @@ let g:gitgutter_sign_removed = '-'
 ## 本体
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive']
+# depends = ['vim-airline/vim-airline-themes', 'tpope/vim-fugitive']
 hook_add = '''
 " カラースキーム
 " let g:airline_theme = 'oceanicnext'
@@ -298,7 +298,7 @@ on_ft = 'toml'
 # 本体
 [[plugins]]
 repo = 'Shougo/defx.nvim'
-depends = ['defx-icons']
+# depends = ['defx-icons']
 on_cmd = 'Defx'
 hook_add = '''
 let g:defx_icons_enable_syntax_highlight = 1

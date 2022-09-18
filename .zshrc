@@ -2,7 +2,7 @@ if [[ ! -n $TMUX ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
   if [[ -z "$ID" ]]; then
-    tmux new-session
+    # tmux new-session
   fi
   create_new_session="Create New Session"
   ID="$ID\n${create_new_session}:"
@@ -17,7 +17,8 @@ if [[ ! -n $TMUX ]]; then
 fi
 
 function powerline_precmd() {
-    PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+    #PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+    PS1="$(powerline-go --shell zsh $?)"
 }
 
 function install_powerline_precmd() {

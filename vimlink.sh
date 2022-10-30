@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p ~/..config/nvim/
+mkdir -p ~/.config/nvim/
 
 unlink ~/.config/nvim/init.vim
 unlink ~/.config/nvim/ginit.vim

@@ -283,10 +283,10 @@ highlight ConflictMarkerSeparator guibg = none
 highlight link Blamer NonText
 
 " テキスト系ファイルを開いた場合にカラースキームを白背景に変更する
-augroup lightmode
-  autocmd!
-  autocmd BufNewFile,BufRead *.txt,*.md let g:material_theme_style='custom-lighter' | colorscheme material | AirlineTheme material
-augroup END
+" augroup lightmode
+"   autocmd!
+"   autocmd BufNewFile,BufRead *.txt,*.md let g:material_theme_style='custom-lighter' | colorscheme material | AirlineTheme material
+" augroup END
 
 " エラーログを書き出す
 

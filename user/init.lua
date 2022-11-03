@@ -48,6 +48,11 @@ local config = {
       spell = false, -- sets vim.opt.spell
       signcolumn = "auto", -- sets vim.opt.signcolumn to auto
       wrap = false, -- sets vim.opt.wrap
+
+      ignorecase = true,
+      smartcase = true,
+      wildignorecase = true,
+      incsearch = true,
     },
     g = {
       napleader = " ", -- sets vim.g.mapleader
@@ -99,7 +104,7 @@ local config = {
       -- New approach instead of diagnostic_style
       hl.DiagnosticError.italic = true
       hl.DiagnosticHint.italic = true
-      hl.DiagnosticInfo.italic = true 
+      hl.DiagnosticInfo.italic = true
       hl.DiagnosticWarn.italic = true
 
       return hl
@@ -125,6 +130,8 @@ local config = {
       treesitter = true,
       vimwiki = false,
       ["which-key"] = true,
+      lualine = true,
+      tcomment = true,
     },
   },
 
@@ -206,13 +213,13 @@ local config = {
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
-      ["<leader>s"] = { ":w<CR>"  },
+      ["<leader>s"] = { ":w<CR>" },
       ["<leader>w"] = { ":bw<CR>" },
-      ["<leader>q"] = { ":q<CR>"  },
+      ["<leader>q"] = { ":q<CR>" },
       ["<leader>-"] = { ":sp<CR>" },
       ["<leader>z"] = { ":vs<CR>" },
-      ["<leader><leader>d"] = { "<C-w>h"},
-      ["<leader><leader>n"] = { "<C-w>l"},
+      ["<leader><leader>d"] = { "<C-w>h" },
+      ["<leader><leader>n"] = { "<C-w>l" },
       ["<leader>h"] = { "<cmd>BufferLineCyclePrev<cr>" },
       ["<leader>t"] = { "<cmd>BufferLineCycleNext<cr>" },
       ["e"] = { "a" },
@@ -283,6 +290,28 @@ local config = {
         end,
       },
 
+      {
+        "https://github.com/nvim-lualine/lualine.nvim",
+        as = "lualine",
+        config = function()
+          require("lualine").setup {}
+        end,
+      },
+
+      {
+        "https://github.com/machakann/vim-highlightedyank",
+        as = "vim-highlightedyank",
+      },
+
+      {
+        "https://github.com/ntpeters/vim-better-whitespace",
+        as = "vim-better-whitespace",
+      },
+      {
+        "https://github.com/tomtom/tcomment_vim",
+        as = "tcomment",
+      },
+
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -317,6 +346,9 @@ local config = {
           ["t"] = "k",
         },
       },
+    },
+    tcomment = {
+      tcomment_mapleader1 = "<C-/>",
     },
   },
 

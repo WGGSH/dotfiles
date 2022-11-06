@@ -344,8 +344,6 @@ local config = {
     ["neo-tree"] = {
       window = {
         mappings = {
-          ["h"] = "down",
-          ["<space>"] = "down",
         },
       }
     },
@@ -428,5 +426,6 @@ vim.cmd('augroup END')
 
 -- underline
 vim.cmd('autocmd colorscheme carbonfox highlight CursorLine gui=underline guibg=none')
+vim.cmd('autocmd colorscheme carbonfox highlight Normal guibg=none')
 
 return config

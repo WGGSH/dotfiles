@@ -76,18 +76,20 @@ local config = {
 
   -- Set dashboard header
   header = {
-    " █████  ███████ ████████ ██████   ██████",
-    "██   ██ ██         ██    ██   ██ ██    ██",
-    "███████ ███████    ██    ██████  ██    ██",
-    "██   ██      ██    ██    ██   ██ ██    ██",
-    "██   ██ ███████    ██    ██   ██  ██████",
-    " ",
-    "    ███    ██ ██    ██ ██ ███    ███",
-    "    ████   ██ ██    ██ ██ ████  ████",
-    "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-    "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-    "    ██   ████   ████   ██ ██      ██",
+    -- " █████  ███████ ████████ ██████   ██████",
+    -- "██   ██ ██         ██    ██   ██ ██    ██",
+    -- "███████ ███████    ██    ██████  ██    ██",
+    -- "██   ██      ██    ██    ██   ██ ██    ██",
+    -- "██   ██ ███████    ██    ██   ██  ██████",
+    -- " ",
+    -- "    ███    ██ ██    ██ ██ ███    ███",
+    -- "    ████   ██ ██    ██ ██ ████  ████",
+    -- "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
+    -- "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
+    -- "    ██   ████   ████   ██ ██      ██",
   },
+
+
 
   -- Default theme configuration
   default_theme = {
@@ -340,12 +342,12 @@ local config = {
       -- ensure_installed = { "prettier", "stylua" },
     },
     ["neo-tree"] = {
-      filesystem = {
+      window = {
         mappings = {
-          ["h"] = "j",
-          ["t"] = "k",
+          ["h"] = "down",
+          ["<space>"] = "down",
         },
-      },
+      }
     },
     tcomment = {
       tcomment_mapleader1 = "<C-/>",
@@ -394,7 +396,7 @@ local config = {
   },
 
   -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
+  -- nugroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     -- Set up custom filetypes
@@ -411,5 +413,20 @@ local config = {
     -- }
   end,
 }
+
+-- autocmd
+-- 最後に編集した場所に自動で移動する
+vim.cmd('augroup vimrcEx')
+vim.cmd('au BufRead * if line(\"\'\\\"\") > 0 && line(\"\'\\\"\") <= line(\"$\") | exe \"normal g`\\\"\" | endif')
+vim.cmd('augroup END')
+
+-- perl のインデント幅
+vim.cmd('augroup MyFileTypeEvent')
+vim.cmd('autocmd!')
+vim.cmd('autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4')
+vim.cmd('augroup END')
+
+-- underline
+vim.cmd('autocmd colorscheme carbonfox highlight CursorLine gui=underline guibg=none')
 
 return config

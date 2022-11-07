@@ -168,7 +168,7 @@ local config = {
       --   return true
       -- end
     },
-    -- easily add or disable built in mappings added during LSP attaching
+    -- easily add or disable built in gappings added during LSP attaching
     mappings = {
       n = {
         -- ["<leader>lf"] = false -- disable formatting neymap
@@ -313,7 +313,6 @@ local config = {
         "https://github.com/tomtom/tcomment_vim",
         as = "tcomment",
       },
-
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -344,11 +343,9 @@ local config = {
     ["neo-tree"] = {
       window = {
         mappings = {
+            ["t"] = "",
         },
       }
-    },
-    tcomment = {
-      tcomment_mapleader1 = "<C-/>",
     },
   },
 
@@ -428,4 +425,9 @@ vim.cmd('augroup END')
 vim.cmd('autocmd colorscheme carbonfox highlight CursorLine gui=underline guibg=none')
 vim.cmd('autocmd colorscheme carbonfox highlight Normal guibg=none')
 
+-- tcomment
+vim.cmd('let g:tcomment_mapleader1="<C-\\\\>"')
+
+vim.cmd('noremap h j')
+vim.cmd('noremap t k')
 return config

@@ -4,13 +4,12 @@
 -- You can think of a Lua "table" as a dictionary like data structure the
 -- normal format is "key = value". These also handle array like data structures
 -- where a value with no key simply has an implicit numeric key
-
 local config = {
 
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
+    channel = "stable", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
@@ -39,7 +38,7 @@ local config = {
     -- },
   },
 
-  -- set vim options here (vim.<first_key>.<second_key> =  value)
+  -- set vim options here (vim.<first_key>.<second_key> = value)
   options = {
     opt = {
       -- set to true or false etc.
@@ -55,13 +54,15 @@ local config = {
       incsearch = true,
     },
     g = {
-      napleader = " ", -- sets vim.g.mapleader
+      mapleader = " ", -- sets vim.g.mapleader
       autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
       cmp_enabled = true, -- enable completion at start
       autopairs_enabled = true, -- enable autopairs at start
       diagnostics_enabled = true, -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
       icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      ui_notifications_enabled = true, -- disable notifications when toggling UI elements
+      heirline_bufferline = false, -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -88,8 +89,6 @@ local config = {
     -- "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
     -- "    ██   ████   ████   ██ ██      ██",
   },
-
-
 
   -- Default theme configuration
   default_theme = {
@@ -132,8 +131,7 @@ local config = {
       treesitter = true,
       vimwiki = false,
       ["which-key"] = true,
-      lualine = true,
-      tcomment = true,
+      -- tcomment = true,
     },
   },
 
@@ -168,10 +166,10 @@ local config = {
       --   return true
       -- end
     },
-    -- easily add or disable built in gappings added during LSP attaching
+    -- easily add or disable built in mappings added during LSP attaching
     mappings = {
       n = {
-        -- ["<leader>lf"] = false -- disable formatting neymap
+        -- ["<leader>lf"] = false -- disable formatting keymap
       },
     },
     -- add to the global LSP on_attach function
@@ -210,7 +208,7 @@ local config = {
     n = {
       -- second key is the lefthand side of the map
       -- mappings seen under group name "Buffer"
-      ["<leader>bb"] = { "<hmd>tabnew<cr>", desc = "New tab" },
+      ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
@@ -238,6 +236,8 @@ local config = {
       [";"] = { ":" },
       [":"] = { ";" },
       ["<ESC><ESC>"] = { ":nohl<CR>" },
+      -- quick save
+      -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -283,7 +283,6 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-
       {
         "https://github.com/EdenEast/nightfox.nvim",
         as = "nightfox",
@@ -340,22 +339,21 @@ local config = {
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
       -- ensure_installed = { "prettier", "stylua" },
     },
-    ["neo-tree"] = {
-      window = {
-        mappings = {
-            ["t"] = "",
-        },
-      }
+    ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
+      -- ensure_installed = { "python" },
     },
   },
 
   -- LuaSnip Options
   luasnip = {
-    -- Add paths for including more VS Code style snippets in luasnip
-    vscode_snippet_paths = {},
     -- Extend filetypes
     filetype_extend = {
       -- javascript = { "javascriptreact" },
+    },
+    -- Configure luasnip loaders (vscode, lua, and/or snipmate)
+    vscode = {
+      -- Add paths for including more VS Code style snippets in luasnip
+      paths = {},
     },
   },
 
@@ -372,6 +370,32 @@ local config = {
       buffer = 500,
       path = 250,
     },
+  },
+
+  -- Customize Heirline options
+  heirline = {
+    -- -- Customize different separators between sections
+    -- separators = {
+    --   tab = { "", "" },
+    -- },
+    -- -- Customize colors for each element each element has a `_fg` and a `_bg`
+    -- colors = function(colors)
+    --   colors.git_branch_fg = astronvim.get_hlgroup "Conditional"
+    --   return colors
+    -- end,
+    -- -- Customize attributes of highlighting in Heirline components
+    -- attributes = {
+    --   -- styling choices for each heirline element, check possible attributes with `:h attr-list`
+    --   git_branch = { bold = true }, -- bold the git branch statusline component
+    -- },
+    -- -- Customize if icons should be highlighted
+    -- icon_highlights = {
+    --   breadcrumbs = false, -- LSP symbols in the breadcrumbs
+    --   file_icon = {
+    --     winbar = false, -- Filetype icon in the winbar inactive windows
+    --     statusline = true, -- Filetype icon in the statusline
+    --   },
+    -- },
   },
 
   -- Modify which-key registration (Use this with mappings table in the above.)
@@ -391,7 +415,7 @@ local config = {
   },
 
   -- This function is run last and is a good place to configuring
-  -- nugroups/autocommands and custom filetypes also this just pure lua so
+  -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     -- Set up custom filetypes
@@ -409,11 +433,8 @@ local config = {
   end,
 }
 
--- autocmd
--- 最後に編集した場所に自動で移動する
-vim.cmd('augroup vimrcEx')
-vim.cmd('au BufRead * if line(\"\'\\\"\") > 0 && line(\"\'\\\"\") <= line(\"$\") | exe \"normal g`\\\"\" | endif')
-vim.cmd('augroup END')
+-- tcomment
+vim.cmd('let g:tcomment_mapleader1="<C-\\\\>"')
 
 -- perl のインデント幅
 vim.cmd('augroup MyFileTypeEvent')
@@ -424,9 +445,6 @@ vim.cmd('augroup END')
 -- underline
 vim.cmd('autocmd colorscheme carbonfox highlight CursorLine gui=underline guibg=none')
 vim.cmd('autocmd colorscheme carbonfox highlight Normal guibg=none')
-
--- tcomment
-vim.cmd('let g:tcomment_mapleader1="<C-\\\\>"')
 
 vim.cmd('noremap h j')
 vim.cmd('noremap t k')

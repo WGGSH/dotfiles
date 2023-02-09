@@ -312,6 +312,10 @@ local config = {
         "https://github.com/tomtom/tcomment_vim",
         as = "tcomment",
       },
+      {
+        "https://github.com/github/copilot.vim",
+        as = "copilot",
+      }
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`

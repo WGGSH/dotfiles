@@ -315,7 +315,13 @@ local config = {
       {
         "https://github.com/github/copilot.vim",
         as = "copilot",
-      }
+      },
+      {
+        "iamcco/markdown-preview.nvim",
+        as = "markdown",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }
+      },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`

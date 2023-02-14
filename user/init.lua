@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "carbonfox",
+  colorscheme = "material",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -131,7 +131,6 @@ local config = {
       treesitter = true,
       vimwiki = false,
       ["which-key"] = true,
-      -- tcomment = true,
     },
   },
 
@@ -292,11 +291,8 @@ local config = {
       },
 
       {
-        "https://github.com/nvim-lualine/lualine.nvim",
-        as = "lualine",
-        config = function()
-          require("lualine").setup {}
-        end,
+        "kaicataldo/material.vim",
+        as = "material",
       },
 
       {
@@ -308,14 +304,17 @@ local config = {
         "https://github.com/ntpeters/vim-better-whitespace",
         as = "vim-better-whitespace",
       },
+
       {
         "https://github.com/tomtom/tcomment_vim",
         as = "tcomment",
       },
+
       {
         "https://github.com/github/copilot.vim",
         as = "copilot",
       },
+
       {
         "iamcco/markdown-preview.nvim",
         as = "markdown",
@@ -453,9 +452,18 @@ vim.cmd('autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4')
 vim.cmd('augroup END')
 
 -- underline
-vim.cmd('autocmd colorscheme carbonfox highlight CursorLine gui=underline guibg=none')
-vim.cmd('autocmd colorscheme carbonfox highlight Normal guibg=none')
+vim.cmd('autocmd colorscheme material highlight CursorLine gui=underline guibg=none')
+-- vim.cmd('autocmd colorscheme nightfox highlight Normal guibg=none')
 
 vim.cmd('noremap h j')
 vim.cmd('noremap t k')
+
+-- colorscheme material
+vim.g.material_theme_style = 'darker'
+
+-- copilot map
+vim.cmd('imap <silent><script><expr> <C-H> copilot#Accept("\\<CR>")')
+
+
+-- return
 return config

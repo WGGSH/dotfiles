@@ -27,8 +27,8 @@ else "nvim-qt
   endif
 
   " let g:defoultFontFamily='Cica'
-  let g:defoultFontFamily='HackGen35Nerd Console'
-  let g:defaultFontSize=14
+  let g:defoultFontFamily='HackGen Console NF'
+  let g:defaultFontSize=18
 
   execute 'GuiFont! ' . g:defoultFontFamily . ':h' . g:defaultFontSize
   set mouse=a
@@ -81,8 +81,8 @@ else "nvim-qt
 
   " highlight LspErrorHighlight none
   " highlight LspErrorHighlight gui=undercurl guisp=red
-  execute 'highlight LspErrorHighlight gui=undercurl guisp=' .g:material_color_red.gui
+  " execute 'highlight LspErrorHighlight gui=undercurl guisp=' .g:material_color_red.gui
   " highlight LspWarningHighlight gui=none guifg=none guibg=none guisp=none
   " highlight LspWarningHighlight gui=undercurl guisp=g:material_color_orange.gui
-  execute 'highlight LspWarningHighlight gui=undercurl guisp=' .g:material_color_orange.gui
+  " execute 'highlight LspWarningHighlight gui=undercurl guisp=' .g:material_color_orange.gui
 endif

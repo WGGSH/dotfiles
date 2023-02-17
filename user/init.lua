@@ -452,7 +452,7 @@ vim.cmd('autocmd FileType perl setlocal tabstop=4 softtabstop=4 shiftwidth=4')
 vim.cmd('augroup END')
 
 -- underline
-vim.cmd('autocmd colorscheme material highlight CursorLine gui=underline guibg=none')
+vim.cmd('autocmd colorscheme material highlight CursorLine gui=underline guibg=none guisp=white')
 -- vim.cmd('autocmd colorscheme nightfox highlight Normal guibg=none')
 
 vim.cmd('noremap h j')

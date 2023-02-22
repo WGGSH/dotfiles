@@ -455,6 +455,13 @@ vim.cmd('augroup END')
 vim.cmd('autocmd colorscheme material highlight CursorLine gui=underline guibg=none guisp=white')
 -- vim.cmd('autocmd colorscheme nightfox highlight Normal guibg=none')
 
+-- LineNr
+-- 明るい色に
+vim.cmd('autocmd colorscheme material highlight LineNr guifg=#d0d0d0')
+
+-- 選択中の行番号を明るい青に
+vim.cmd('autocmd colorscheme material highlight CursorLineNr guifg=#1e88e5')
+
 vim.cmd('noremap h j')
 vim.cmd('noremap t k')
 

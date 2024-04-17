@@ -1,3 +1,6 @@
 [submodule "astro_config"]
 	path = astro_config
 	url = git@github.com:WGGSH/astro_config.git
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:WGGSH/astronvim_template.git

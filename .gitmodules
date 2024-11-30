@@ -4,3 +4,9 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:WGGSH/nvim.git
+[submodule "alacritty/alacritty"]
+	path = alacritty/alacritty
+	url = git@github.com:catppuccin/alacritty.git
+[submodule "alacritty/catppuccin"]
+	path = alacritty/catppuccin
+	url = https://github.com/catppuccin/alacritty.git

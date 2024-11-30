@@ -1,0 +1,6 @@
+general.import = [
+  "./catppuccin/catppuccin-macchiato.toml"
+]
+
+[env]
+TERM = "xterm-256color"

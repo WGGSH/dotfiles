@@ -1,9 +1,6 @@
-[submodule "astro_config"]
-	path = astro_config
-	url = git@github.com:WGGSH/astro_config.git
 [submodule "nvim"]
 	path = nvim
-	url = git@github.com:WGGSH/nvim.git
+	url = https://github.com/WGGSH/nvim.git
 [submodule "alacritty/catppuccin"]
 	path = alacritty/catppuccin
 	url = https://github.com/catppuccin/alacritty.git

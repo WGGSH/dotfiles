@@ -2,5 +2,8 @@ import = [
   "~/.config/alacritty/catppuccin/catppuccin-macchiato.toml"
 ]
 
+[font]
+normal.family="Moralerspace Neon NF"
+
 [env]
 TERM = "xterm-256color"

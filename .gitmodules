@@ -4,3 +4,6 @@
 [submodule "nixos"]
 	path = nixos
 	url = git@github.com:WGGSH/nixos-config.git
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:WGGSH/nvim.git

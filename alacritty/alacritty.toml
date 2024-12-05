@@ -5,6 +5,7 @@ import = [
 
 [font]
 normal.family="Moralerspace Neon NF"
+size = 18
 
 [env]
 TERM = "xterm-256color"

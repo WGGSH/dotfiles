@@ -10,3 +10,6 @@
 [submodule "my-rofi"]
 	path = rofi
 	url = git@github.com:WGGSH/rofi.git
+[submodule "waybar"]
+	path = waybar
+	url = git@github.com:WGGSH/waybar.git

@@ -7,3 +7,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:WGGSH/nvim.git
+[submodule "my-rofi"]
+	path = rofi
+	url = git@github.com:WGGSH/rofi.git

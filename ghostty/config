@@ -36,6 +36,6 @@ palette = 14=#63cbc0
 font-size = 16
 font-thicken = true
 # font-family = Moralerspace Neon NF
-font-family = HackGen35 Console NFJ
+font-family = HackGen35 Console NF
 mouse-hide-while-typing = true
 macos-non-native-fullscreen = true

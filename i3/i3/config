@@ -47,6 +47,9 @@ exec --no-startup-id xrandr --output DP-0 --auto --left-of DP-2 --output DP-2 --
 
 exec --no-startup-id ~/.fehbg
 
+# display setting
+exec --no-startup-id ~/.screenlayout/default.sh
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status

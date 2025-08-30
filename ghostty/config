@@ -3,7 +3,6 @@
 title = Term
 fullscreen = false
 confirm-close-surface = false
-# copy-on-select = clipboard
 window-decoration = true
 window-padding-x = 8
 window-padding-y = 8
@@ -36,7 +35,12 @@ palette = 14=#63cbc0
 font-size = 16
 font-thicken = true
 font-family = Moralerspace Neon NF
-# font-family = HackGen35 Console NF
 mouse-hide-while-typing = true
 macos-non-native-fullscreen = true
-gtk-titlebar = false
+gtk-titlebar = true
+gtk-toolbar-style = raised
+gtk-tabs-location = bottom
+gtk-titlebar-hide-when-maximized = true
+
+# --- custom theme ---
+

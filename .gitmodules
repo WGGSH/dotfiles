@@ -13,3 +13,6 @@
 [submodule "waybar"]
 	path = waybar
 	url = git@github.com:WGGSH/waybar.git
+[submodule "dunst"]
+	path = dunst
+	url = git@github.com:WGGSH/dunst.git

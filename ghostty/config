@@ -34,7 +34,7 @@ palette = 14=#63cbc0
 # palette = 15=#b8c0e0
 font-size = 16
 font-thicken = true
-font-family = Moralerspace Neon NF
+font-family = Moralerspace Neon
 mouse-hide-while-typing = true
 macos-non-native-fullscreen = true
 gtk-titlebar = true
@@ -44,3 +44,4 @@ gtk-titlebar-hide-when-maximized = true
 
 # --- custom theme ---
 
+keybind = shift+enter=text:\x1b\r

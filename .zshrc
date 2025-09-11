@@ -92,7 +92,7 @@ setopt CDABLE_VARS             # cd to variables
 # ============================================================================
 setopt COMPLETE_ALIASES        # Complete aliases
 setopt LIST_PACKED             # Use variable column widths for completions
-setopt MENU_COMPLETE           # Cycle through completions with TAB
+# setopt MENU_COMPLETE         # Cycle through completions with TAB (disabled for traditional behavior)
 setopt AUTO_MENU               # Show completion menu on successive tab press
 setopt ALWAYS_TO_END           # Move cursor to end after completion
 setopt COMPLETE_IN_WORD        # Complete from both ends of a word

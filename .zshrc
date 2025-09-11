@@ -1,111 +1,395 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ============================================================================
+# Oh My Zsh Configuration - Enhanced Setup
+# ============================================================================
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="half-life"
-ZSH_THEME="essembeh"
+# ============================================================================
+# Theme Configuration
+# ============================================================================
+# Powerlevel10k is a fast and highly customizable theme
+# If not installed, falls back to agnoster
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# Fallback themes: agnoster, spaceship, essembeh
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ============================================================================
+# Oh My Zsh Update Configuration
+# ============================================================================
+zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' frequency 7    # update every 7 days
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# ============================================================================
+# Plugins Configuration
+# ============================================================================
 plugins=(
-  git
-  # zsh-autosuggestions
-  # zsh-syntax-highlighting
+    # Essential plugins
+    git
+    z                           # Jump to frequently used directories
+    zsh-autosuggestions        # Fish-like autosuggestions
+    zsh-syntax-highlighting    # Syntax highlighting for commands
+    zsh-completions           # Additional completions
+
+    # Utility plugins
+    extract                    # Extract any archive with 'extract' command
+    colored-man-pages         # Colorize man pages
+    command-not-found         # Suggest packages for unknown commands
+    sudo                      # ESC ESC to add sudo to current/previous command
+    web-search               # Google search from terminal
+    copyfile                 # Copy file contents to clipboard
+    copypath                 # Copy current path to clipboard
+
+    # Development plugins
+    docker                   # Docker completion and aliases
+    docker-compose          # Docker-compose completion
+    npm                     # npm completion and aliases
+    nvm                     # Node Version Manager
+    rust                    # Rust development
+    golang                  # Go development
+    python                  # Python development
+    pip                     # pip completion
+
+    # System plugins
+    systemd                 # systemctl shortcuts
+    archlinux              # Arch Linux specific aliases (if applicable)
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# ============================================================================
+# History Configuration
+# ============================================================================
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_EXPIRE_DUPS_FIRST  # Remove oldest duplicates first
+setopt HIST_IGNORE_DUPS        # Don't record identical consecutive commands
+setopt HIST_IGNORE_ALL_DUPS    # Remove all previous duplicates
+setopt HIST_FIND_NO_DUPS       # Don't display duplicates when searching
+setopt HIST_SAVE_NO_DUPS       # Don't save duplicates
+setopt HIST_REDUCE_BLANKS      # Remove unnecessary blank lines
+setopt HIST_VERIFY             # Show command before executing from history
+setopt INC_APPEND_HISTORY      # Append to history immediately
+setopt SHARE_HISTORY           # Share history between sessions
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# ============================================================================
+# Directory Navigation
+# ============================================================================
+setopt AUTO_PUSHD              # Push directories to stack automatically
+setopt PUSHD_IGNORE_DUPS       # Don't push duplicates to stack
+setopt PUSHD_SILENT            # Don't print directory stack
+setopt AUTO_CD                 # cd by just typing directory name
+setopt CDABLE_VARS             # cd to variables
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# ============================================================================
+# Completion Configuration
+# ============================================================================
+setopt COMPLETE_ALIASES        # Complete aliases
+setopt LIST_PACKED             # Use variable column widths for completions
+setopt MENU_COMPLETE           # Cycle through completions with TAB
+setopt AUTO_MENU               # Show completion menu on successive tab press
+setopt ALWAYS_TO_END           # Move cursor to end after completion
+setopt COMPLETE_IN_WORD        # Complete from both ends of a word
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+# Load completions
+autoload -U compinit && compinit -C
 
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+# Case insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ============================================================================
+# Environment Variables
+# ============================================================================
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+export BROWSER='firefox'
+export LANG=en_US.UTF-8
+
+# Path enhancements
+export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
+
+# ============================================================================
+# Basic Command Aliases
+# ============================================================================
+# ls enhancements
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -altr'          # Sort by time, newest last
+alias lh='ls -alth'          # Human readable sizes with time sort
+
+# Navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+
+# Directory operations
+alias md='mkdir -p'
+alias rd='rmdir'
+
+# File operations
+alias cp='cp -i'             # Interactive copy
+alias mv='mv -i'             # Interactive move
+alias rm='rm -i'             # Interactive remove
+alias ln='ln -i'             # Interactive link
+
+# ============================================================================
+# System Information Aliases
+# ============================================================================
+alias df='df -h'             # Human readable disk usage
+alias du='du -h'             # Human readable directory sizes
+alias dus='du -sh'           # Summary of directory size
+alias free='free -h'         # Human readable memory info
+alias ps='ps aux'            # Full process list
+alias top='htop'             # Better top
+alias mount='mount | column -t'  # Pretty mount output
+
+# ============================================================================
+# Text Processing Aliases
+# ============================================================================
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias less='less -R'         # Raw control characters for colors
+
+# Modern replacements (if available)
+command -v bat >/dev/null && alias cat='bat'
+command -v exa >/dev/null && alias ls='exa' && alias ll='exa -la' && alias la='exa -a'
+command -v fd >/dev/null && alias find='fd'
+command -v rg >/dev/null && alias grep='rg'
+
+# ============================================================================
+# Git Aliases
+# ============================================================================
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gpu='git push -u origin'
+alias gl='git pull'
+alias gf='git fetch'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gm='git merge'
+alias gr='git reset'
+alias glog='git log --oneline --graph --decorate'
+alias gloga='git log --oneline --graph --decorate --all'
+alias glogp='git log --graph --pretty=format:"%C(yellow)%h%Creset - %s %C(green)(%cr) %C(blue)<%an>%Creset"'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gstl='git stash list'
+
+# ============================================================================
+# Network Aliases
+# ============================================================================
+alias ping='ping -c 5'       # Limit ping to 5 packets
+alias myip='curl ifconfig.me' # Get external IP
+alias ports='netstat -tulpn' # Show open ports
+
+# ============================================================================
+# Development Aliases
+# ============================================================================
+# npm/yarn shortcuts
+alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nig='npm install -g'
+alias nr='npm run'
+alias ns='npm start'
+alias nt='npm test'
+alias nb='npm run build'
+
+# Docker shortcuts
+alias d='docker'
+alias dc='docker-compose'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias drm='docker rm'
+alias drmi='docker rmi'
+
+# Python shortcuts
+alias py='python3'
+alias pip='pip3'
+alias venv='python3 -m venv'
+
+# ============================================================================
+# Custom Functions
+# ============================================================================
+
+# Create directory and navigate to it
+mkcd() {
+    mkdir -p "$@" && cd "$_"
+}
+
+# Find files by name
+ff() {
+    find . -name "*$1*" 2>/dev/null
+}
+
+# Search for text in files
+ftext() {
+    grep -r "$1" . 2>/dev/null
+}
+
+# Process search
+psgrep() {
+    ps aux | grep -v grep | grep "$@"
+}
+
+# Kill process by name
+killp() {
+    ps aux | grep -v grep | grep "$1" | awk '{print $2}' | xargs kill -9
+}
+
+# Check which process is using a port
+port() {
+    lsof -i :$1
+}
+
+# Extract various archive formats
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Create backup of file
+backup() {
+    cp "$1" "$1.backup-$(date +%Y%m%d-%H%M%S)"
+}
+
+# Show directory size sorted
+ducks() {
+    du -cks * | sort -rn | head -11
+}
+
+# Find and replace in files
+fар() {
+    if [ $# -ne 3 ]; then
+        echo "Usage: fар <search> <replace> <file_pattern>"
+        return 1
+    fi
+    find . -name "$3" -type f -exec sed -i "s/$1/$2/g" {} \;
+}
+
+# Weather function (requires curl)
+weather() {
+    local city="$1"
+    if [ -z "$city" ]; then
+        curl wttr.in
+    else
+        curl "wttr.in/$city"
+    fi
+}
+
+# ============================================================================
+# Key Bindings
+# ============================================================================
+# Ctrl+left/right for word navigation
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# Ctrl+up/down for history search
+bindkey "^[[1;5A" history-search-backward
+bindkey "^[[1;5B" history-search-forward
+
+# Home/End keys
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+# Delete key
+bindkey "^[[3~" delete-char
+
+# Alt+Backspace to delete word
+bindkey "^[^?" backward-kill-word
+
+# ============================================================================
+# Performance Optimizations
+# ============================================================================
+# Disable Oh My Zsh auto-update checking (handled by zstyle above)
+DISABLE_UPDATE_PROMPT=true
+
+# Skip verification of insecure completions
+ZSH_DISABLE_COMPFIX=true
+
+# ============================================================================
+# Additional Customizations
+# ============================================================================
+
+# Enable command correction
+ENABLE_CORRECTION="false"  # Set to "true" if you want command correction
+
+# Completion waiting dots
+COMPLETION_WAITING_DOTS="true"
+
+# Mark untracked files under VCS as dirty (set to "true" for better performance in large repos)
+DISABLE_UNTRACKED_FILES_DIRTY="false"
+
+# History timestamp format
+HIST_STAMPS="yyyy-mm-dd"
+
+# ============================================================================
+# Load Local Configuration
+# ============================================================================
+# Source local configuration file if it exists
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# ============================================================================
+# Final Setup
+# ============================================================================
+# Original aliases from the user's config
 alias vim="nvim"
-export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Load any additional scripts
+if [ -d ~/.config/zsh ]; then
+    for file in ~/.config/zsh/*.zsh; do
+        [ -r "$file" ] && source "$file"
+    done
+fi
+
+# Initialize completion system
+autoload -U +X bashcompinit && bashcompinit
+
+# ============================================================================
+# Welcome Message (Optional)
+# ============================================================================
+# Uncomment the following lines for a welcome message
+# echo "🚀 Enhanced Zsh loaded successfully!"
+# echo "💡 Type 'alias' to see all available shortcuts"
+
+# End of configuration
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

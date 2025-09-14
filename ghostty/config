@@ -23,3 +23,7 @@ gtk-titlebar-hide-when-maximized = true
 theme = twilight-garden
 
 keybind = shift+enter=text:\x1b\r
+
+# アンダーラインの太さを調整
+adjust-underline-thickness = 3
+adjust-underline-position = 1

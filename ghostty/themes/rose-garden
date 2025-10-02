@@ -1,4 +1,4 @@
-# Twilight Garden Theme for Ghostty
+# Rose Garden Theme for Ghostty
 # Place this file in ~/.config/ghostty/themes/
 
 # Ghostty Terminal Color Theme
@@ -18,18 +18,18 @@ selection-foreground = #c8d4f4
 
 # 256 Color Palette
 palette = 0=#304766
-palette = 1=#ff6b7d
-palette = 2=#b3e699
+palette = 1=#e85d75
+palette = 2=#198754
 palette = 3=#ffcd3c
-palette = 4=#8aadf4
+palette = 4=#4dabf7
 palette = 5=#f2bde0
 palette = 6=#9be3c3
 palette = 7=#b0bcdd
 palette = 8=#415a7a
-palette = 9=#ff6b7c
-palette = 10=#c7ffab
+palette = 9=#ff6680
+palette = 10=#23ba74
 palette = 11=#ffcf3d
-palette = 12=#91b6ff
+palette = 12=#4fb0ff
 palette = 13=#ffc7ec
 palette = 14=#adffda
 palette = 15=#c8d4f4

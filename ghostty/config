@@ -21,6 +21,7 @@ gtk-titlebar-hide-when-maximized = true
 
 # --- custom theme ---
 theme = twilight-garden
+# theme = midnight-garden
 
 keybind = shift+enter=text:\x1b\r
 

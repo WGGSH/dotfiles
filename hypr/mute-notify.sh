@@ -37,3 +37,16 @@ NEW_ID=$(notify-send -a "Volume" -t 2000 -r "$REPLACE_ID" -p "🔇 Muted" "$STAT
 # Save the new notification ID and current time for next replacement
 echo "$NEW_ID" > "$NOTIFY_ID_FILE"
 echo "$(date +%s%N | cut -b1-13)" > "$NOTIFY_TIME_FILE"
+
+# Notify DMS-Shell and PipeWire about volume change via D-Bus
+# This ensures DMS-Shell updates its cached volume display
+(
+  dbus-send --session --type=signal /org/pipewire/core0 \
+    org.freedesktop.DBus.Properties.PropertiesChanged \
+    string:org.pipewire.Node \
+    dict:string:variant:"Props",variant:"(a{sv})" 2>/dev/null
+
+  # Alternative: Force DMS-Shell to refresh by sending a custom signal
+  dbus-send --session --type=signal /org/dms/Shell \
+    org.dms.Shell.VolumeChanged 2>/dev/null || true
+) &

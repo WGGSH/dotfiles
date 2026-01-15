@@ -76,5 +76,27 @@ config.colors = {
   },
 }
 
--- Finally, return the configuration to wezterm:
+-- Claude Code の Shift + Enter 対応
+
+-- システムベル音を有効化（Claude Codeのタスク完了通知用）
+config.audible_bell = "SystemBeep"
+
+-- Shift+Enterで改行を送信
+config.keys = {
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action.SendString('\n')
+  },
+}
+
+local colors_file = os.getenv("HOME") .. "/.config/wezterm/dank-colors.lua"
+local success, colors = pcall(dofile, colors_file)
+
+if success then
+  config.colors = colors
+else
+  wezterm.log_error("Failed to load dank-colors.lua: " .. tostring(colors))
+end
+
 return config

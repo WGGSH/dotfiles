@@ -140,8 +140,18 @@ alias rd='rmdir'
 # File operations
 alias cp='cp -i'             # Interactive copy
 alias mv='mv -i'             # Interactive move
-alias rm='rm -i'             # Interactive remove
 alias ln='ln -i'             # Interactive link
+
+# Safe rm: use trash-put if available, otherwise rm -i
+if command -v trash-put >/dev/null; then
+  alias rm='trash-put'       # Move to trash (use \rm for real delete)
+  # Trash management aliases
+  alias trash-ls='trash-list'
+  alias trash-restore='trash-restore'
+  alias trash-clear='trash-empty'
+else
+  alias rm='rm -i'           # Interactive remove (fallback)
+fi
 
 # ============================================================================
 # System Information Aliases
